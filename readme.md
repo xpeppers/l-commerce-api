@@ -18,3 +18,9 @@ $ rspec
 ```
 $ rails s
 ```
+
+## seed initial data
+
+```
+$ rake db:seed_fu
+```

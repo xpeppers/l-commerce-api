@@ -7,6 +7,8 @@ gem 'active_model_serializers', '0.10.0.rc2'
 
 gem 'sqlite3'
 
+gem 'seed-fu', '~> 2.3'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
