@@ -3,5 +3,18 @@
 ## project setup
 
 ```
-bundle
+$ bundle
+$ rake db:migrate
+```
+
+## run tests
+
+```
+$ rspec
+```
+
+## run server
+
+```
+$ rails s
 ```
