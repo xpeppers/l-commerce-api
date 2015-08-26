@@ -9,6 +9,9 @@ gem 'sqlite3'
 
 gem 'seed-fu', '~> 2.3'
 
+gem 'unicorn'
+gem 'foreman'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
