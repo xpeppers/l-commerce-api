@@ -11,9 +11,11 @@ describe Api::UsersController, type: :controller do
 
 		it 'responds with new user details' do
 			post :create, email: 'email@address.com', password: 'email@address.com'
-			
+				
+			expect(response).to have_http_status(:created)
 			expect(json).to eq({'email' => 'email@address.com'})
 		end
+
 	end
 
 end
