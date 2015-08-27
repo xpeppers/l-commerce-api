@@ -31,7 +31,7 @@ Account heroku: whereyoufindyouraccount
 
 ```
 $ heroku login
-$ heroku git:remote -a guarded-everglades-2095
+$ heroku git:remote -a linkingcommerce
 $ git push heroku master
 ```
 
