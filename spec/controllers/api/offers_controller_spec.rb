@@ -12,7 +12,7 @@ describe Api::OffersController, type: :controller do
 
     it { should respond_with(:success) }
 
-    it 'should returns two offers' do
+    it 'returns two offers' do
       expect(json).to contain_exactly(
                         to_hash(@first_offer),
                         to_hash(@second_offer)

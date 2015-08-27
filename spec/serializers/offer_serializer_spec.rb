@@ -11,7 +11,7 @@ describe OfferSerializer, type: :serializer do
     JSON.parse(serialization.to_json)
   end
 
-  it 'should use a double precision for price' do
+  it 'uses a double precision for price' do
     expect(subject['price']).to eq('9.90')
   end
 
