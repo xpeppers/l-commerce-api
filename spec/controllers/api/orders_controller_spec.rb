@@ -18,6 +18,7 @@ describe Api::OrdersController, type: :controller do
       post :create, user: @user, offers: [@offer]
 
       expect(response).to have_http_status(:created)
+      expect(json).to eq({'id' => Offer.last.id})
     end
   end
 
