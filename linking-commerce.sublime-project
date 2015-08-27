@@ -44,11 +44,11 @@
     "word_wrap": false,
     "wrap_width": 0
    },
-  "build_systems":  
+  "build_systems":
   [
     {
       "name": "Test",
-      "cmd": ["bundle", "exec", "rake", "specs"]
+      "cmd": ["bundle", "exec", "rake", "spec"]
     }
   ]
 }
