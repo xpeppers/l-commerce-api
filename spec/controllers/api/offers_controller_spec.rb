@@ -10,9 +10,8 @@ describe Api::OffersController, type: :controller do
       get :index
     end
 
-    it { should respond_with(:success) }
-
     it 'returns two offers' do
+      expect(response).to have_http_status(:ok)
       expect(json).to contain_exactly(
                         to_hash(@first_offer),
                         to_hash(@second_offer)
