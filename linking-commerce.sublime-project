@@ -1,0 +1,54 @@
+{
+ "folders":
+ [
+   {
+      "path": ".",
+      "folder_exclude_patterns": ["tmp", "log", ".git"],
+      "file_exclude_patterns": [".tmtags"]
+   }
+ ],
+ "settings":
+ {
+    "auto_reload_changed": true,
+    "detect_indentation": true,
+    "draw_indent_guides": true,
+    "draw_minimap_border": false,
+    "draw_white_space": "selection",
+    "ensure_newline_at_eof_on_save": true,
+    "font_options": ["subpixel_antialias"],
+    "gutter": true,
+    "highlight_line": true,
+    "highlight_modified_tabs": true,
+    "ignored_packages": ["Vintage"],
+    "line_padding_bottom": 0,
+    "line_padding_top": 0,
+    "save_on_focus_lost": false,
+    "scroll_past_end": true,
+    "tab_completion": true,
+    "tab_size": 2,
+    "todo":
+    {
+      "case_sensitive": false,
+      "patterns":
+      {
+        "CHANGED": "changed[\\s]*?:?[\\s]*?(?P<changed>\\S.*)$",
+        "FIXME": "fix ?me[\\s]*?:?[\\s]*?(?P<fixme>\\S.*)$",
+        "NOTE": "note[\\s]*?:?[\\s]*?(?P<note>.*)$",
+        "TODO": "todo[\\s]*?:?[\\s]*?(?P<todo>.*)$"
+      }
+    },
+    "translate_tabs_to_spaces": true,
+    "trim_trailing_white_space_on_save": true,
+    "use_tab_stops": true,
+    "word_separators": "./\\()\"'-:,.;<>~!@#$%^&#038;*|+=[]{}`~?",
+    "word_wrap": false,
+    "wrap_width": 0
+   },
+  "build_systems":  
+  [
+    {
+      "name": "Test",
+      "cmd": ["bundle", "exec", "rake", "specs"]
+    }
+  ]
+}
