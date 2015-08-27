@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::StatusController, type: :controller do
+describe Api::StatusController, type: :controller do
 
   describe 'GET #index' do
 
