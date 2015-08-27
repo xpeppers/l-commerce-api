@@ -3,6 +3,7 @@ require 'rails_helper'
 describe Api::UsersController, type: :controller do
 
 	describe 'POST #create' do
+
 		it 'creates a new user' do
 			expect{
 				post :create, email: 'email@address.com', password: 'email@address.com'
@@ -14,7 +15,7 @@ describe Api::UsersController, type: :controller do
 
 			expect(response).to have_http_status(:created)
 			expect(json).to eq({'email' => 'email@address.com'})
-			expect(response.header['Location']).to eq('/users/1')
+			expect(response.header['Location']).to eq(user_path(User.last))
 		end
 
 	end
