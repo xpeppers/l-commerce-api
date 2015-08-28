@@ -16,6 +16,7 @@ describe Api::OrdersController, type: :controller do
       post :create, user_id: user, offer_ids: [offer]
 
       expect(response).to have_http_status(:created)
+      expect(response.header['Location']).to eq(api_order_path(Order.last))
 
       expected_json = %({
         "id": #{Order.last.id},
