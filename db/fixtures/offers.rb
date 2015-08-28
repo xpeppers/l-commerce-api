@@ -1,4 +1,8 @@
 Offer.seed(:id,
-  { id: 1, title: 'Offerta 1', description: 'Lorem ipsum dolor sit amet', price: 5.0, image_url: 'http://offerte.agriturismotrentino.com/wp-content/uploads/2015/08/cestodegustazione1.jpg' },
-  { id: 2, title: 'Offerta 2', description: 'Lorem ipsum dolor sit amet', price: 5.0, image_url: 'http://offerte.agriturismotrentino.com/wp-content/uploads/2015/08/Agritur-Rincher-4671.jpg' },
+  { id: 1, title: 'Cesto degustazione succo di mela e salsa di pomodoro', description: 'Lorem ipsum dolor sit amet description Cesto degustazione succo di mela e salsa di pomodoro', price: 10.50, image_url: 'http://offerte.agriturismotrentino.com/wp-content/uploads/2015/08/cestodegustazione1.jpg' },
+  { id: 2, title: 'Pacco famiglia 6,5 kg di carne di manzo fresca e un omaggio', description: 'description Lorem ipsum dolor sit amet Pacco famiglia 6,5 kg di carne di manzo fresca e un omaggio', price: 84.50, image_url: 'http://offerte.agriturismotrentino.com/wp-content/uploads/2015/08/Agritur-Rincher-4671.jpg' },
+  { id: 3, title: '1 notte per l’addio al nubilato', description: 'description Lorem ipsum dolor sit amet 1 notte per l’addio al nubilato', price: 140.00, image_url: 'http://offerte.agriturismotrentino.com/wp-content/uploads/2015/08/IL-MELETO-DI-MERLINO-8.jpg' },
+  { id: 4, title: 'Festa del raccolto 4 notti 2 persone', description: 'description Festa del raccolto 4 notti 2 persone Lorem ipsum dolor sit ', price: 410.00, image_url: 'http://offerte.agriturismotrentino.com/wp-content/uploads/2015/08/trasformiamo-la-mela.jpg' },
+  { id: 5, title: '2 notti in famiglia', description: 'descrip2 notti in famiglia Lorem ipsum dolor sit ', price: 280.00, image_url: 'http://offerte.agriturismotrentino.com/wp-content/uploads/2015/08/agritur-delle-mele-val-di-sole-wellness-18.jpg' },
+  { id: 6, title: 'Degustazione agrodolce con 5 salse e sale aromatizzato', description: 'descDegustazione agrodolce con 5 salse e sale aromatizzatosit ', price: 26.50, image_url: 'http://offerte.agriturismotrentino.com/wp-content/uploads/2015/08/IMG_36561.jpg' },
 )
