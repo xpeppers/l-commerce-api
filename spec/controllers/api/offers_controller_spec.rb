@@ -14,8 +14,8 @@ describe Api::OffersController, type: :controller do
       expect(response).to have_http_status(:ok)
 
       expected_json = %([
-        #{@first_offer.to_json(exept: [:created_at, :updated_at])},
-        #{@second_offer.to_json(exept: [:created_at, :updated_at])}
+        #{@first_offer.to_json(except: [:created_at, :updated_at])},
+        #{@second_offer.to_json(except: [:created_at, :updated_at])}
       ])
 
       expect(response.body).to be_json_eql(expected_json)

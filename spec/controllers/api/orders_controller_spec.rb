@@ -3,22 +3,26 @@ require 'rails_helper'
 describe Api::OrdersController, type: :controller do
 
   describe 'POST #create' do
-    let(:user) { User.create }
-    let(:offer) { Offer.create }
+    let(:user) { create(:user) }
+    let(:offer) { create(:offer) }
 
     it 'creates a new order' do
       expect{
-        post :create, user: user, offers: [offer]
+        post :create, user_id: user, offer_ids: [offer]
       }.to change(Order, :count).by(1)
     end
 
     it 'responds with order details' do
-      post :create, user: user, offers: [offer]
+      post :create, user_id: user, offer_ids: [offer]
 
       expect(response).to have_http_status(:created)
 
       expected_json = %({
         "id": #{Order.last.id},
+        "user_id": #{user.id},
+        "offers": [
+          #{offer.to_json(except: [:created_at, :updated_at])}
+        ],
         "status": "pending"
       })
 
