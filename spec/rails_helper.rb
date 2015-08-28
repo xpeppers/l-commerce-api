@@ -19,5 +19,5 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
 
-  config.include Controllers::JsonHelpers, type: :controller
+  config.include JsonSpec::Helpers, type: :controller
 end

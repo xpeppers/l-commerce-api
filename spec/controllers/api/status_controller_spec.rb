@@ -13,7 +13,11 @@ describe Api::StatusController, type: :controller do
     end
 
     it 'contains api version and timestamp' do
-      expect(json).to include("timestamp", "version" => "1.0.0")
+      expected_json = %({
+        "version": "1.0.0"
+      })
+
+      expect(response.body).to be_json_eql(expected_json).excluding('timestamp')
     end
 
   end

@@ -14,8 +14,13 @@ describe Api::UsersController, type: :controller do
       post :create, email: 'email@address.com', password: 'email@address.com'
 
       expect(response).to have_http_status(:created)
-      expect(json).to eq({'email' => 'email@address.com'})
       expect(response.header['Location']).to eq(api_user_path(User.last))
+
+      expected_json = %({
+        "email" : "email@address.com"
+      })
+
+      expect(response.body).to be_json_eql(expected_json)
     end
 
   end
