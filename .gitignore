@@ -17,3 +17,5 @@
 /tmp
 
 *.sublime-workspace
+
+.vagrant/

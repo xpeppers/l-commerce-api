@@ -1,0 +1,12 @@
+name 'linking-commerce-api'
+maintainer 'The Authors'
+maintainer_email 'you@example.com'
+license 'all_rights'
+description 'Installs/Configures linking-commerce-api'
+long_description 'Installs/Configures linking-commerce-api'
+version '0.1.0'
+
+depends 'apt'
+depends 'postgresql'
+depends 'database'
+depends 'ruby-ng'
