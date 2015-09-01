@@ -5,7 +5,7 @@ default: &default
 
 development:
   adapter: postgresql
-  database: linking-commerce-api
+  database: linking-commerce
   username: linking-commerce
   password: linking-commerce
   host: 127.0.0.1
