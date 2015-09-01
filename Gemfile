@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.1'
+ruby '2.2.3'
 
 gem 'rails', '4.2.3'
 gem 'rails-api'
@@ -21,4 +21,7 @@ group :development, :test do
   gem 'json_spec'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'shoulda-matchers'
+  gem 'capistrano', require: false
+  gem 'capistrano-rails', require: false
+  # gem 'capistrano3-foreman', require: false
 end
