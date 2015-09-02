@@ -50,3 +50,11 @@ cookbook_file '/home/deploy/.ssh/authorized_keys' do
   mode 0600
   action :create
 end
+
+sudo 'deploy' do
+  user 'deploy'
+  # runas     "root"
+  # commands  ['/etc/init.d/tomcat restart']
+  nopasswd true
+end
+

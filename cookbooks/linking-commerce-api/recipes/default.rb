@@ -17,16 +17,28 @@ connection_info = {
   :password  => db_root_pass
 }
 
+postgresql_database_user db_user do
+  connection connection_info
+  password db_pass
+  action :create
+end
+
 postgresql_database db_name do
   connection connection_info
+  owner db_user
   action :create
 end
 
 postgresql_database_user db_user do
   connection connection_info
-  password db_pass
   database_name db_name
-  action :create
+  privileges [:all]
+  action :grant
 end
 
-include_recipe "linking-commerce-api::deploy_user"
+
+include_recipe "linking-commerce-api::users"
+package "git-core"
+
+# %w{git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev}
+
