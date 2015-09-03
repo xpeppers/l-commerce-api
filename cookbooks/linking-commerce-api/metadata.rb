@@ -8,7 +8,5 @@ version '0.1.0'
 
 depends 'apt'
 depends 'sudo'
-depends 'postgresql'
-depends 'database'
 depends 'ruby-ng'
 depends 'timezone-ii'
