@@ -5,9 +5,9 @@ default: &default
 
 development:
   adapter: postgresql
-  database: linking-commerce
-  username: linking-commerce
-  password: linking-commerce
+  database: linking_commerce
+  username: linking_commerce
+  password: linking_commerce
   host: 127.0.0.1
   encoding: utf8
   port: 5432
@@ -20,6 +20,8 @@ test:
 
 production:
   adapter: postgresql
-  database: linking-commerce-api
+  database: linking_commerce
+  username: linking_commerce
+  password: linking_commerce
   pool: 5
   timeout: 5000
