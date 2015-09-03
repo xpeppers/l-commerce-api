@@ -19,3 +19,7 @@
 *.sublime-workspace
 
 .vagrant/
+
+.berks-cookbooks
+nodes/
+clients/
