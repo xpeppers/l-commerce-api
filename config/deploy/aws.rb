@@ -1,11 +1,17 @@
+require 'json'
+
+file = File.read('.vagrant/machines/aws/aws/elastic_ip')
+json = JSON.parse(file)
+server_addr = json['public_ip']
+
 set :stage, :production
 set :rails_env, 'production'
 
-role :app, %w{deploy@52.18.177.199}
-role :web, %w{deploy@52.18.177.199}
-role :db, %w{deploy@52.18.177.199}
+role :app, [ "deploy@#{server_addr}" ]
+role :web, [ "deploy@#{server_addr}" ]
+role :db, [ "deploy@#{server_addr}" ]
 
-server '52.18.177.199', user: 'deploy', roles: %w(db app web), primary: true
+server "#{server_addr}", user: 'deploy', roles: %w(db app web), primary: true
 
 set :ssh_options, {
   forward_agent: false,
