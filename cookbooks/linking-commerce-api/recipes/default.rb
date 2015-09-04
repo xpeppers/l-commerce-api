@@ -10,6 +10,7 @@ include_recipe "timezone-ii::default"
 
 include_recipe "linking-commerce-api::postgresql"
 include_recipe "linking-commerce-api::users"
+include_recipe "linking-commerce-api::nginx"
 
 execute 'install chef-dk' do
   command 'curl https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/chefdk_0.7.0-1_amd64.deb -L -O && dpkg -i chefdk_0.7.0-1_amd64.deb'

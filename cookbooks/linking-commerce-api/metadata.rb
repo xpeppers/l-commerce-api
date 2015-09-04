@@ -8,5 +8,6 @@ version '0.1.0'
 
 depends 'apt'
 depends 'sudo'
+depends 'nginx'
 depends 'ruby-ng'
 depends 'timezone-ii'
