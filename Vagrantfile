@@ -8,25 +8,23 @@ Vagrant.configure("2") do |config|
     config.cache.enable :generic, { :cache_dir => "/var/chef/cache" }
   end
 
+  config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+
   config.vm.provision :chef_zero, install: true, run: "always"  do |chef|
     chef.file_cache_path = '/var/chef/cache'
     chef.add_recipe "linking-commerce-api::default"
     chef.verbose_logging
   end
 
-  config.vm.define "development" do |dev|
-
+  config.vm.define "dev" do |dev|
     dev.vm.box = "ubuntu/trusty64"
     dev.vm.box_check_update = true
     dev.vm.network :private_network, ip:"192.168.33.100"
-
-    dev.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
 
     dev.vm.provider "virtualbox" do |vb|
       vb.cpus = 1
       vb.memory = 1024
     end
-
   end
 
   config.vm.define "aws" do |aws|
@@ -39,10 +37,8 @@ Vagrant.configure("2") do |config|
 
     json = `aws sts get-session-token --duration-seconds 900`
     info = JSON.parse(json)
-    puts json
 
     aws.vm.provider :aws do |ec2, override|
-
       ec2.tags["Name"] = "Linking Commerce Api"
 
       ec2.access_key_id = info['Credentials']['AccessKeyId']
@@ -60,7 +56,6 @@ Vagrant.configure("2") do |config|
       ec2.ami = "ami-47a23a30"
       ec2.instance_type = "t2.small"
     end
-
 
   end
 

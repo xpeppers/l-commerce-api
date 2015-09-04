@@ -18,7 +18,10 @@
 
 *.sublime-workspace
 
-.vagrant/
+.vagrant/machines/*
+!.vagrant/machines/aws
+.vagrant/machines/aws/aws/synced_folders
+.vagrant/machines/aws/aws/berkshelf
 
 .berks-cookbooks
 nodes/
