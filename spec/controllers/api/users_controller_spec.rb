@@ -17,6 +17,7 @@ describe Api::UsersController, type: :controller do
       expect(response.header['Location']).to eq(api_user_path(User.last))
 
       expected_json = %({
+        "id": #{User.last.id},
         "email" : "email@address.com"
       })
 
