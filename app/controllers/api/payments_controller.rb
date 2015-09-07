@@ -2,8 +2,13 @@ module Api
   class PaymentsController < ApplicationController
 
     def create
-      payment = Payment.create(payment_params)
-      render json: payment, status: :created, location: api_order_payment_path(payment.order.id, payment.id)
+      payment = Payment.new(payment_params)
+
+      payment.capture!
+
+      if payment.save
+        render json: payment, status: :created, location: api_order_payment_path(payment.order.id, payment.id)
+      end
     end
 
     private

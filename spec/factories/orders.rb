@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :order do
-    status "MyString"
-user nil
+    status "pending"
+    user nil
   end
-
 end

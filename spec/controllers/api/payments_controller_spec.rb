@@ -26,6 +26,14 @@ describe Api::PaymentsController, type: :controller do
 
       expect(response.body).to be_json_eql(expected_json)
     end
+
+    it "changes the state of the order to 'captured'" do
+      post :create, order_id: order, paypal_payment_token: 'ANY TOKEN'
+
+      captured_order = Order.find(order.id)
+
+      expect(captured_order.captured?).to be true
+    end
   end
 
 end
