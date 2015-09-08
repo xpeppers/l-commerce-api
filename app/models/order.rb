@@ -14,6 +14,7 @@ class Order < ActiveRecord::Base
   end
 
   def capture!
+    build_coupon(code: 'XXX')
     update_attributes(status: 'captured')
   end
 

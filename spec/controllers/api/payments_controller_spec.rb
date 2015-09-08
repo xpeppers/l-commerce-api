@@ -30,9 +30,15 @@ describe Api::PaymentsController, type: :controller do
     it "changes the state of the order to 'captured'" do
       post :create, order_id: order, paypal_payment_token: 'ANY TOKEN'
 
-      captured_order = Order.find(order.id)
+      order.reload
 
-      expect(captured_order.captured?).to be true
+      expect(order).to be_captured
+    end
+
+    it "creates a coupon associated to order" do
+      post :create, order_id: order, paypal_payment_token: 'ANY TOKEN'
+
+      expect(order.coupon).not_to be_nil
     end
   end
 
