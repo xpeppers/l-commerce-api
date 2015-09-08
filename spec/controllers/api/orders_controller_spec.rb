@@ -24,7 +24,8 @@ describe Api::OrdersController, type: :controller do
         "offers": [
           #{offer.to_json(except: [:created_at, :updated_at])}
         ],
-        "status": "pending"
+        "status": "pending",
+        "coupon": null
       })
 
       expect(response.body).to be_json_eql(expected_json)
@@ -36,8 +37,8 @@ describe Api::OrdersController, type: :controller do
 
       let(:user) { create(:user) }
       let(:offer) { create(:offer) }
-      let(:order) { create(:order, status: 'captured', user: user, offers: [offer]) }
-      let(:coupon) { create(:coupon, code: 'XXX', order: order) }
+      let(:coupon) { create(:coupon, code: 'XXX') }
+      let(:order) { create(:order, status: 'captured', user: user, offers: [offer], coupon: coupon) }
 
       it 'responds with coupon details' do
         get :show, id: order
@@ -45,12 +46,16 @@ describe Api::OrdersController, type: :controller do
         expect(response).to have_http_status(:ok)
 
         expected_json = %({
-          "id": #{Order.last.id},
+          "id": #{order.id},
           "user_id": #{user.id},
           "offers": [
             #{offer.to_json(except: [:created_at, :updated_at])}
           ],
-          "status": "captured"
+          "status": "captured",
+          "coupon": {
+            "id": #{coupon.id},
+            "code": "#{coupon.code}"
+          }
         })
 
         expect(response.body).to be_json_eql(expected_json)
