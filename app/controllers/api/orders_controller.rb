@@ -5,6 +5,11 @@ module Api
       render json: order, status: :created, location: api_order_path(order)
     end
 
+    def show
+      order = Order.find_by(id: params[:id])
+      render json: order
+    end
+
     private
 
     def order_params

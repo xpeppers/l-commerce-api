@@ -31,4 +31,32 @@ describe Api::OrdersController, type: :controller do
     end
   end
 
+  describe 'GET #show' do
+    context "when status is 'captured'" do
+
+      let(:user) { create(:user) }
+      let(:offer) { create(:offer) }
+      let(:order) { create(:order, status: 'captured', user: user, offers: [offer]) }
+      let(:coupon) { create(:coupon, code: 'XXX', order: order) }
+
+      it 'responds with coupon details' do
+        get :show, id: order
+
+        expect(response).to have_http_status(:ok)
+
+        expected_json = %({
+          "id": #{Order.last.id},
+          "user_id": #{user.id},
+          "offers": [
+            #{offer.to_json(except: [:created_at, :updated_at])}
+          ],
+          "status": "captured"
+        })
+
+        expect(response.body).to be_json_eql(expected_json)
+      end
+
+    end
+  end
+
 end
