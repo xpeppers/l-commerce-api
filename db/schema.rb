@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150908085132) do
+ActiveRecord::Schema.define(version: 20150909133839) do
 
   create_table "coupons", force: :cascade do |t|
     t.string   "code"
@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 20150908085132) do
   add_index "offers_orders", ["order_id"], name: "index_offers_orders_on_order_id"
 
   create_table "orders", force: :cascade do |t|
-    t.string  "status"
     t.integer "user_id"
   end
 
@@ -51,6 +50,7 @@ ActiveRecord::Schema.define(version: 20150908085132) do
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.string   "paypal_payment_token"
+    t.string   "status"
   end
 
   add_index "payments", ["order_id"], name: "index_payments_on_order_id"

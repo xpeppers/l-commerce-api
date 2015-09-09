@@ -10,4 +10,11 @@ describe Order, type: :model do
       expect(subject).to be_pending
     end
   end
+
+  context "with 'captured' payment" do
+    it "is 'captured'" do
+      subject.build_payment(status: 'captured')
+      expect(subject).to be_captured
+    end
+  end
 end
