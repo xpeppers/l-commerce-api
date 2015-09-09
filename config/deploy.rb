@@ -17,6 +17,7 @@ set :bundle_without, "development test deploy"
 set :foreman_env, '/dev/null'
 
 namespace :deploy do
+  before :publishing, 'db:seed_fu'
   after :publishing, 'foreman:restart'
   after :finishing, 'deploy:cleanup'
 end
