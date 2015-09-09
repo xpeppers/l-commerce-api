@@ -1,26 +1,24 @@
 class Order < ActiveRecord::Base
-  after_initialize :set_default_status
 
   belongs_to :user
   has_and_belongs_to_many :offers
   has_one :coupon
+  has_one :payment
 
   def pending?
-    self.status.eql? 'pending'
+    payment.nil?
   end
 
   def captured?
-    self.status.eql? 'captured'
+    payment.captured?
   end
 
   def capture!
-    build_coupon(code: 'XXX')
-    update_attributes(status: 'captured')
+    create_coupon(code: 'XXX')
   end
 
-  private
-
-  def set_default_status
-    self.status ||= 'pending'
+  def status
+    return 'pending' if pending?
+    return 'captured' if captured?
   end
 end

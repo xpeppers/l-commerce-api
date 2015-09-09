@@ -38,7 +38,7 @@ describe Api::OrdersController, type: :controller do
       let(:user) { create(:user) }
       let(:offer) { create(:offer) }
       let(:coupon) { create(:coupon, code: 'XXX') }
-      let(:order) { create(:order, status: 'captured', user: user, offers: [offer], coupon: coupon) }
+      let(:order) { create(:captured_order, user: user, offers: [offer], coupon: coupon) }
 
       it 'responds with coupon details' do
         get :show, id: order

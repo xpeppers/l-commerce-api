@@ -12,6 +12,7 @@ gem 'seed-fu', '~> 2.3'
 gem 'unicorn'
 gem 'foreman'
 
+gem 'paypal-sdk-rest'
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'

@@ -3,9 +3,14 @@ require 'rails_helper'
 describe Api::PaymentsController, type: :controller do
 
   describe 'POST #create' do
+
     let(:user) { create(:user) }
     let(:offer) { create(:offer) }
     let(:order) { create(:order, user: user, offers: [offer]) }
+
+    before do
+      expect(PaymentHelper).to receive(:capture_authorized_payment).with('ANY TOKEN').and_return(true)
+    end
 
     it 'creates a new payment' do
       expect{
@@ -19,10 +24,12 @@ describe Api::PaymentsController, type: :controller do
       expect(response).to have_http_status(:created)
       expect(response.header['Location']).to eq(api_order_payment_path(order.id, Payment.last))
 
-      expected_json = %({
-        "id": #{Payment.last.id},
-        "paypal_payment_token": "ANY TOKEN"
-      })
+      expected_json = %(
+        {
+          "id": #{Payment.last.id},
+          "paypal_payment_token": "ANY TOKEN"
+        }
+      )
 
       expect(response.body).to be_json_eql(expected_json)
     end
