@@ -4,9 +4,10 @@ class Order < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :offers
   has_one :coupon
+  has_one :payment
 
   def pending?
-    self.status.eql? 'pending'
+    payment.nil?
   end
 
   def captured?
