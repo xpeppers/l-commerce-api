@@ -16,6 +16,7 @@ describe Api::OffersController, type: :controller do
       expected_json = %(
         [
           {
+            "id": 1,
             "description": "MyText",
             "image_url": "MyString",
             "original_price": null,
@@ -23,6 +24,7 @@ describe Api::OffersController, type: :controller do
             "title": "MyString"
           },
           {
+            "id": 2,
             "description": "MyText",
             "image_url": "MyString",
             "original_price": "10.99",
