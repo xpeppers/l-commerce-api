@@ -5,7 +5,7 @@ describe Api::OffersController, type: :controller do
   describe 'GET #index' do
     before do
       @first_offer = create :offer
-      @second_offer = create :offer
+      @second_offer = create :offer, original_price: 10.99
 
       get :index
     end
@@ -18,12 +18,14 @@ describe Api::OffersController, type: :controller do
           {
             "description": "MyText",
             "image_url": "MyString",
+            "original_price": null,
             "price": "9.99",
             "title": "MyString"
           },
           {
             "description": "MyText",
             "image_url": "MyString",
+            "original_price": "10.99",
             "price": "9.99",
             "title": "MyString"
           }
