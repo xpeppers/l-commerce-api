@@ -4,7 +4,7 @@ class Payment < ActiveRecord::Base
   def capture!
     if PaymentHelper::capture_authorized_payment(paypal_payment_token)
       update_attributes(status: 'captured')
-      order.capture!
+      order.generate_coupon!
     end
   end
 

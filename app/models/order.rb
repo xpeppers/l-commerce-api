@@ -13,7 +13,7 @@ class Order < ActiveRecord::Base
     payment.captured?
   end
 
-  def capture!
+  def generate_coupon!
     create_coupon(code: 'XXX')
   end
 
