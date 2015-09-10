@@ -18,15 +18,22 @@ describe Api::OrdersController, type: :controller do
       expect(response).to have_http_status(:created)
       expect(response.header['Location']).to eq(api_order_path(Order.last))
 
-      expected_json = %({
-        "id": #{Order.last.id},
-        "user_id": #{user.id},
-        "offers": [
-          #{offer.to_json(except: [:created_at, :updated_at])}
-        ],
-        "status": "pending",
-        "coupon": null
-      })
+      expected_json = %(
+        {
+          "id": #{Order.last.id},
+          "user_id": #{user.id},
+          "offers": [
+            {
+              "description": "MyText",
+              "image_url": "MyString",
+              "price": "9.99",
+              "title": "MyString"
+            }
+          ],
+          "status": "pending",
+          "coupon": null
+        }
+      )
 
       expect(response.body).to be_json_eql(expected_json)
     end
@@ -45,18 +52,25 @@ describe Api::OrdersController, type: :controller do
 
         expect(response).to have_http_status(:ok)
 
-        expected_json = %({
-          "id": #{order.id},
-          "user_id": #{user.id},
-          "offers": [
-            #{offer.to_json(except: [:created_at, :updated_at])}
-          ],
-          "status": "captured",
-          "coupon": {
-            "id": #{coupon.id},
-            "code": "#{coupon.code}"
+        expected_json = %(
+          {
+            "id": #{order.id},
+            "user_id": #{user.id},
+            "offers": [
+              {
+                "description": "MyText",
+                "image_url": "MyString",
+                "price": "9.99",
+                "title": "MyString"
+              }
+            ],
+            "status": "captured",
+            "coupon": {
+              "id": #{coupon.id},
+              "code": "#{coupon.code}"
+            }
           }
-        })
+        )
 
         expect(response.body).to be_json_eql(expected_json)
       end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150909133839) do
+ActiveRecord::Schema.define(version: 20150910100459) do
 
   create_table "coupons", force: :cascade do |t|
     t.string   "code"
@@ -25,10 +25,20 @@ ActiveRecord::Schema.define(version: 20150909133839) do
   create_table "offers", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.decimal  "price",       precision: 10, scale: 2
+    t.decimal  "price",          precision: 10, scale: 2
     t.string   "image_url"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.decimal  "original_price", precision: 10, scale: 2
+    t.string   "merchant"
+    t.string   "telephone"
+    t.string   "email"
+    t.string   "web_site"
+    t.string   "street"
+    t.string   "zip_code"
+    t.string   "city"
+    t.string   "latitude"
+    t.string   "longitude"
   end
 
   create_table "offers_orders", id: false, force: :cascade do |t|
