@@ -38,4 +38,28 @@ describe Api::OffersController, type: :controller do
     end
   end
 
+  describe 'GET #show' do
+
+    let(:offer) { create :offer, original_price: 10.44 }
+
+    it 'returns offer details' do
+      get :show, id: offer
+
+      expect(response).to have_http_status(:ok)
+
+      expected_json = %(
+        {
+          "id": #{offer.id},
+          "description": "#{offer.description}",
+          "image_url": "#{offer.image_url}",
+          "original_price": "#{offer.original_price}",
+          "price": "#{offer.price}",
+          "title": "#{offer.title}",
+          "merchant": "#{offer.merchant}"
+        }
+      )
+
+      expect(response.body).to be_json_eql(expected_json)
+    end
+  end
 end

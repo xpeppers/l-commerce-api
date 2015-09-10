@@ -10,10 +10,7 @@ class OfferListSerializer < ActiveModel::Serializer
   end
 end
 
-class OfferSerializer < ActiveModel::Serializer
-  attributes :id, :title, :description, :price, :image_url
+class OfferSerializer < OfferListSerializer
+  attributes :merchant
 
-  def price
-    '%.2f' % object.price
-  end
 end
