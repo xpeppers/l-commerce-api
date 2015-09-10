@@ -3,7 +3,7 @@ include PayPal::SDK
 
 describe PaymentHelper, type: :lib do
 
-  it 'captures an authorized paypal payment' do
+  it 'captures an authorized paypal payment', integration: :paypal do
       result = PaymentHelper::capture_authorized_payment(paypal_payment_id)
       expect(result).to be true
   end
