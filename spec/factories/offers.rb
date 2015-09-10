@@ -7,6 +7,14 @@ FactoryGirl.define do
     price "9.99"
     image_url "MyString"
     merchant 'A MERCHANT'
+    telephone 'A TELEPHONE'
+    email 'AN EMAIL'
+    web_site 'A WEB SITE'
+    street 'A STREET'
+    zip_code 'A ZIP CODE'
+    city 'A CITY'
+    latitude 'A LATITUDE'
+    longitude 'A LONGITUDE'
   end
 
 end

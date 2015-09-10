@@ -55,7 +55,18 @@ describe Api::OffersController, type: :controller do
           "original_price": "#{offer.original_price}",
           "price": "#{offer.price}",
           "title": "#{offer.title}",
-          "merchant": "#{offer.merchant}"
+          "merchant": "#{offer.merchant}",
+          "address":
+          {
+            "street": "#{offer.street}",
+            "zip_code": "#{offer.zip_code}",
+            "city": "#{offer.city}",
+            "latitude": "#{offer.latitude}",
+            "longitude": "#{offer.longitude}"
+          },
+          "telephone": "#{offer.telephone}",
+          "email": "#{offer.email}",
+          "web_site": "#{offer.web_site}"
         }
       )
 
