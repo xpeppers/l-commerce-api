@@ -4,26 +4,33 @@ describe Api::UsersController, type: :controller do
 
   describe 'POST #create' do
 
-    it 'creates a new user' do
-      expect{
-        post :create, email: 'email@address.com', provider: 'facebook', token: 'A valid token'
-      }.to change(User, :count).by(1)
-    end
+    context 'with a valid provider token' do
 
-    it 'responds with new user details' do
-      post :create, email: 'email@address.com', provider: 'facebook', token: 'A valid token'
+      before do
+        expect(FacebookIdentity).to receive(:user_id_from).with('ANY TOKEN').and_return('AN ID')
+      end
 
-      expect(response).to have_http_status(:created)
-      expect(response.header['Location']).to eq(api_user_path(User.last))
+      it 'creates a new user' do
+        expect{
+          post :create, email: 'email@address.com', provider: 'facebook', token: 'ANY TOKEN'
+        }.to change(User, :count).by(1)
+      end
 
-      expected_json = %(
-        {
-          "id": #{User.last.id},
-          "email" : "email@address.com"
-        }
-      )
+      it 'responds with new user details' do
+        post :create, email: 'email@address.com', provider: 'facebook', token: 'ANY TOKEN'
 
-      expect(response.body).to be_json_eql(expected_json)
+        expect(response).to have_http_status(:created)
+        expect(response.header['Location']).to eq(api_user_path(User.last))
+
+        expected_json = %(
+          {
+            "id": #{User.last.id},
+            "email": "email@address.com"
+          }
+        )
+
+        expect(response.body).to be_json_eql(expected_json)
+      end
     end
 
   end
