@@ -6,7 +6,7 @@ describe Api::UsersController, type: :controller do
 
     it 'creates a new user' do
       expect{
-	post :create, email: 'email@address.com', password: 'email@address.com'
+        post :create, email: 'email@address.com', password: 'email@address.com'
       }.to change(User, :count).by(1)
     end
 
@@ -16,10 +16,12 @@ describe Api::UsersController, type: :controller do
       expect(response).to have_http_status(:created)
       expect(response.header['Location']).to eq(api_user_path(User.last))
 
-      expected_json = %({
-        "id": #{User.last.id},
-        "email" : "email@address.com"
-      })
+      expected_json = %(
+        {
+          "id": #{User.last.id},
+          "email" : "email@address.com"
+        }
+      )
 
       expect(response.body).to be_json_eql(expected_json)
     end
