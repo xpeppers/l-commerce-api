@@ -6,12 +6,12 @@ describe Api::UsersController, type: :controller do
 
     it 'creates a new user' do
       expect{
-        post :create, email: 'email@address.com', provider: 'facebook', token: 'A VALID TOKEN'
+        post :create, email: 'email@address.com', provider: 'facebook', token: 'A valid token'
       }.to change(User, :count).by(1)
     end
 
-    xit 'responds with new user details' do
-      post :create, email: 'email@address.com', password: 'email@address.com'
+    it 'responds with new user details' do
+      post :create, email: 'email@address.com', provider: 'facebook', token: 'A valid token'
 
       expect(response).to have_http_status(:created)
       expect(response.header['Location']).to eq(api_user_path(User.last))
