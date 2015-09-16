@@ -33,6 +33,20 @@ describe Api::UsersController, type: :controller do
       end
     end
 
+    context 'with an invalid provider token' do
+
+      before do
+        expect(FacebookIdentity).to receive(:user_id_from).with('AN INVALID TOKEN').and_return(nil)
+      end
+
+      it 'responds with unauthorized' do
+        post :create, email: 'email@address.com', provider: 'facebook', token: 'AN INVALID TOKEN'
+
+        expect(response).to have_http_status(:unauthorized)
+      end
+
+    end
+
   end
 
 end
