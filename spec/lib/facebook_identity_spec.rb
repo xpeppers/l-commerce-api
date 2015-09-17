@@ -1,22 +1,24 @@
 require 'rails_helper'
+include Koala
 
-describe FacebookIdentity, type: :lib do
+describe FacebookIdentity, type: :lib, integration: true do
 
-  it 'returns an user id for a valid token' do
-    expect(FacebookIdentity.user_id_from(get_token)).to_not be_nil
+  context 'with a valid token' do
+    it 'returns an user id' do
+      expect(FacebookIdentity.user_id_from(valid_user_access_token)).to_not be_nil
+    end
   end
 
-  it 'return nil for an invalid token' do
-    expect(FacebookIdentity.user_id_from('INVALID TOKEN')).to be_nil
+  context 'with an invalid token' do
+    it 'returns nil' do
+      expect(FacebookIdentity.user_id_from('INVALID TOKEN')).to be_nil
+    end
   end
+
 end
 
 
-def get_token
-  app_id = 'app_id'
-  app_secret = 'app_secret'
-  @test_users_api = Koala::Facebook::TestUsers.new(app_id: app_id, secret: app_secret)
-  test_users = @test_users_api.list
-  test_user = test_users.first
-  test_user['access_token']
+def valid_user_access_token
+  users = Facebook::TestUsers.new(app_id: FACEBOOK_CONFIG['app_id'], secret: FACEBOOK_CONFIG['app_secret'])
+  users.list.first['access_token']
 end

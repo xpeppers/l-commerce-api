@@ -1,9 +1,9 @@
 require 'rails_helper'
 include PayPal::SDK
 
-describe PaymentHelper, type: :lib do
+describe PaymentHelper, type: :lib, integration: true do
 
-  it 'captures an authorized paypal payment', integration: :paypal do
+  it 'captures an authorized paypal payment' do
       result = PaymentHelper::capture_authorized_payment(paypal_payment_id)
       expect(result).to be true
   end
