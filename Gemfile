@@ -13,6 +13,7 @@ gem 'unicorn'
 gem 'foreman'
 
 gem 'paypal-sdk-rest'
+gem 'koala', '~> 2.2'
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'
