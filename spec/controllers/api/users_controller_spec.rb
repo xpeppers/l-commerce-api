@@ -31,6 +31,24 @@ describe Api::UsersController, type: :controller do
 
         expect(response.body).to be_json_eql(expected_json)
       end
+
+      it 'responds with user details if user already exists' do
+        user = create(:user, provider_user_id: 'AN ID')
+        post :create, email: 'email@address.com', provider: 'facebook', token: 'ANY TOKEN'
+
+        expect(response).to have_http_status(200)
+        expect(response.header['Location']).to eq(api_user_path(user))
+
+        expected_json = %(
+          {
+            "id": #{user.id},
+            "email": "#{user.email}"
+          }
+        )
+
+        expect(response.body).to be_json_eql(expected_json)
+
+      end
     end
 
     context 'with an invalid provider token' do

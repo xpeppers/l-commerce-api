@@ -1,15 +1,12 @@
 module Api
   class UsersController < ApplicationController
+    before_action :authorize_facebook_user, only: [:create]
+    before_action :user_already_exists, only: [:create]
+
     def create
-      provider_user_id = FacebookIdentity.user_id_from(token)
-      if provider_user_id.nil?
-        render json: nil, status: :unauthorized
-      else
-        user = User.new(user_params)
-        user.provider_user_id = provider_user_id
-        user.save
-        render json: user, status: :created, location: api_user_path(user)
-      end
+      user = User.create(user_params.merge!(provider_user_id: @facebook_user_id))
+
+      render json: user, status: :created, location: api_user_path(user)
     end
 
     private
@@ -18,8 +15,16 @@ module Api
       params.permit(:email)
     end
 
-    def token
-      params[:token]
+    def authorize_facebook_user
+      @facebook_user_id = FacebookIdentity.user_id_from(params[:token])
+
+      render json: nil, status: :unauthorized if @facebook_user_id.nil?
+    end
+
+    def user_already_exists
+      user = User.find_by(provider_user_id: @facebook_user_id)
+
+      render json: user, status: :ok, location: api_user_path(user) unless user.nil?
     end
   end
 end
