@@ -15,6 +15,8 @@ describe Api::AuthController, type: :controller do
       end
 
       it 'creates an authentication token' do
+        expect(UserTokenGenerator).to receive(:generate).and_return(API_TOKEN)
+
         post :create, provider: 'facebook', provider_token: PROVIDER_TOKEN
 
         expect(response).to have_http_status(:created)
