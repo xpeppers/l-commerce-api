@@ -16,7 +16,7 @@ module Api
     end
 
     def authorize_facebook_user
-      @facebook_user_id = FacebookIdentity.user_id_from(params[:token])
+      @facebook_user_id = FacebookIdentity.user_id_from(params[:provider_token])
 
       render json: nil, status: :unauthorized if @facebook_user_id.nil?
     end
