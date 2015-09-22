@@ -1,6 +1,5 @@
 module Api
-  class UsersController < ApplicationController
-    before_action :authorize_facebook_user, only: [:create]
+  class UsersController < FacebookAuthorizeController
     before_action :user_already_exists, only: [:create]
 
     def create
@@ -13,12 +12,6 @@ module Api
 
     def user_params
       params.permit(:email)
-    end
-
-    def authorize_facebook_user
-      @facebook_user_id = FacebookIdentity.user_id_from(params[:provider_token])
-
-      render json: nil, status: :unauthorized if @facebook_user_id.nil?
     end
 
     def user_already_exists
