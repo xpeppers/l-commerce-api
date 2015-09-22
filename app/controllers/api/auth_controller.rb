@@ -7,8 +7,7 @@ module Api
       if user.authenticated?
         render json: nil, status: :ok
       else
-        user.token = 'API TOKEN'
-        user.save
+        user.authenticate!
         render json: user, status: :created, serializer: UserTokenSerializer
       end
     end
