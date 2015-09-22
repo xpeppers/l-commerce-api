@@ -5,6 +5,7 @@ describe Api::AuthController, type: :controller do
   describe 'POST #create' do
     PROVIDER_TOKEN = 'A PROVIDER TOKEN'
     PROVIDER_USER_ID = 'A PROVIDER USER ID'
+    API_TOKEN = 'API TOKEN'
 
     context 'with a registered user' do
       before do
@@ -19,7 +20,7 @@ describe Api::AuthController, type: :controller do
         expect(response).to have_http_status(:created)
 
         expected_json = %({
-          "token": "API TOKEN"
+          "token": "#{API_TOKEN}"
         })
 
         expect(response.body).to be_json_eql(expected_json)
@@ -27,7 +28,7 @@ describe Api::AuthController, type: :controller do
 
       context 'already authenticated' do
         before do
-          @user.authenticate!
+          @user.authenticate! API_TOKEN
         end
 
         it 'responds with ok' do
