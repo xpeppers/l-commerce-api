@@ -1,6 +1,6 @@
 module UserTokenGenerator
 
-  def self.generate_token
+  def self.generate
     'API TOKEN'
   end
 
