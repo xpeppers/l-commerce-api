@@ -11,7 +11,7 @@ Dir[Rails.root.join('spec', 'support', '*.rb')].each {|f| require f}
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  config.filter_run_excluding integration: :paypal unless ENV['ALL']
+  config.filter_run_excluding integration: true unless ENV['ALL']
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
