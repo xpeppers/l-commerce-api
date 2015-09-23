@@ -1,5 +1,5 @@
 module Api
-  class PaymentsController < ApplicationController
+  class PaymentsController < AuthenticatedUserController
 
     def create
       payment = Payment.new(payment_params)
