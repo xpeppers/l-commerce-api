@@ -14,12 +14,12 @@ describe Api::OrdersController, type: :controller do
 
       it 'creates a new order' do
         expect{
-          post :create, user_id: user, offer_ids: [offer]
+          post :create, offer_ids: [offer]
         }.to change(Order, :count).by(1)
       end
 
       it 'responds with order details' do
-        post :create, user_id: user, offer_ids: [offer]
+        post :create, offer_ids: [offer]
 
         expect(response).to have_http_status(:created)
         expect(response.header['Location']).to eq(api_order_path(Order.last))
@@ -51,7 +51,7 @@ describe Api::OrdersController, type: :controller do
 
       describe 'without token' do
         it 'responds with unauthorized' do
-          post :create, user_id: user, offer_ids: [offer]
+          post :create, offer_ids: [offer]
 
           expect(response).to have_http_status(:unauthorized)
         end
@@ -63,7 +63,7 @@ describe Api::OrdersController, type: :controller do
         end
 
         it 'responds with unauthorized' do
-          post :create, user_id: user, offer_ids: [offer]
+          post :create, offer_ids: [offer]
 
           expect(response).to have_http_status(:unauthorized)
         end

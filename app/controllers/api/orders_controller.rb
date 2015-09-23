@@ -1,31 +1,22 @@
 module Api
-  class OrdersController < ApplicationController
-    before_action :validate_user_authentication, only: [:create, :show]
+  class OrdersController < AuthenticatedUserController
 
     def create
-      order = Order.create(order_params)
-      render json: order, status: :created, location: api_order_path(order)
+      order = Order.new(order_params)
+      if order.save
+        render json: order, status: :created, location: api_order_path(order)
+      end
     end
 
     def show
-      order = Order.find_by(id: params[:id])
+      order = Order.find_by(id: params[:id], user: @authenticated_user)
       render json: order
     end
 
     private
 
-    def validate_user_authentication
-      return render json: nil, status: :unauthorized if authenticated_user.nil?
-    end
-
-    def authenticated_user
-      authenticate_with_http_token do |token, options|
-        User.find_by(token: token)
-      end
-    end
-
     def order_params
-      params.permit(:user_id, :offer_ids => [])
+      params.permit(:offer_ids => []).merge!(user: @authenticated_user)
     end
   end
 end
