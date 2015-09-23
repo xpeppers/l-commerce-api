@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Api::OrdersController, type: :controller do
 
-  context 'with an authenticated user' do
+  context 'for an authenticated user' do
     let(:user) { create(:user, token: 'ANY TOKEN') }
     let(:offer) { create(:offer) }
 
@@ -45,7 +45,7 @@ describe Api::OrdersController, type: :controller do
     end
 
     describe 'GET #show' do
-      context "for a 'pending' order" do
+      context "with a 'pending' order" do
         let(:order) { create(:order, user: user, offers: [offer]) }
 
         it 'responds with coupon details' do
@@ -73,7 +73,7 @@ describe Api::OrdersController, type: :controller do
         end
       end
 
-      context "for a 'captured' order" do
+      context "with a 'captured' order" do
         let(:coupon) { create(:coupon, code: 'XXX') }
         let(:order) { create(:captured_order, user: user, offers: [offer], coupon: coupon) }
 
@@ -108,7 +108,7 @@ describe Api::OrdersController, type: :controller do
     end
   end
 
-  context 'with an unauthenticated user' do
+  context 'for an unauthenticated user' do
     let(:user) { create(:user) }
     let(:offer) { create(:offer) }
 

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Api::PaymentsController, type: :controller do
 
-  context 'with an authenticated user' do
+  context 'for an authenticated user' do
     let(:user) { create(:user, token: 'ANY TOKEN') }
     let(:offer) { create(:offer) }
     let(:order) { create(:order, user: user, offers: [offer]) }
@@ -49,7 +49,7 @@ describe Api::PaymentsController, type: :controller do
     end
   end
 
-  context 'with an unauthenticated user' do
+  context 'for an unauthenticated user' do
     let(:user) { create(:user) }
     let(:offer) { create(:offer) }
     let(:order) { create(:order, user: user, offers: [offer]) }
