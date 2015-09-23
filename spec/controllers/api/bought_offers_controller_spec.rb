@@ -9,7 +9,7 @@ describe Api::BoughtOffersController, type: :controller do
       request.headers['Authorization'] = "Token token=#{user.token}"
     end
 
-    describe 'GET #show' do
+    describe 'GET #index' do
       context 'with no bought offers' do
         it 'responds with an empy list' do
           get :index
@@ -65,4 +65,13 @@ describe Api::BoughtOffersController, type: :controller do
     end
   end
 
+  context 'for an unauthenticated user' do
+    describe 'GET #index' do
+      it 'responds with unauthorized' do
+        get :index
+
+        expect(response).to have_http_status(:unauthorized)
+      end
+    end
+  end
 end
