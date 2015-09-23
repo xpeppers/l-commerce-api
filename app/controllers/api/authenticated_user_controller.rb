@@ -14,8 +14,5 @@ module Api
       end
     end
 
-    def order_params
-      params.permit(:offer_ids => []).merge!(user: @authenticated_user)
-    end
   end
 end
