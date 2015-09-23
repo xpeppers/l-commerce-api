@@ -115,7 +115,7 @@ describe Api::OrdersController, type: :controller do
     let(:offer) { create(:offer) }
 
     describe 'POST #create' do
-      describe 'without token' do
+      context 'without token' do
         it 'responds with unauthorized' do
           post :create, offer_ids: [offer]
 
