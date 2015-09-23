@@ -2,16 +2,15 @@ require 'rails_helper'
 
 describe Api::OrdersController, type: :controller do
 
-  describe 'POST #create' do
+  context 'with an authenticated user' do
+    let(:user) { create(:user, token: 'ANY TOKEN') }
+    let(:offer) { create(:offer) }
 
-    context 'with an authenticated user' do
-      let(:user) { create(:user, token: 'ANY TOKEN') }
-      let(:offer) { create(:offer) }
+    before do
+      request.headers['Authorization'] = "Token token=#{user.token}"
+    end
 
-      before do
-        request.headers['Authorization'] = "Token token=#{user.token}"
-      end
-
+    describe 'POST #create' do
       it 'creates a new order' do
         expect{
           post :create, offer_ids: [offer]
@@ -45,43 +44,38 @@ describe Api::OrdersController, type: :controller do
       end
     end
 
-    context 'with an unauthenticated user' do
-      let(:user) { create(:user) }
+    describe 'GET #show' do
       let(:offer) { create(:offer) }
 
-      describe 'without token' do
-        it 'responds with unauthorized' do
-          post :create, offer_ids: [offer]
+      context "for a 'pending' order" do
+        let(:order) { create(:order, user: user, offers: [offer]) }
 
-          expect(response).to have_http_status(:unauthorized)
+        it 'responds with coupon details' do
+          get :show, id: order
+
+          expect(response).to have_http_status(:ok)
+
+          expected_json = %({
+            "id": #{order.id},
+            "user_id": #{user.id},
+            "offers": [
+              {
+                "description": "MyText",
+                "image_url": "MyString",
+                "original_price": null,
+                "price": "9.99",
+                "title": "MyString"
+              }
+            ],
+            "status": "pending",
+            "coupon": null
+          })
+
+          expect(response.body).to be_json_eql(expected_json)
         end
       end
 
-      describe 'with invalid token' do
-        before do
-          request.headers['Authorization'] = 'Token token=INVALID_TOKEN'
-        end
-
-        it 'responds with unauthorized' do
-          post :create, offer_ids: [offer]
-
-          expect(response).to have_http_status(:unauthorized)
-        end
-      end
-    end
-  end
-
-  describe 'GET #show' do
-    context 'with an authenticated user' do
-
-      let(:user) { create(:user, token: 'ANY TOKEN') }
-
-      before do
-        request.headers['Authorization'] = "Token token=#{user.token}"
-      end
-
-      describe "with a 'captured' order" do
-        let(:offer) { create(:offer) }
+      context "for a 'captured' order" do
         let(:coupon) { create(:coupon, code: 'XXX') }
         let(:order) { create(:captured_order, user: user, offers: [offer], coupon: coupon) }
 
@@ -112,12 +106,37 @@ describe Api::OrdersController, type: :controller do
           expect(response.body).to be_json_eql(expected_json)
         end
       end
+
+    end
+  end
+
+  context 'with an unauthenticated user' do
+    let(:user) { create(:user) }
+    let(:offer) { create(:offer) }
+
+    describe 'POST #create' do
+      describe 'without token' do
+        it 'responds with unauthorized' do
+          post :create, offer_ids: [offer]
+
+          expect(response).to have_http_status(:unauthorized)
+        end
+      end
+
+      describe 'with invalid token' do
+        before do
+          request.headers['Authorization'] = 'Token token=INVALID_TOKEN'
+        end
+
+        it 'responds with unauthorized' do
+          post :create, offer_ids: [offer]
+
+          expect(response).to have_http_status(:unauthorized)
+        end
+      end
     end
 
-    context 'with an unautheticated user' do
-
-      let(:user) { create(:user) }
-      let(:offer) { create(:offer) }
+    describe 'GET #show' do
       let(:order) { create(:order, user: user, offers: [offer]) }
 
       it 'responds with unauthorized' do
@@ -125,7 +144,6 @@ describe Api::OrdersController, type: :controller do
 
         expect(response).to have_http_status(:unauthorized)
       end
-
     end
   end
 
