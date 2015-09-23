@@ -1,6 +1,6 @@
 module Api
   class AuthenticatedUserController < ApplicationController
-    before_action :validate_user_authentication, only: [:create, :show]
+    before_action :validate_user_authentication, only: [:index, :create, :show]
 
     private
 
