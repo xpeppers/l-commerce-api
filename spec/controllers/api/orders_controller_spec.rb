@@ -45,8 +45,6 @@ describe Api::OrdersController, type: :controller do
     end
 
     describe 'GET #show' do
-      let(:offer) { create(:offer) }
-
       context "for a 'pending' order" do
         let(:order) { create(:order, user: user, offers: [offer]) }
 
