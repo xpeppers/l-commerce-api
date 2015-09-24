@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 describe Order, type: :model do
-  it { should have_and_belong_to_many(:offers) }
+  it { should have_many(:bought_offers) }
+  it { should have_many(:offers).through(:bought_offers) }
   it { should have_one(:coupon) }
   it { should have_one(:payment) }
 

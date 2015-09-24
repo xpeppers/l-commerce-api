@@ -12,12 +12,12 @@ describe Api::UsersController, type: :controller do
 
       it 'creates a new user' do
         expect{
-          post :create, email: 'email@address.com', provider: 'facebook', token: 'ANY TOKEN'
+          post :create, email: 'email@address.com', provider: 'facebook', provider_token: 'ANY TOKEN'
         }.to change(User, :count).by(1)
       end
 
       it 'responds with new user details' do
-        post :create, email: 'email@address.com', provider: 'facebook', token: 'ANY TOKEN'
+        post :create, email: 'email@address.com', provider: 'facebook', provider_token: 'ANY TOKEN'
 
         expect(response).to have_http_status(:created)
         expect(response.header['Location']).to eq(api_user_path(User.last))
@@ -34,7 +34,7 @@ describe Api::UsersController, type: :controller do
 
       it 'responds with user details if user already exists' do
         user = create(:user, provider_user_id: 'AN ID')
-        post :create, email: 'email@address.com', provider: 'facebook', token: 'ANY TOKEN'
+        post :create, email: 'email@address.com', provider: 'facebook', provider_token: 'ANY TOKEN'
 
         expect(response).to have_http_status(200)
         expect(response.header['Location']).to eq(api_user_path(user))
@@ -58,7 +58,7 @@ describe Api::UsersController, type: :controller do
       end
 
       it 'responds with unauthorized' do
-        post :create, email: 'email@address.com', provider: 'facebook', token: 'AN INVALID TOKEN'
+        post :create, email: 'email@address.com', provider: 'facebook', provider_token: 'AN INVALID TOKEN'
 
         expect(response).to have_http_status(:unauthorized)
       end

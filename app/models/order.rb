@@ -1,7 +1,8 @@
 class Order < ActiveRecord::Base
 
   belongs_to :user
-  has_and_belongs_to_many :offers
+  has_many :bought_offers
+  has_many :offers, through: :bought_offers
   has_one :coupon
   has_one :payment
 

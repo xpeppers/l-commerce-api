@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150916134345) do
+ActiveRecord::Schema.define(version: 20150923140215) do
+
+  create_table "bought_offers", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "offer_id"
+    t.string  "status",   default: "unused"
+  end
+
+  add_index "bought_offers", ["offer_id"], name: "index_bought_offers_on_offer_id"
+  add_index "bought_offers", ["order_id"], name: "index_bought_offers_on_order_id"
 
   create_table "coupons", force: :cascade do |t|
     t.string   "code"
@@ -41,14 +50,6 @@ ActiveRecord::Schema.define(version: 20150916134345) do
     t.string   "longitude"
   end
 
-  create_table "offers_orders", id: false, force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "offer_id"
-  end
-
-  add_index "offers_orders", ["offer_id"], name: "index_offers_orders_on_offer_id"
-  add_index "offers_orders", ["order_id"], name: "index_offers_orders_on_order_id"
-
   create_table "orders", force: :cascade do |t|
     t.integer "user_id"
   end
@@ -70,6 +71,7 @@ ActiveRecord::Schema.define(version: 20150916134345) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "provider_user_id"
+    t.string   "token"
   end
 
 end
