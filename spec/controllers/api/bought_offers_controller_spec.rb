@@ -30,6 +30,7 @@ describe Api::BoughtOffersController, type: :controller do
         it 'responds with a list of bought offers' do
           create(:captured_order, user: user, offers: [first_offer, second_offer], coupon: first_coupon)
           create(:captured_order, user: user, offers: [third_offer], coupon: second_coupon)
+          create(:order, user: user, offers: [first_offer])
 
           get :index
 
