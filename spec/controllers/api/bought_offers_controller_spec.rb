@@ -20,9 +20,9 @@ describe Api::BoughtOffersController, type: :controller do
       end
 
       context 'with bought offers' do
-        let(:first_offer) { create(:offer, title: 'first') }
-        let(:second_offer) { create(:offer, title: 'second') }
-        let(:third_offer) { create(:offer, title: 'third') }
+        let(:first_offer) { create(:offer) }
+        let(:second_offer) { create(:offer) }
+        let(:third_offer) { create(:offer) }
 
         let(:first_coupon) { create(:coupon, code: 'XXX') }
         let(:second_coupon) { create(:coupon, code: 'YYY') }
