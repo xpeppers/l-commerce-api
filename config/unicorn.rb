@@ -3,6 +3,8 @@ timeout 15
 preload_app true
 listen 3000
 
+rails_env = ENV['RAILS_ENV'] || 'production'
+
 before_fork do |server, worker|
   Signal.trap 'TERM' do
     puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
