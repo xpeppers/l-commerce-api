@@ -6,6 +6,10 @@ module Api
 
       payment.capture!
 
+      if not payment.captured?
+        return render json: nil, status: :forbidden
+      end
+
       if payment.save
         render json: payment, status: :created, location: api_order_payment_path(payment.order.id, payment.id)
       end
