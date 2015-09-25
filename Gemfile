@@ -25,5 +25,5 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'capistrano', require: false
   gem 'capistrano-rails', require: false
-  gem 'capistrano3-foreman', require: false
+  gem 'capistrano3-unicorn', require: false
 end

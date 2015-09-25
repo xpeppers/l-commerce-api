@@ -8,16 +8,24 @@ set :format, :pretty
 set :log_level, :debug
 set :pty, false # sets a non-login, non-interactive shell
 
-# set :linked_files, %w{config/database.yml .env}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle}
 
 set :keep_releases, 5
 set :bundle_without, "development test deploy"
 
-set :foreman_env, '/dev/null'
+set :unicorn_pid, -> { File.join(shared_path, "tmp", "pids", "unicorn.pid") }
+set :unicorn_config_path, -> { File.join(current_path, "config", "unicorn.rb") }
+
 
 namespace :deploy do
+  desc "Restart Unicorn"
+  task :unicorn_restart do
+    invoke 'unicorn:stop'
+    sleep 3
+    invoke 'unicorn:start'
+  end
+
   before :publishing, 'db:seed_fu'
-  after :publishing, 'foreman:restart'
+  after :publishing, :unicorn_restart
   after :finishing, 'deploy:cleanup'
 end

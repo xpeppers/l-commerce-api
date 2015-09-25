@@ -1,7 +1,6 @@
 set :stage, :development
 set :rails_env, 'development'
-
-# set :unicorn_pid, -> { File.join(shared_path, "tmp", "pids", "unicorn.pid") }
+set :rack_env, 'development'
 
 role :app, %w{deploy@192.168.33.100}
 role :web, %w{deploy@192.168.33.100}
@@ -16,4 +15,4 @@ set :ssh_options, {
   config: 'config/deploy/ssh/config'
 }
 
-set :keep_releases, 1
+set :keep_releases, 2

@@ -6,6 +6,7 @@ server_addr = json['public_ip']
 
 set :stage, :production
 set :rails_env, 'production'
+set :rack_env, 'production'
 
 role :app, [ "deploy@#{server_addr}" ]
 role :web, [ "deploy@#{server_addr}" ]
