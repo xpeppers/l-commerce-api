@@ -3,6 +3,11 @@ timeout 15
 preload_app true
 listen 3000
 
+pid "tmp/pids/unicorn.pid"
+
+stderr_path "log/unicorn_err.log"
+stdout_path "log/unicorn_out.log"
+
 before_fork do |server, worker|
   Signal.trap 'TERM' do
     puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
