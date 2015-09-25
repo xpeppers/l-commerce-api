@@ -35,11 +35,18 @@ $ curl http://192.168.33.100/api
 
 ## deploy test environment with heroku
 
+Setup
+
 Heroku account: whereyoufindyouraccount
 
 ```
 $ heroku login
 $ heroku git:remote -a linkingcommerce
+```
+
+Deploy
+
+```
 $ git push heroku master
 ```
 
