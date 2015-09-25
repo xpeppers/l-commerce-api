@@ -1,6 +1,6 @@
 worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
 timeout 15
-preload_app true
+preload_app false
 listen 3000
 
 pid "tmp/pids/unicorn.pid"
