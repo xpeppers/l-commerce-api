@@ -33,6 +33,42 @@ $ cap dev deploy
 $ curl http://192.168.33.100/api
 ```
 
+## deploy test environment with heroku
+
+Heroku account: whereyoufindyouraccount
+
+```
+$ heroku login
+$ heroku git:remote -a linkingcommerce
+$ git push heroku master
+```
+
+Migrate or seed database
+
+```
+$ heroku run rake db:migrate
+$ heroku run rake db:seed_fu
+```
+
+Access to processes and logs
+
+```
+$ heroku ps
+$ heroku logs
+```
+
+Open the application in a browser
+
+```
+$ heroku open
+```
+
+Test API
+
+```
+$ curl https//linkingcommerce.herokuapp.com/api
+```
+
 ## deploy production environment with vagrant
 
 requirements: `aws-cli` (pip install awscli)
