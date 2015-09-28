@@ -23,3 +23,7 @@ RSpec.configure do |config|
 
   config.include JsonSpec::Helpers, type: :controller
 end
+
+JsonSpec.configure do
+  exclude_keys "created_at", "updated_at"
+end
