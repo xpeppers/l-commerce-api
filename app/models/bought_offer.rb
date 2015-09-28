@@ -7,4 +7,8 @@ class BoughtOffer < ActiveRecord::Base
   delegate :description, :title, :image_url, :merchant, :street, :zip_code,
            :city, :latitude, :longitude, :telephone, :email, :web_site, :price,
            to: :offer
+
+  def purchase_date
+    payment.created_at.iso8601
+  end
 end

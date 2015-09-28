@@ -1,5 +1,5 @@
 class BoughtOfferSerializer < BoughtOfferListSerializer
-  attributes :merchant, :address, :telephone, :email, :web_site, :price
+  attributes :merchant, :address, :telephone, :email, :web_site, :price, :purchase_date
 
   has_one :coupon
 
