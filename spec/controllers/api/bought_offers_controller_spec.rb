@@ -79,21 +79,22 @@ describe Api::BoughtOffersController, type: :controller do
       context 'with bought offer' do
         let(:offer) { create(:offer) }
         let(:coupon) { create(:coupon, code: 'XXX') }
+        let(:order) { create(:captured_order, user: user, offers: [offer], coupon: coupon) }
 
         it 'responds with bought offer details' do
-          create(:captured_order, user: user, offers: [offer], coupon: coupon)
+          bought_offer = order.bought_offers.first
 
-          get :show, id: offer.id
+          get :show, id: bought_offer.id
 
           expect(response).to have_http_status(:ok)
 
           expected_json = %({
-              "id": #{offer.id},
-              "title": "#{offer.title}",
-              "description": "#{offer.description}",
-              "image_url": "#{offer.image_url}",
-              "status": "unused"
-            })
+            "id": #{bought_offer.id},
+            "title": "#{offer.title}",
+            "description": "#{offer.description}",
+            "image_url": "#{offer.image_url}",
+            "status": "unused"
+          })
 
           expect(response.body).to be_json_eql(expected_json)
         end
