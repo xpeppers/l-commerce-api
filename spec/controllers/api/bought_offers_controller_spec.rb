@@ -27,9 +27,11 @@ describe Api::BoughtOffersController, type: :controller do
         let(:first_coupon) { create(:coupon, code: 'XXX') }
         let(:second_coupon) { create(:coupon, code: 'YYY') }
 
+        let(:first_order) { create(:captured_order, user: user, offers: [first_offer, second_offer], coupon: first_coupon) }
+        let(:second_order) { create(:captured_order, user: user, offers: [third_offer], coupon: second_coupon) }
+
         it 'responds with a list of bought offers' do
-          create(:captured_order, user: user, offers: [first_offer, second_offer], coupon: first_coupon)
-          create(:captured_order, user: user, offers: [third_offer], coupon: second_coupon)
+          bought_offers = first_order.bought_offers + second_order.bought_offers
           create(:order, user: user, offers: [first_offer])
 
           get :index
@@ -38,21 +40,21 @@ describe Api::BoughtOffersController, type: :controller do
 
           expected_json = %([
             {
-              "id": #{first_offer.id},
+              "id": #{bought_offers.first.id},
               "title": "#{first_offer.title}",
               "description": "#{first_offer.description}",
               "image_url": "#{first_offer.image_url}",
               "status": "unused"
             },
             {
-              "id": #{second_offer.id},
+              "id": #{bought_offers.second.id},
               "title": "#{second_offer.title}",
               "description": "#{second_offer.description}",
               "image_url": "#{second_offer.image_url}",
               "status": "unused"
             },
             {
-              "id": #{third_offer.id},
+              "id": #{bought_offers.third.id},
               "title": "#{third_offer.title}",
               "description": "#{third_offer.description}",
               "image_url": "#{third_offer.image_url}",
@@ -71,6 +73,29 @@ describe Api::BoughtOffersController, type: :controller do
           get :show, id: 1
 
           expect(response).to have_http_status(:not_found)
+        end
+      end
+
+      context 'with bought offer' do
+        let(:offer) { create(:offer) }
+        let(:coupon) { create(:coupon, code: 'XXX') }
+
+        it 'responds with bought offer details' do
+          create(:captured_order, user: user, offers: [offer], coupon: coupon)
+
+          get :show, id: offer.id
+
+          expect(response).to have_http_status(:ok)
+
+          expected_json = %({
+              "id": #{offer.id},
+              "title": "#{offer.title}",
+              "description": "#{offer.description}",
+              "image_url": "#{offer.image_url}",
+              "status": "unused"
+            })
+
+          expect(response.body).to be_json_eql(expected_json)
         end
       end
     end

@@ -58,7 +58,7 @@ describe Api::OrdersController, type: :controller do
             "user_id": #{user.id},
             "offers": [
               {
-                "id": 1,
+                "id": #{offer.id},
                 "description": "MyText",
                 "image_url": "MyString",
                 "original_price": null,
@@ -88,7 +88,7 @@ describe Api::OrdersController, type: :controller do
             "user_id": #{user.id},
             "offers": [
               {
-                "id": 1,
+                "id": #{offer.id},
                 "description": "MyText",
                 "image_url": "MyString",
                 "original_price": null,
