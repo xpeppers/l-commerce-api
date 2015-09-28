@@ -127,5 +127,13 @@ describe Api::BoughtOffersController, type: :controller do
         expect(response).to have_http_status(:unauthorized)
       end
     end
+
+    describe 'GET #show' do
+      it 'responds with unauthorized' do
+        get :show, id: 1
+
+        expect(response).to have_http_status(:unauthorized)
+      end
+    end
   end
 end
