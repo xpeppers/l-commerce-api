@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :payments, except: [:new, :edit]
     end
     get 'bought_offers/', to: 'bought_offers#index'
+    get 'bought_offers/:id', to: 'bought_offers#show'
     get '/', to: 'status#index'
   end
 end

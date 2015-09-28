@@ -64,6 +64,16 @@ describe Api::BoughtOffersController, type: :controller do
         end
       end
     end
+
+    describe 'GET #show' do
+      context 'with no bought offers' do
+        it 'responds 404' do
+          get :show, id: 1
+
+          expect(response).to have_http_status(:not_found)
+        end
+      end
+    end
   end
 
   context 'for an unauthenticated user' do
