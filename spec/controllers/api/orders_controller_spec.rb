@@ -75,7 +75,7 @@ describe Api::OrdersController, type: :controller do
       end
 
       context "with a 'captured' order" do
-        let(:coupon) { create(:coupon, code: 'XXX') }
+        let(:coupon) { create(:coupon) }
         let(:order) { create(:captured_order, user: user, offers: [offer], coupon: coupon) }
 
         it 'responds with coupon details' do

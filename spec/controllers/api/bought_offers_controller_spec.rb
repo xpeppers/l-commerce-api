@@ -24,8 +24,8 @@ describe Api::BoughtOffersController, type: :controller do
         let(:second_offer) { create(:offer) }
         let(:third_offer) { create(:offer) }
 
-        let(:first_coupon) { create(:coupon, code: 'XXX') }
-        let(:second_coupon) { create(:coupon, code: 'YYY') }
+        let(:first_coupon) { create(:coupon) }
+        let(:second_coupon) { create(:coupon) }
 
         let(:first_order) { create(:captured_order, user: user, offers: [first_offer, second_offer], coupon: first_coupon) }
         let(:second_order) { create(:captured_order, user: user, offers: [third_offer], coupon: second_coupon) }
@@ -78,7 +78,7 @@ describe Api::BoughtOffersController, type: :controller do
 
       context 'with bought offer' do
         let(:offer) { create(:offer) }
-        let(:coupon) { create(:coupon, code: 'XXX') }
+        let(:coupon) { create(:coupon) }
         let(:order) { create(:captured_order, user: user, offers: [offer], coupon: coupon) }
 
         it 'responds with bought offer details' do

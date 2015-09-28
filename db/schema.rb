@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923140215) do
+ActiveRecord::Schema.define(version: 20150928143536) do
 
   create_table "bought_offers", force: :cascade do |t|
     t.integer "order_id"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20150923140215) do
   add_index "bought_offers", ["order_id"], name: "index_bought_offers_on_order_id"
 
   create_table "coupons", force: :cascade do |t|
-    t.string   "code"
     t.integer  "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

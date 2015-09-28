@@ -15,7 +15,7 @@ class Order < ActiveRecord::Base
   end
 
   def generate_coupon!
-    create_coupon(code: 'XXX')
+    create_coupon
   end
 
   def status
