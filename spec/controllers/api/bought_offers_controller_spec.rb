@@ -90,10 +90,27 @@ describe Api::BoughtOffersController, type: :controller do
 
           expected_json = %({
             "id": #{bought_offer.id},
-            "title": "#{offer.title}",
-            "description": "#{offer.description}",
-            "image_url": "#{offer.image_url}",
-            "status": "unused"
+            "coupon": {
+                "id": #{coupon.id},
+                "code": "#{coupon.code}"
+            },
+            "title": "#{bought_offer.title}",
+            "description": "#{bought_offer.description}",
+            "price": "#{bought_offer.price}",
+            "image_url": "#{bought_offer.image_url}",
+            "merchant": "#{bought_offer.merchant}",
+            "status": "#{bought_offer.status}",
+            "address":
+            {
+              "street": "#{bought_offer.street}",
+              "zip_code": "#{bought_offer.zip_code}",
+              "city": "#{bought_offer.city}",
+              "latitude": "#{bought_offer.latitude}",
+              "longitude": "#{bought_offer.longitude}"
+            },
+            "telephone": "#{bought_offer.telephone}",
+            "email": "#{bought_offer.email}",
+            "web_site": "#{bought_offer.web_site}"
           })
 
           expect(response.body).to be_json_eql(expected_json)
