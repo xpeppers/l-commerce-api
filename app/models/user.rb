@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
   def authenticated?
     not token.nil?
   end
+
+  def fullname
+    email
+  end
 end

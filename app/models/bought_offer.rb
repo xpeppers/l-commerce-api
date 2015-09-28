@@ -1,6 +1,8 @@
 class BoughtOffer < ActiveRecord::Base
   belongs_to :order
   belongs_to :offer
+
+  has_one :user, through: :order
   has_one :payment, through: :order
   has_one :coupon, through: :order
 

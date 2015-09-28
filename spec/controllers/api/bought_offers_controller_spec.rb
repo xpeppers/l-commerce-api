@@ -94,6 +94,7 @@ describe Api::BoughtOffersController, type: :controller do
                 "id": #{coupon.id},
                 "code": "#{coupon.code}"
             },
+            "user_fullname": "#{user.fullname}",
             "purchase_date": "#{bought_offer.purchase_date}",
             "title": "#{bought_offer.title}",
             "description": "#{bought_offer.description}",

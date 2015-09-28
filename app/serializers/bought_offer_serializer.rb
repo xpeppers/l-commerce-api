@@ -1,7 +1,11 @@
 class BoughtOfferSerializer < BoughtOfferListSerializer
-  attributes :merchant, :address, :telephone, :email, :web_site, :price, :purchase_date
+  attributes :merchant, :address, :telephone, :email, :web_site, :price, :purchase_date, :user_fullname
 
   has_one :coupon
+
+  def user_fullname
+    object.user.fullname
+  end
 
   def address
     {
