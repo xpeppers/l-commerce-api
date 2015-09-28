@@ -21,9 +21,11 @@ describe Api::AuthController, type: :controller do
 
         expect(response).to have_http_status(:created)
 
-        expected_json = %({
-          "token": "#{API_TOKEN}"
-        })
+        expected_json = %(
+          {
+            "token": "#{API_TOKEN}"
+          }
+        )
 
         expect(response.body).to be_json_eql(expected_json)
       end
@@ -33,10 +35,18 @@ describe Api::AuthController, type: :controller do
           @user.authenticate! API_TOKEN
         end
 
-        it 'responds with ok' do
+        it 'returns authentication token' do
           post :create, provider: 'facebook', provider_token: PROVIDER_TOKEN
 
           expect(response).to have_http_status(:ok)
+
+          expected_json = %(
+            {
+              "token": "#{API_TOKEN}"
+            }
+          )
+
+          expect(response.body).to be_json_eql(expected_json)
         end
       end
     end
