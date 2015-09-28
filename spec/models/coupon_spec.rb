@@ -8,7 +8,7 @@ describe Coupon, type: :model do
     end
 
     it 'generates a random 6 digits code' do
-      expect(subject.code).to be_eql('786546')
+      expect(subject.code).to match(/^[0-9]{6}$/)
     end
   end
 
