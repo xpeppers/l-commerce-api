@@ -1,11 +1,12 @@
 class Coupon < ActiveRecord::Base
-  SEED = 786545
+  MIN = 100000
   MAX = 999999
 
   belongs_to :order
 
   def code
-    num = (SEED + id) % MAX
+    random = Random.new(id)
+    num = random.rand(MIN..MAX)
     num.to_s
   end
 end
