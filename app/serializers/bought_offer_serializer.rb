@@ -3,6 +3,10 @@ class BoughtOfferSerializer < BoughtOfferListSerializer
 
   has_one :coupon
 
+  def price
+    '%.2f' % object.price
+  end
+
   def user_fullname
     object.user.fullname
   end

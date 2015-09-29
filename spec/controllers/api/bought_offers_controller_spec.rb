@@ -77,7 +77,7 @@ describe Api::BoughtOffersController, type: :controller do
       end
 
       context 'with bought offer' do
-        let(:offer) { create(:offer) }
+        let(:offer) { create(:offer, price: 10.5) }
         let(:coupon) { create(:coupon) }
         let(:order) { create(:captured_order, user: user, offers: [offer], coupon: coupon) }
 
@@ -98,7 +98,7 @@ describe Api::BoughtOffersController, type: :controller do
             "purchase_date": "#{bought_offer.purchase_date}",
             "title": "#{bought_offer.title}",
             "description": "#{bought_offer.description}",
-            "price": "#{bought_offer.price}",
+            "price": "#{'%.2f' % bought_offer.price}",
             "image_url": "#{bought_offer.image_url}",
             "merchant": "#{bought_offer.merchant}",
             "status": "#{bought_offer.status}",
