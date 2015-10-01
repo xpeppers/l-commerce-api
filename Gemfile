@@ -2,8 +2,12 @@ source 'https://rubygems.org'
 ruby '2.2.3'
 
 gem 'rails', '4.2.3'
-gem 'rails-api'
 gem 'active_model_serializers', '0.10.0.rc2'
+
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
+gem 'haml-rails'
 
 gem 'pg'
 
@@ -14,6 +18,7 @@ gem 'foreman'
 
 gem 'paypal-sdk-rest'
 gem 'koala', '~> 2.2'
+
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'
