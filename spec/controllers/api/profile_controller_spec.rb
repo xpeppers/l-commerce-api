@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Api::ProfileController, type: :controller do
 
-  context 'for an authorized user' do
+  context 'for an authenticated user' do
     let(:user) { create(:user, token: 'ANY TOKEN') }
 
     describe 'GET #show' do
@@ -27,7 +27,7 @@ describe Api::ProfileController, type: :controller do
       end
 
       context 'with an invalid user id' do
-        it "returns null fields" do
+        it 'returns null fields' do
           expect(FacebookIdentity).to receive(:full_name_from).with(user.provider_user_id).and_return(nil)
           expect(FacebookIdentity).to receive(:profile_picture_url_from).with(user.provider_user_id).and_return(nil)
 
@@ -48,7 +48,7 @@ describe Api::ProfileController, type: :controller do
     end
   end
 
-  context 'for an unauthorized user' do
+  context 'for an unauthenticated user' do
 
     describe 'GET #show' do
       it 'returns unauthorized' do
