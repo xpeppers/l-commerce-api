@@ -28,7 +28,7 @@ $ rake db:seed_fu
 ## deploy development environment with vagrant
 
 ```
-$ vagrant dev up
+$ vagrant up dev
 $ cap dev deploy
 $ curl http://192.168.33.100/api
 ```
