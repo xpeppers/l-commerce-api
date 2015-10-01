@@ -15,15 +15,15 @@
       = f.text_field :price, class: 'form-control', required: true
     = error_span(@offer[:price])
   .form-group
-    = f.label :image_url, class: 'control-label'
-    .controls
-      = f.text_field :image_url, class: 'form-control', required: true
-    = error_span(@offer[:image_url])
-  .form-group
     = f.label :original_price, class: 'control-label'
     .controls
       = f.text_field :original_price, class: 'form-control', required: true
     = error_span(@offer[:original_price])
+  .form-group
+    = f.label :image_url, class: 'control-label'
+    .controls
+      = f.text_field :image_url, class: 'form-control', required: true
+    = error_span(@offer[:image_url])
   .form-group
     = f.label :merchant, class: 'control-label'
     .controls

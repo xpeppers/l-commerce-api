@@ -1,5 +1,7 @@
 module Backoffice
   class OffersController < ApplicationController
+    http_basic_authenticate_with name: 'yourusername', password: 'yourusername'
+
     before_action :set_offer, only: [:show, :edit, :update, :destroy]
 
     def index
@@ -20,7 +22,7 @@ module Backoffice
       @offer = Offer.new(offer_params)
 
       if @offer.save
-        redirect_to @offer, notice: 'Offer was successfully created.'
+        redirect_to [:backoffice, @offer], notice: 'Offer was successfully created.'
       else
         render :new
       end
@@ -28,7 +30,7 @@ module Backoffice
 
     def update
       if @offer.update(offer_params)
-        redirect_to @offer, notice: 'Offer was successfully updated.'
+        redirect_to [:backoffice, @offer], notice: 'Offer was successfully updated.'
       else
         render :edit
       end
@@ -36,16 +38,17 @@ module Backoffice
 
     def destroy
       @offer.destroy
-      redirect_to offers_url, notice: 'Offer was successfully destroyed.'
+      redirect_to backoffice_offers_url, notice: 'Offer was successfully destroyed.'
     end
 
     private
+
     def set_offer
       @offer = Offer.find(params[:id])
     end
 
     def offer_params
-      params[:offer]
+      params.require(:offer).permit(:title, :description, :price, :original_price, :image_url, :merchant, :telephone, :email, :web_site, :street, :zip_code, :city, :latitude, :longitude)
     end
   end
 end
