@@ -8,6 +8,7 @@ gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'haml-rails'
+gem 'uglifier'
 
 gem 'jquery-rails'
 
