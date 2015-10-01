@@ -1,4 +1,4 @@
-= form_for @offer, html: { class: "form form-horizontal offer" } do |f|
+= form_for [:backoffice, @offer], html: { class: "form form-horizontal offer" } do |f|
   .form-group
     = f.label :title, class: 'control-label'
     .controls
@@ -70,4 +70,4 @@
       = f.text_field :longitude, class: 'form-control', required: true
     = error_span(@offer[:longitude])
   = f.submit nil,class: 'btn btn-primary'
-  = link_to t('.cancel', default: t("helpers.links.cancel")), offers_path, class: 'btn btn-default'
+  = link_to t('.cancel', default: t("helpers.links.cancel")), backoffice_offers_path, class: 'btn btn-default'

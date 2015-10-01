@@ -12,5 +12,7 @@ Rails.application.routes.draw do
     get '/', to: 'status#index'
   end
 
-  resources :offers
+  namespace :backoffice do
+    resources :offers
+  end
 end

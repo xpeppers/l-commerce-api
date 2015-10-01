@@ -15,7 +15,7 @@
   %tbody
     - @offers.each do |offer|
       %tr
-        %td= link_to offer.title, offer_path(offer)
+        %td= link_to offer.title, backoffice_offer_path(offer)
         %td= offer.description
         %td= offer.price
         %td= offer.original_price
@@ -23,7 +23,7 @@
         %td= offer.telephone
         %td= offer.email
         %td
-          = link_to t('.edit', default: t("helpers.links.edit")), edit_offer_path(offer), class: 'btn btn-default btn-xs'
-          = link_to t('.destroy', default: t("helpers.links.destroy")), offer_path(offer), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-xs btn-danger'
+          = link_to t('.edit', default: t("helpers.links.edit")), edit_backoffice_offer_path(offer), class: 'btn btn-default btn-xs'
+          = link_to t('.destroy', default: t("helpers.links.destroy")), backoffice_offer_path(offer), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-xs btn-danger'
 
-= link_to t('.new', default: t("helpers.links.new")), new_offer_path, class: 'btn btn-primary'
+= link_to t('.new', default: t("helpers.links.new")), new_backoffice_offer_path, class: 'btn btn-primary'
