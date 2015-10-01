@@ -11,4 +11,6 @@ Rails.application.routes.draw do
     get 'profile', to: 'profile#show'
     get '/', to: 'status#index'
   end
+
+  resources :offers
 end

@@ -9,6 +9,8 @@ gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'haml-rails'
 
+gem 'jquery-rails'
+
 gem 'pg'
 
 gem 'seed-fu', '~> 2.3'
