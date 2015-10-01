@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     end
     get 'bought_offers/', to: 'bought_offers#index'
     get 'bought_offers/:id', to: 'bought_offers#show'
+    get 'profile', to: 'profile#show'
     get '/', to: 'status#index'
   end
 end
