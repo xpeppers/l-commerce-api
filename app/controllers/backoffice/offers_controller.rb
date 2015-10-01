@@ -1,7 +1,5 @@
 module Backoffice
-  class OffersController < ApplicationController
-    http_basic_authenticate_with name: 'yourusername', password: 'yourusername'
-
+  class OffersController < AuthenticatedController
     before_action :set_offer, only: [:show, :edit, :update, :destroy]
 
     def index

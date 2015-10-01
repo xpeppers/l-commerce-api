@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   namespace :backoffice do
+    get '/', to: 'offers#index'
     resources :offers
   end
 end
