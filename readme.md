@@ -81,6 +81,10 @@ $ curl https//linkingcommerce.herokuapp.com/api
 requirements: `aws-cli` (pip install awscli)
 
 ```
+$ vagrant plugin install vagrant_aws
+```
+
+```
 $ aws configure
 | AWS Access Key ID: yourawskey
 | AWS Secret Access Key: yourawssecret
