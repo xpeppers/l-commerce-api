@@ -161,6 +161,8 @@ GEM
       rspec-core (~> 3.3.0)
       rspec-expectations (~> 3.3.0)
       rspec-mocks (~> 3.3.0)
+    rspec-collection_matchers (1.1.2)
+      rspec-expectations (>= 2.99.0.beta1)
     rspec-core (3.3.2)
       rspec-support (~> 3.3.0)
     rspec-expectations (3.3.1)
@@ -245,6 +247,7 @@ DEPENDENCIES
   paypal-sdk-rest
   pg
   rails (= 4.2.3)
+  rspec-collection_matchers
   rspec-rails
   seed-fu (~> 2.3)
   shoulda-matchers

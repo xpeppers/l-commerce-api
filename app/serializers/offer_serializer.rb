@@ -1,5 +1,9 @@
 class OfferSerializer < OfferListSerializer
-  attributes :merchant, :address, :telephone, :email, :web_site
+  attributes :merchant, :address, :telephone, :email, :web_site, :image_gallery
+
+  def image_gallery
+    object.images.map { |image| image.url }
+  end
 
   def address
     {
@@ -10,4 +14,5 @@ class OfferSerializer < OfferListSerializer
       longitude: object.longitude
     }
   end
+
 end

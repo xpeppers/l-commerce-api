@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150929101906) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20151002125242) do
 
   create_table "bought_offers", force: :cascade do |t|
     t.integer "order_id"
@@ -22,8 +19,8 @@ ActiveRecord::Schema.define(version: 20150929101906) do
     t.string  "status",   default: "unused"
   end
 
-  add_index "bought_offers", ["offer_id"], name: "index_bought_offers_on_offer_id", using: :btree
-  add_index "bought_offers", ["order_id"], name: "index_bought_offers_on_order_id", using: :btree
+  add_index "bought_offers", ["offer_id"], name: "index_bought_offers_on_offer_id"
+  add_index "bought_offers", ["order_id"], name: "index_bought_offers_on_order_id"
 
   create_table "coupons", force: :cascade do |t|
     t.integer  "order_id"
@@ -31,7 +28,31 @@ ActiveRecord::Schema.define(version: 20150929101906) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "coupons", ["order_id"], name: "index_coupons_on_order_id", using: :btree
+  add_index "coupons", ["order_id"], name: "index_coupons_on_order_id"
+
+  create_table "image_assets", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "image_id"
+  end
+
+  add_index "image_assets", ["image_id"], name: "index_image_assets_on_image_id"
+
+  create_table "image_galleries", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "offer_id"
+  end
+
+  add_index "image_galleries", ["offer_id"], name: "index_image_galleries_on_offer_id"
+
+  create_table "images", force: :cascade do |t|
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "image_gallery_id"
+  end
+
+  add_index "images", ["image_gallery_id"], name: "index_images_on_image_gallery_id"
 
   create_table "offers", force: :cascade do |t|
     t.string   "title"
@@ -56,7 +77,7 @@ ActiveRecord::Schema.define(version: 20150929101906) do
     t.integer "user_id"
   end
 
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "payments", force: :cascade do |t|
     t.integer  "order_id"
@@ -66,7 +87,7 @@ ActiveRecord::Schema.define(version: 20150929101906) do
     t.string   "status"
   end
 
-  add_index "payments", ["order_id"], name: "index_payments_on_order_id", using: :btree
+  add_index "payments", ["order_id"], name: "index_payments_on_order_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -76,11 +97,6 @@ ActiveRecord::Schema.define(version: 20150929101906) do
     t.string   "token"
   end
 
-  add_index "users", ["token"], name: "index_users_on_token", unique: true, using: :btree
+  add_index "users", ["token"], name: "index_users_on_token", unique: true
 
-  add_foreign_key "bought_offers", "offers"
-  add_foreign_key "bought_offers", "orders"
-  add_foreign_key "coupons", "orders"
-  add_foreign_key "orders", "users"
-  add_foreign_key "payments", "orders"
 end

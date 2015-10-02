@@ -40,7 +40,9 @@ describe Api::OffersController, type: :controller do
 
   describe 'GET #show' do
 
-    let(:offer) { create :offer, original_price: 10.44 }
+    let(:image) { create :image }
+    let(:image_gallery) { create :image_gallery, images: [image] }
+    let(:offer) { create :offer, original_price: 10.44, image_gallery: image_gallery }
 
     it 'returns offer details' do
       get :show, id: offer
@@ -52,6 +54,7 @@ describe Api::OffersController, type: :controller do
           "id": #{offer.id},
           "description": "#{offer.description}",
           "image_url": "#{offer.image_url}",
+          "image_gallery": ["#{image.url}"],
           "original_price": "#{offer.original_price}",
           "price": "#{offer.price}",
           "title": "#{offer.title}",
