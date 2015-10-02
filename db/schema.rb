@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151002125242) do
+ActiveRecord::Schema.define(version: 20151002151410) do
 
   create_table "bought_offers", force: :cascade do |t|
     t.integer "order_id"
@@ -30,14 +30,6 @@ ActiveRecord::Schema.define(version: 20151002125242) do
 
   add_index "coupons", ["order_id"], name: "index_coupons_on_order_id"
 
-  create_table "image_assets", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "image_id"
-  end
-
-  add_index "image_assets", ["image_id"], name: "index_image_assets_on_image_id"
-
   create_table "image_galleries", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -50,6 +42,7 @@ ActiveRecord::Schema.define(version: 20151002125242) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "image_gallery_id"
+    t.string   "resource"
   end
 
   add_index "images", ["image_gallery_id"], name: "index_images_on_image_gallery_id"

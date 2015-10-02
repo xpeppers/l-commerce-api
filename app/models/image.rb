@@ -1,9 +1,9 @@
 class Image < ActiveRecord::Base
 
-  has_one :image_asset
+  mount_uploader :resource, ImageUploader
 
   def url
-    "abc123"
+    resource.url
   end
 
 end

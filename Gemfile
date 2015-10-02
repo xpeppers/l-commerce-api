@@ -22,6 +22,9 @@ gem 'foreman'
 gem 'paypal-sdk-rest'
 gem 'koala', '~> 2.2'
 
+gem 'carrierwave'
+gem 'mini_magick'
+
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'

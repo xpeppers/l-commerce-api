@@ -54,7 +54,7 @@ describe Api::OffersController, type: :controller do
           "id": #{offer.id},
           "description": "#{offer.description}",
           "image_url": "#{offer.image_url}",
-          "image_gallery": ["#{image.url}"],
+          "image_gallery": [null],
           "original_price": "#{offer.original_price}",
           "price": "#{offer.price}",
           "title": "#{offer.title}",
