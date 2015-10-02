@@ -57,4 +57,12 @@ server {
     proxy_redirect off;
     proxy_pass http://linking-commerce-api;
   }
+
+  location /assets  {
+    root /home/deploy/current/public;
+    gzip_static on;
+    expires max;
+    add_header Cache-Control public;
+  }
+
 }

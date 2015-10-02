@@ -3,6 +3,7 @@ include_recipe 'nginx'
 cookbook_file '/etc/nginx/sites-available/linking-commerce-api' do
   source 'linking-commerce-api.nginx'
   action :create
+  notifies :reload, "service[nginx]"
 end
 
 link '/etc/nginx/sites-enabled/linking-commerce-api' do
