@@ -5,8 +5,8 @@ describe ImageGallery, type: :model do
 
   describe "#add" do
     it "adds an image" do
-      image_gallery = build_stubbed(:image_gallery)
-      image_asset = build(:image_asset)
+      image_gallery = create(:image_gallery)
+      image_asset = create(:image_asset)
 
       image_gallery.add(image_asset)
 
