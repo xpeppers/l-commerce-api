@@ -3,15 +3,48 @@ images = Image.seed(
   {
     id: 1,
     resource: File.open("#{Rails.root}/spec/fixtures/images/image.jpg")
-  }
+  },
+  {
+    id: 2,
+    resource: File.open("#{Rails.root}/spec/fixtures/images/image.jpg")
+  },
+  {
+    id: 3,
+    resource: File.open("#{Rails.root}/spec/fixtures/images/image.jpg")
+  },
+  {
+    id: 4,
+    resource: File.open("#{Rails.root}/spec/fixtures/images/image.jpg")
+  },
+  {
+    id: 5,
+    resource: File.open("#{Rails.root}/spec/fixtures/images/image.jpg")
+  },
+
 )
 
 ImageGallery.seed(
   :id,
   {
     id: 1,
-    images: images
-  }
+    images: [images.first]
+  },
+  {
+    id: 2,
+    images: [images.second]
+  },
+  {
+    id: 3,
+    images: [images.third]
+  },
+  {
+    id: 4,
+    images: [images.fourth]
+  },
+  {
+    id: 5,
+    images: [images.fifth]
+  },
 )
 
 Offer.seed(
@@ -22,7 +55,6 @@ Offer.seed(
     description: 'Lorem ipsum dolor sit amet description Cesto degustazione succo di mela e salsa di pomodoro',
     original_price: nil,
     price: 10.50,
-    image_url: 'http://offerte.agriturismotrentino.com/wp-content/uploads/2015/08/cestodegustazione1.jpg',
     image_gallery: ImageGallery.first,
     merchant: "A test merchant",
     street: "A street",
@@ -40,7 +72,7 @@ Offer.seed(
     description: 'description Lorem ipsum dolor sit amet Pacco famiglia 6,5 kg di carne di manzo fresca e un omaggio',
     original_price: 185.90,
     price: 84.50,
-    image_url: 'http://offerte.agriturismotrentino.com/wp-content/uploads/2015/08/Agritur-Rincher-4671.jpg',
+    image_gallery: ImageGallery.second,
     merchant: "A test merchant",
     street: "A street",
     zip_code: "33122",
@@ -57,7 +89,7 @@ Offer.seed(
     description: 'description Lorem ipsum dolor sit amet 1 notte per l’addio al nubilato',
     original_price: 200.00,
     price: 140.00,
-    image_url: 'http://offerte.agriturismotrentino.com/wp-content/uploads/2015/08/IL-MELETO-DI-MERLINO-8.jpg',
+    image_gallery: ImageGallery.third,
     merchant: "A test merchant",
     street: "A street",
     zip_code: "33122",
@@ -74,7 +106,7 @@ Offer.seed(
     description: 'description Festa del raccolto 4 notti 2 persone Lorem ipsum dolor sit ',
     original_price: 600.00,
     price: 410.00,
-    image_url: 'http://offerte.agriturismotrentino.com/wp-content/uploads/2015/08/trasformiamo-la-mela.jpg',
+    image_gallery: ImageGallery.fourth,
     merchant: "A test merchant",
     street: "A street",
     zip_code: "33122",
@@ -91,7 +123,7 @@ Offer.seed(
     description: 'descrip2 notti in famiglia Lorem ipsum dolor sit ',
     original_price: 300.00,
     price: 280.00,
-    image_url: 'http://offerte.agriturismotrentino.com/wp-content/uploads/2015/08/agritur-delle-mele-val-di-sole-wellness-18.jpg',
+    image_gallery: ImageGallery.fifth,
     merchant: "A test merchant",
     street: "A street",
     zip_code: "33122",
@@ -108,7 +140,6 @@ Offer.seed(
     description: 'descDegustazione agrodolce con 5 salse e sale aromatizzatosit ',
     original_price: nil,
     price: 26.50,
-    image_url: 'http://offerte.agriturismotrentino.com/wp-content/uploads/2015/08/IMG_36561.jpg',
     merchant: "A test merchant",
     street: "A street",
     zip_code: "33122",
