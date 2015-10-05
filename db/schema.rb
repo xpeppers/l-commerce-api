@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150929101906) do
+ActiveRecord::Schema.define(version: 20151005100915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,11 +33,27 @@ ActiveRecord::Schema.define(version: 20150929101906) do
 
   add_index "coupons", ["order_id"], name: "index_coupons_on_order_id", using: :btree
 
+  create_table "image_galleries", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "offer_id"
+  end
+
+  add_index "image_galleries", ["offer_id"], name: "index_image_galleries_on_offer_id", using: :btree
+
+  create_table "images", force: :cascade do |t|
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "image_gallery_id"
+    t.string   "resource"
+  end
+
+  add_index "images", ["image_gallery_id"], name: "index_images_on_image_gallery_id", using: :btree
+
   create_table "offers", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.decimal  "price",          precision: 10, scale: 2
-    t.string   "image_url"
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
     t.decimal  "original_price", precision: 10, scale: 2
@@ -81,6 +97,8 @@ ActiveRecord::Schema.define(version: 20150929101906) do
   add_foreign_key "bought_offers", "offers"
   add_foreign_key "bought_offers", "orders"
   add_foreign_key "coupons", "orders"
+  add_foreign_key "image_galleries", "offers"
+  add_foreign_key "images", "image_galleries"
   add_foreign_key "orders", "users"
   add_foreign_key "payments", "orders"
 end

@@ -22,12 +22,16 @@ gem 'foreman'
 gem 'paypal-sdk-rest'
 gem 'koala', '~> 2.2'
 
+gem 'carrierwave'
+gem 'mini_magick'
+
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'rspec-rails'
+  gem 'rspec-collection_matchers'
   gem 'json_spec'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'shoulda-matchers'

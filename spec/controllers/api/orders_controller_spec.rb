@@ -30,7 +30,7 @@ describe Api::OrdersController, type: :controller do
             {
               "id": #{offer.id},
               "description": "MyText",
-              "image_url": "MyString",
+              "image_url": null,
               "original_price": null,
               "price": "9.99",
               "title": "MyString"
@@ -60,7 +60,7 @@ describe Api::OrdersController, type: :controller do
               {
                 "id": #{offer.id},
                 "description": "MyText",
-                "image_url": "MyString",
+                "image_url": null,
                 "original_price": null,
                 "price": "9.99",
                 "title": "MyString"
@@ -90,7 +90,7 @@ describe Api::OrdersController, type: :controller do
               {
                 "id": #{offer.id},
                 "description": "MyText",
-                "image_url": "MyString",
+                "image_url": null,
                 "original_price": null,
                 "price": "9.99",
                 "title": "MyString"

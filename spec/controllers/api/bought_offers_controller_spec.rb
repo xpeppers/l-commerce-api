@@ -43,21 +43,21 @@ describe Api::BoughtOffersController, type: :controller do
               "id": #{bought_offers.first.id},
               "title": "#{first_offer.title}",
               "description": "#{first_offer.description}",
-              "image_url": "#{first_offer.image_url}",
+              "image_url": null,
               "status": "unused"
             },
             {
               "id": #{bought_offers.second.id},
               "title": "#{second_offer.title}",
               "description": "#{second_offer.description}",
-              "image_url": "#{second_offer.image_url}",
+              "image_url": null,
               "status": "unused"
             },
             {
               "id": #{bought_offers.third.id},
               "title": "#{third_offer.title}",
               "description": "#{third_offer.description}",
-              "image_url": "#{third_offer.image_url}",
+              "image_url": null,
               "status": "unused"
             }
           ])
@@ -99,7 +99,7 @@ describe Api::BoughtOffersController, type: :controller do
             "title": "#{bought_offer.title}",
             "description": "#{bought_offer.description}",
             "price": "#{'%.2f' % bought_offer.price}",
-            "image_url": "#{bought_offer.image_url}",
+            "image_gallery": [],
             "merchant": "#{bought_offer.merchant}",
             "status": "#{bought_offer.status}",
             "address":

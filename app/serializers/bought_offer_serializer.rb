@@ -1,7 +1,13 @@
-class BoughtOfferSerializer < BoughtOfferListSerializer
-  attributes :merchant, :address, :telephone, :email, :web_site, :price, :purchase_date, :user_fullname
+class BoughtOfferSerializer < ActiveModel::Serializer
+  attributes :id, :title, :description, :status, :merchant,
+             :address, :telephone, :email, :web_site, :price,
+             :purchase_date, :user_fullname, :image_gallery
 
   has_one :coupon
+
+  def image_gallery
+    object.images.map { |image| image.url }
+  end
 
   def price
     '%.2f' % object.price
