@@ -39,6 +39,6 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-end
 
-BASE_URL = "http://127.0.0.1:3000"
+  config.asset_host = 'http://127.0.0.1:3000'
+end
