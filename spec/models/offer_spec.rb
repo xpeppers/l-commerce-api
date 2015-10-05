@@ -12,7 +12,7 @@ describe Offer, type: :model do
     it 'returns the full url of the first image' do
       offer = Offer.create(image_gallery: image_gallery)
 
-      expect(offer.image_url).to eq('http://127.0.0.1:3000/uploads/image/resource/1/image.jpg')
+      expect(offer.image_url).to eq("http://127.0.0.1:3000/uploads/image/resource/#{image.id}/image.jpg")
     end
   end
 end
