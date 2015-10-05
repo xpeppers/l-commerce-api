@@ -2,23 +2,23 @@ images = Image.seed(
   :id,
   {
     id: 1,
-    resource: File.open("#{Rails.root}/spec/fixtures/images/image.jpg")
+    resource: File.open("#{Rails.root}/spec/fixtures/images/image1.jpg")
   },
   {
     id: 2,
-    resource: File.open("#{Rails.root}/spec/fixtures/images/image.jpg")
+    resource: File.open("#{Rails.root}/spec/fixtures/images/image2.jpg")
   },
   {
     id: 3,
-    resource: File.open("#{Rails.root}/spec/fixtures/images/image.jpg")
+    resource: File.open("#{Rails.root}/spec/fixtures/images/image3.jpg")
   },
   {
     id: 4,
-    resource: File.open("#{Rails.root}/spec/fixtures/images/image.jpg")
+    resource: File.open("#{Rails.root}/spec/fixtures/images/image4.jpg")
   },
   {
     id: 5,
-    resource: File.open("#{Rails.root}/spec/fixtures/images/image.jpg")
+    resource: File.open("#{Rails.root}/spec/fixtures/images/image5.jpg")
   },
 
 )
