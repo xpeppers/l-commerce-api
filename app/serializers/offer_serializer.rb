@@ -1,5 +1,6 @@
-class OfferSerializer < OfferListSerializer
-  attributes :merchant, :address, :telephone, :email, :web_site, :image_gallery
+class OfferSerializer < ActiveModel::Serializer
+  attributes :id, :title, :description, :original_price, :price, :image_gallery,
+             :merchant, :address, :telephone, :email, :web_site
 
   def image_gallery
     object.images.map { |image| image.url }
@@ -15,4 +16,11 @@ class OfferSerializer < OfferListSerializer
     }
   end
 
+  def price
+    '%.2f' % object.price
+  end
+
+  def original_price
+    '%.2f' % object.original_price unless object.original_price.nil?
+  end
 end

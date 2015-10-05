@@ -18,7 +18,7 @@ describe Api::OffersController, type: :controller do
           {
             "id": #{@first_offer.id},
             "description": "MyText",
-            "image_url": "MyString",
+            "image_url": null,
             "original_price": null,
             "price": "9.99",
             "title": "MyString"
@@ -26,7 +26,7 @@ describe Api::OffersController, type: :controller do
           {
             "id": #{@second_offer.id},
             "description": "MyText",
-            "image_url": "MyString",
+            "image_url": null,
             "original_price": "10.99",
             "price": "9.99",
             "title": "MyString"
@@ -53,7 +53,6 @@ describe Api::OffersController, type: :controller do
         {
           "id": #{offer.id},
           "description": "#{offer.description}",
-          "image_url": "#{offer.image_url}",
           "image_gallery": ["http://127.0.0.1:3000/uploads/image/resource/1/image.jpg"],
           "original_price": "#{offer.original_price}",
           "price": "#{offer.price}",

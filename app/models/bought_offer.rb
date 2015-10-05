@@ -6,7 +6,7 @@ class BoughtOffer < ActiveRecord::Base
   has_one :payment, through: :order
   has_one :coupon, through: :order
 
-  delegate :description, :title, :image_url, :merchant, :street, :zip_code,
+  delegate :description, :title, :image_url, :images, :merchant, :street, :zip_code,
            :city, :latitude, :longitude, :telephone, :email, :web_site, :price,
            to: :offer
 
