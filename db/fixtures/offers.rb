@@ -1,3 +1,19 @@
+images = Image.seed(
+  :id,
+  {
+    id: 1,
+    resource: File.open("#{Rails.root}/spec/fixtures/images/image.jpg")
+  }
+)
+
+ImageGallery.seed(
+  :id,
+  {
+    id: 1,
+    images: images
+  }
+)
+
 Offer.seed(
   :id,
   {
@@ -7,6 +23,7 @@ Offer.seed(
     original_price: nil,
     price: 10.50,
     image_url: 'http://offerte.agriturismotrentino.com/wp-content/uploads/2015/08/cestodegustazione1.jpg',
+    image_gallery: ImageGallery.first,
     merchant: "A test merchant",
     street: "A street",
     zip_code: "33122",
