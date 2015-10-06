@@ -40,7 +40,7 @@ describe Api::OffersController, type: :controller do
 
   describe 'GET #show' do
 
-    let(:image) { create :image, resource: File.open("#{Rails.root}/spec/fixtures/images/image1.jpg") }
+    let(:image) { create :image, resource: File.open("#{Rails.root}/spec/fixtures/images/carne1.jpg") }
     let(:image_gallery) { create :image_gallery, images: [image] }
     let(:offer) { create :offer, original_price: 10.44, image_gallery: image_gallery }
 
@@ -53,7 +53,7 @@ describe Api::OffersController, type: :controller do
         {
           "id": #{offer.id},
           "description": "#{offer.description}",
-          "image_gallery": ["http://127.0.0.1:3000/uploads/image/resource/1/image1.jpg"],
+          "image_gallery": ["http://127.0.0.1:3000/uploads/image/resource/1/carne1.jpg"],
           "original_price": "#{offer.original_price}",
           "price": "#{offer.price}",
           "title": "#{offer.title}",

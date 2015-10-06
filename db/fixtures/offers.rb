@@ -2,24 +2,28 @@ images = Image.seed(
   :id,
   {
     id: 1,
-    resource: File.open("#{Rails.root}/spec/fixtures/images/image1.jpg")
+    resource: File.open("#{Rails.root}/spec/fixtures/images/mela1.jpg")
   },
   {
     id: 2,
-    resource: File.open("#{Rails.root}/spec/fixtures/images/image2.jpg")
+    resource: File.open("#{Rails.root}/spec/fixtures/images/mela2.jpg")
   },
   {
     id: 3,
-    resource: File.open("#{Rails.root}/spec/fixtures/images/image3.jpg")
+    resource: File.open("#{Rails.root}/spec/fixtures/images/carne1.jpg")
   },
   {
     id: 4,
-    resource: File.open("#{Rails.root}/spec/fixtures/images/image4.jpg")
+    resource: File.open("#{Rails.root}/spec/fixtures/images/carne2.jpg")
   },
   {
     id: 5,
-    resource: File.open("#{Rails.root}/spec/fixtures/images/image5.jpg")
+    resource: File.open("#{Rails.root}/spec/fixtures/images/nubilato1.jpg")
   },
+  {
+    id: 6,
+    resource: File.open("#{Rails.root}/spec/fixtures/images/nubilato2.jpg")
+  }
 
 )
 
@@ -27,24 +31,16 @@ ImageGallery.seed(
   :id,
   {
     id: 1,
-    images: [images.first]
+    images: [images[0], images[1]]
   },
   {
     id: 2,
-    images: [images.second]
+    images: [images[2], images[3]]
   },
   {
     id: 3,
-    images: [images.third]
-  },
-  {
-    id: 4,
-    images: [images.fourth]
-  },
-  {
-    id: 5,
-    images: [images.fifth]
-  },
+    images: [images[4], images[5]]
+  }
 )
 
 Offer.seed(
@@ -106,7 +102,7 @@ Offer.seed(
     description: 'description Festa del raccolto 4 notti 2 persone Lorem ipsum dolor sit ',
     original_price: 600.00,
     price: 410.00,
-    image_gallery: ImageGallery.fourth,
+    image_gallery: nil,
     merchant: "A test merchant",
     street: "A street",
     zip_code: "33122",
@@ -123,7 +119,7 @@ Offer.seed(
     description: 'descrip2 notti in famiglia Lorem ipsum dolor sit ',
     original_price: 300.00,
     price: 280.00,
-    image_gallery: ImageGallery.fifth,
+    image_gallery: nil,
     merchant: "A test merchant",
     street: "A street",
     zip_code: "33122",
@@ -141,6 +137,7 @@ Offer.seed(
     original_price: nil,
     price: 26.50,
     merchant: "A test merchant",
+    image_gallery: nil,
     street: "A street",
     zip_code: "33122",
     city: "Trento (Tn)",
