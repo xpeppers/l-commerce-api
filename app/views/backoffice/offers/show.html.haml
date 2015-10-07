@@ -55,6 +55,15 @@
   %br
   = @offer.longitude
 
+%address
+  %strong= @offer.merchant
+  %br
+  = @offer.street
+  %br
+  = "#{@offer.zip_code}, #{@offer.city}"
+  %br
+  = @offer.telephone
+
 
 = link_to t('.back', default: t("helpers.links.back")), backoffice_offers_path, class: 'btn btn-default'
 = link_to t('.edit', default: t("helpers.links.edit")), edit_backoffice_offer_path(@offer), class: 'btn btn-default'
