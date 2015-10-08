@@ -57,7 +57,7 @@ describe Api::OffersController, type: :controller do
           "original_price": "#{offer.original_price}",
           "price": "#{offer.price}",
           "title": "#{offer.title}",
-          "merchant": "#{offer.merchant}",
+          "merchant": "#{offer.merchant.name}",
           "address":
           {
             "street": "#{offer.street}",

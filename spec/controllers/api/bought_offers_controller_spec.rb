@@ -100,7 +100,7 @@ describe Api::BoughtOffersController, type: :controller do
             "description": "#{bought_offer.description}",
             "price": "#{'%.2f' % bought_offer.price}",
             "image_gallery": [],
-            "merchant": "#{bought_offer.merchant}",
+            "merchant": "#{bought_offer.merchant.name}",
             "status": "#{bought_offer.status}",
             "address":
             {

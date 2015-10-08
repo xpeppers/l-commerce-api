@@ -5,7 +5,7 @@ FactoryGirl.define do
     description "MyText"
     original_price nil
     price "9.99"
-    merchant 'A MERCHANT'
+    merchant
     telephone 'A TELEPHONE'
     email 'AN EMAIL'
     web_site 'A WEB SITE'

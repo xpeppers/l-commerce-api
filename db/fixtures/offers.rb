@@ -1,3 +1,11 @@
+merchant = Merchant.seed(
+  :id,
+  {
+    id: 1,
+    name: 'A test merchant'
+  }
+)
+
 images = Image.seed(
   :id,
   {
@@ -52,7 +60,7 @@ Offer.seed(
     original_price: nil,
     price: 10.50,
     image_gallery: ImageGallery.first,
-    merchant: "A test merchant",
+    merchant: Merchant.first,
     street: "A street",
     zip_code: "33122",
     city: "Trento (Tn)",
@@ -69,7 +77,7 @@ Offer.seed(
     original_price: 185.90,
     price: 84.50,
     image_gallery: ImageGallery.second,
-    merchant: "A test merchant",
+    merchant: Merchant.first,
     street: "A street",
     zip_code: "33122",
     city: "Trento (Tn)",
@@ -86,7 +94,7 @@ Offer.seed(
     original_price: 200.00,
     price: 140.00,
     image_gallery: ImageGallery.third,
-    merchant: "A test merchant",
+    merchant: Merchant.first,
     street: "A street",
     zip_code: "33122",
     city: "Trento (Tn)",
@@ -103,7 +111,7 @@ Offer.seed(
     original_price: 600.00,
     price: 410.00,
     image_gallery: nil,
-    merchant: "A test merchant",
+    merchant: Merchant.first,
     street: "A street",
     zip_code: "33122",
     city: "Trento (Tn)",
@@ -120,7 +128,7 @@ Offer.seed(
     original_price: 300.00,
     price: 280.00,
     image_gallery: nil,
-    merchant: "A test merchant",
+    merchant: Merchant.first,
     street: "A street",
     zip_code: "33122",
     city: "Trento (Tn)",
@@ -136,7 +144,7 @@ Offer.seed(
     description: 'descDegustazione agrodolce con 5 salse e sale aromatizzatosit ',
     original_price: nil,
     price: 26.50,
-    merchant: "A test merchant",
+    merchant: Merchant.first,
     image_gallery: nil,
     street: "A street",
     zip_code: "33122",

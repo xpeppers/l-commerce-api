@@ -5,6 +5,10 @@ class BoughtOfferSerializer < ActiveModel::Serializer
 
   has_one :coupon
 
+  def merchant
+    object.merchant.name
+  end
+
   def image_gallery
     object.images.map { |image| image.url }
   end
