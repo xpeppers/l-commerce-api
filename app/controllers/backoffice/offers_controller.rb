@@ -6,14 +6,8 @@ module Backoffice
       @offers = Offer.all
     end
 
-    def show
-    end
-
     def new
       @offer = Offer.new
-    end
-
-    def edit
     end
 
     def create
