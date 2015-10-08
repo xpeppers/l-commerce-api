@@ -1,70 +1,45 @@
 - model_class = Offer
 .page-header
-  %h1=t '.title', default: model_class.model_name.human.titleize
+  %h1= @offer.title
 
-%p
-  %strong= model_class.human_attribute_name(:title) + ':'
-  %br
-  = @offer.title
-%p
-  %strong= model_class.human_attribute_name(:description) + ':'
-  %br
-  = @offer.description
-%p
-  %strong= model_class.human_attribute_name(:price) + ':'
-  %br
-  = @offer.price
-%p
-  %strong= model_class.human_attribute_name(:original_price) + ':'
-  %br
-  = @offer.original_price
+%p.lead= @offer.description
+%h2
+  %span.label{style: 'color: black'}
+    %strike= "#{@offer.original_price} €"
+  %span.label.label-success= "#{@offer.price} €"
 %p
   %strong= model_class.human_attribute_name(:merchant) + ':'
-  %br
-  = @offer.merchant
+  %br= @offer.merchant
 %p
   %strong= model_class.human_attribute_name(:telephone) + ':'
-  %br
-  = @offer.telephone
+  %br= @offer.telephone
 %p
   %strong= model_class.human_attribute_name(:email) + ':'
-  %br
-  = @offer.email
+  %br= @offer.email
 %p
   %strong= model_class.human_attribute_name(:web_site) + ':'
-  %br
-  = @offer.web_site
+  %br= @offer.web_site
 %p
   %strong= model_class.human_attribute_name(:street) + ':'
-  %br
-  = @offer.street
+  %br= @offer.street
 %p
   %strong= model_class.human_attribute_name(:zip_code) + ':'
-  %br
-  = @offer.zip_code
+  %br= @offer.zip_code
 %p
   %strong= model_class.human_attribute_name(:city) + ':'
-  %br
-  = @offer.city
+  %br= @offer.city
 %p
   %strong= model_class.human_attribute_name(:latitude) + ':'
-  %br
-  = @offer.latitude
+  %br= @offer.latitude
 %p
   %strong= model_class.human_attribute_name(:longitude) + ':'
-  %br
-  = @offer.longitude
+  %br= @offer.longitude
 
 %address
   %strong= @offer.merchant
-  %br
-  = @offer.street
-  %br
-  = "#{@offer.zip_code}, #{@offer.city}"
-  %br
-  = @offer.telephone
+  %br= @offer.street
+  %br= "#{@offer.zip_code}, #{@offer.city}"
+  %br= @offer.telephone
 
-
-= link_to t('.back', default: t("helpers.links.back")), backoffice_offers_path, class: 'btn btn-default'
 = link_to t('.edit', default: t("helpers.links.edit")), edit_backoffice_offer_path(@offer), class: 'btn btn-default'
 = link_to t('.destroy', default: t("helpers.links.destroy")), backoffice_offer_path(@offer), method: "delete", data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-danger'
