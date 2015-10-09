@@ -1,6 +1,8 @@
 - model_class = Merchant
 .page-header
-  %h1= @merchant.name
+  %h1
+    = @merchant.name
+    = link_to t('.edit', default: t("helpers.links.edit")), edit_backoffice_merchant_path(@merchant), class: 'btn btn-primary'
 
 %p= @merchant.city
 %p= @merchant.street
@@ -10,7 +12,3 @@
 %p= @merchant.web_site
 %p= @merchant.latitude
 %p= @merchant.longitude
-
-= link_to 'Edit', edit_backoffice_merchant_path(@merchant)
-\|
-= link_to 'Back', backoffice_merchants_path
