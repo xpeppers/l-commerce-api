@@ -26,8 +26,8 @@ class BoughtOfferSerializer < ActiveModel::Serializer
       street: object.street,
       zip_code: object.zip_code,
       city: object.city,
-      latitude: object.latitude,
-      longitude: object.longitude
+      latitude: object.merchant.latitude,
+      longitude: object.merchant.longitude
     }
   end
 end

@@ -14,7 +14,6 @@ class OfferSerializer < ActiveModel::Serializer
     object.merchant.email
   end
 
-
   def merchant
     object.merchant.name
   end
@@ -28,8 +27,8 @@ class OfferSerializer < ActiveModel::Serializer
       street: object.merchant.street,
       zip_code: object.merchant.zip_code,
       city: object.merchant.city,
-      latitude: object.latitude,
-      longitude: object.longitude
+      latitude: object.merchant.latitude,
+      longitude: object.merchant.longitude
     }
   end
 

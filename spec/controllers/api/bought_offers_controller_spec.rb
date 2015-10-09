@@ -107,8 +107,8 @@ describe Api::BoughtOffersController, type: :controller do
               "street": "#{bought_offer.street}",
               "zip_code": "#{bought_offer.zip_code}",
               "city": "#{bought_offer.city}",
-              "latitude": "#{bought_offer.latitude}",
-              "longitude": "#{bought_offer.longitude}"
+              "latitude": #{bought_offer.latitude},
+              "longitude": #{bought_offer.longitude}
             },
             "telephone": "#{bought_offer.telephone}",
             "email": "#{bought_offer.email}",

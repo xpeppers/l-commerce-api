@@ -63,8 +63,8 @@ describe Api::OffersController, type: :controller do
             "street": "#{offer.merchant.street}",
             "zip_code": "#{offer.merchant.zip_code}",
             "city": "#{offer.merchant.city}",
-            "latitude": "#{offer.latitude}",
-            "longitude": "#{offer.longitude}"
+            "latitude": #{offer.merchant.latitude},
+            "longitude": #{offer.merchant.longitude}
           },
           "telephone": "#{offer.merchant.telephone}",
           "email": "#{offer.merchant.email}",

@@ -6,8 +6,6 @@ FactoryGirl.define do
     original_price nil
     price "9.99"
     merchant
-    latitude 'A LATITUDE'
-    longitude 'A LONGITUDE'
   end
 
 end

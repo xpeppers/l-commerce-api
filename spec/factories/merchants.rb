@@ -7,6 +7,8 @@ FactoryGirl.define do
     street 'A STREET'
     zip_code 'A ZIP CODE'
     city 'A CITY'
+    latitude 46.0667
+    longitude 11.1167
   end
 
 end
