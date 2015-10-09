@@ -1,0 +1,14 @@
+- model_class = Merchant
+.page-header
+  %h1= @merchant.name
+
+%p= @merchant.city
+%p= @merchant.street
+%p= @merchant.zip_code
+%p= @merchant.telephone
+%p= @merchant.email
+%p= @merchant.web_site
+
+= link_to 'Edit', edit_backoffice_merchant_path(@merchant)
+\|
+= link_to 'Back', backoffice_merchants_path
