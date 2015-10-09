@@ -1,78 +1,42 @@
-%div.col-xs-9
-  = form_for [:backoffice, @offer], html: { class: "form form-horizontal offer" } do |f|
-    .form-group.input-group-lg
+= form_for [:backoffice, @offer] do |f|
+  %div.row
+    .input-group-lg
       = f.text_field :title, class: 'form-control', placeholder: :title, required: true
       = error_span(@offer[:title])
-    .form-group
-      = f.label :description, class: 'control-label'
+    .input-group-lg
       .controls
         = f.text_area :description, class: 'form-control noresize', required: true, size: '60x12'
       = error_span(@offer[:description])
 
-    %div.row
-      %div.col-xs-6
-        = f.label :price, class: 'control-label'
-        .controls
-          .input-group
-            %span.input-group-addon €
-            = f.text_field :price, class: 'form-control', required: true
-          = error_span(@offer[:price])
-      %div.col-xs-6
-        = f.label :original_price, class: 'control-label'
-        .controls
-          .input-group
-            %span.input-group-addon €
-            = f.text_field :original_price, class: 'form-control', required: true
+  %div.row
+    %div.col-xs-6
+      = f.label :price, class: 'control-label'
+      .controls
+        .input-group
+          %span.input-group-addon €
+          = f.text_field :price, class: 'form-control', required: true
+        = error_span(@offer[:price])
+    %div.col-xs-6
+      = f.label :original_price, class: 'control-label'
+      .controls
+        .input-group
+          %span.input-group-addon €
+          = f.text_field :original_price, class: 'form-control', required: true
         = error_span(@offer[:original_price])
 
-    %fieldset
-      %legend Dati Merchant
-      .form-group
-        = f.label :merchant, class: 'control-label col-lg-1'
-        .col-lg-11
-          = f.text_field :merchant, class: 'form-control', required: true
-        = error_span(@offer[:merchant])
-      .form-group
-        = f.label :telephone, class: 'control-label col-lg-1'
-        .col-lg-11
-          = f.text_field :telephone, class: 'form-control', required: true
-        = error_span(@offer[:telephone])
-      .form-group
-        = f.label :email, class: 'control-label col-lg-1'
-        .col-lg-11
-          .input-group
-            %span.input-group-addon @
-            = f.text_field :email, class: 'form-control', required: true
-          = error_span(@offer[:email])
-      .form-group
-        = f.label :web_site, class: 'control-label col-lg-1'
-        .col-lg-11
-          = f.text_field :web_site, class: 'form-control', required: true
-        = error_span(@offer[:web_site])
-      .form-group
-        = f.label :street, class: 'control-label col-lg-1'
-        .col-lg-11
-          = f.text_field :street, class: 'form-control', required: true
-        = error_span(@offer[:street])
-      .form-group
-        = f.label :zip_code, class: 'control-label col-lg-1'
-        .col-lg-11
-          = f.text_field :zip_code, class: 'form-control', required: true
-        = error_span(@offer[:zip_code])
-      .form-group
-        = f.label :city, class: 'control-label col-lg-1'
-        .col-lg-11
-          = f.text_field :city, class: 'form-control', required: true
-        = error_span(@offer[:city])
-      .form-group
-        = f.label :latitude, class: 'control-label col-lg-1'
-        .col-lg-11
+  %div.row
+    %div.col-xs-6
+      .controls
+        .input-group
+          %span.input-group-addon Latitude
           = f.text_field :latitude, class: 'form-control', required: true
         = error_span(@offer[:latitude])
-      .form-group
-        = f.label :longitude, class: 'control-label col-lg-1'
-        .col-lg-11
+    %div.col-xs-6
+      .controls
+        .input-group
+          %span.input-group-addon Longitude
           = f.text_field :longitude, class: 'form-control', required: true
-        = error_span(@offer[:longitude])
-    = f.submit nil,class: 'btn btn-primary'
-    = link_to t('.cancel', default: t("helpers.links.cancel")), backoffice_offers_path, class: 'btn btn-default'
+      = error_span(@offer[:longitude])
+
+  = f.submit nil,class: 'btn btn-primary'
+  = link_to t('.cancel', default: t("helpers.links.cancel")), backoffice_offers_path, class: 'btn btn-default'

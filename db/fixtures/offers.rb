@@ -2,7 +2,13 @@ merchant = Merchant.seed(
   :id,
   {
     id: 1,
-    name: 'A test merchant'
+    name: 'A test merchant',
+    street: "A street",
+    zip_code: "33122",
+    city: "Trento (Tn)",
+    telephone: "0461 898989",
+    email: "info@somewhere.com",
+    web_site: "http://www.somewhere.com"
   }
 )
 
@@ -61,14 +67,8 @@ Offer.seed(
     price: 10.50,
     image_gallery: ImageGallery.first,
     merchant: Merchant.first,
-    street: "A street",
-    zip_code: "33122",
-    city: "Trento (Tn)",
     latitude: "46.0656509",
-    longitude: "11.1218342",
-    telephone: "0461 898989",
-    email: "info@somewhere.com",
-    web_site: "http://www.somewhere.com"
+    longitude: "11.1218342"
   },
   {
     id: 2,
@@ -78,14 +78,8 @@ Offer.seed(
     price: 84.50,
     image_gallery: ImageGallery.second,
     merchant: Merchant.first,
-    street: "A street",
-    zip_code: "33122",
-    city: "Trento (Tn)",
     latitude: "46.0656509",
-    longitude: "11.1218342",
-    telephone: "0461 898989",
-    email: "info@somewhere.com",
-    web_site: "http://www.somewhere.com"
+    longitude: "11.1218342"
   },
   {
     id: 3,
@@ -95,14 +89,8 @@ Offer.seed(
     price: 140.00,
     image_gallery: ImageGallery.third,
     merchant: Merchant.first,
-    street: "A street",
-    zip_code: "33122",
-    city: "Trento (Tn)",
     latitude: "46.0656509",
-    longitude: "11.1218342",
-    telephone: "0461 898989",
-    email: "info@somewhere.com",
-    web_site: "http://www.somewhere.com"
+    longitude: "11.1218342"
   },
   {
     id: 4,
@@ -112,14 +100,8 @@ Offer.seed(
     price: 410.00,
     image_gallery: nil,
     merchant: Merchant.first,
-    street: "A street",
-    zip_code: "33122",
-    city: "Trento (Tn)",
     latitude: "46.0656509",
-    longitude: "11.1218342",
-    telephone: "0461 898989",
-    email: "info@somewhere.com",
-    web_site: "http://www.somewhere.com"
+    longitude: "11.1218342"
   },
   {
     id: 5,
@@ -129,14 +111,8 @@ Offer.seed(
     price: 280.00,
     image_gallery: nil,
     merchant: Merchant.first,
-    street: "A street",
-    zip_code: "33122",
-    city: "Trento (Tn)",
     latitude: "46.0656509",
-    longitude: "11.1218342",
-    telephone: "0461 898989",
-    email: "info@somewhere.com",
-    web_site: "http://www.somewhere.com"
+    longitude: "11.1218342"
   },
   {
     id: 6,
@@ -146,13 +122,7 @@ Offer.seed(
     price: 26.50,
     merchant: Merchant.first,
     image_gallery: nil,
-    street: "A street",
-    zip_code: "33122",
-    city: "Trento (Tn)",
     latitude: "46.0656509",
-    longitude: "11.1218342",
-    telephone: "0461 898989",
-    email: "info@somewhere.com",
-    web_site: "http://www.somewhere.com"
+    longitude: "11.1218342"
   },
 )

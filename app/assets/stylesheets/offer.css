@@ -1,4 +1,7 @@
 .label-price {
   color: black;
+}
+
+.label-striked {
   text-decoration: line-through;
 }

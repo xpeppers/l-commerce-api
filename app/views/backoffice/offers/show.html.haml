@@ -10,22 +10,22 @@
   %br= @offer.merchant.name
 %p
   %strong= model_class.human_attribute_name(:telephone) + ':'
-  %br= @offer.telephone
+  %br= @offer.merchant.telephone
 %p
   %strong= model_class.human_attribute_name(:email) + ':'
-  %br= @offer.email
+  %br= @offer.merchant.email
 %p
   %strong= model_class.human_attribute_name(:web_site) + ':'
-  %br= @offer.web_site
+  %br= @offer.merchant.web_site
 %p
   %strong= model_class.human_attribute_name(:street) + ':'
-  %br= @offer.street
+  %br= @offer.merchant.street
 %p
   %strong= model_class.human_attribute_name(:zip_code) + ':'
-  %br= @offer.zip_code
+  %br= @offer.merchant.zip_code
 %p
   %strong= model_class.human_attribute_name(:city) + ':'
-  %br= @offer.city
+  %br= @offer.merchant.city
 %p
   %strong= model_class.human_attribute_name(:latitude) + ':'
   %br= @offer.latitude
