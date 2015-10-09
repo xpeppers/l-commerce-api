@@ -60,15 +60,15 @@ describe Api::OffersController, type: :controller do
           "merchant": "#{offer.merchant.name}",
           "address":
           {
-            "street": "#{offer.street}",
-            "zip_code": "#{offer.zip_code}",
-            "city": "#{offer.city}",
+            "street": "#{offer.merchant.street}",
+            "zip_code": "#{offer.merchant.zip_code}",
+            "city": "#{offer.merchant.city}",
             "latitude": "#{offer.latitude}",
             "longitude": "#{offer.longitude}"
           },
           "telephone": "#{offer.merchant.telephone}",
-          "email": "#{offer.email}",
-          "web_site": "#{offer.web_site}"
+          "email": "#{offer.merchant.email}",
+          "web_site": "#{offer.merchant.web_site}"
         }
       )
 

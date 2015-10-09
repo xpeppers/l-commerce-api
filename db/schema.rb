@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151009081108) do
+ActiveRecord::Schema.define(version: 20151009090432) do
 
   create_table "bought_offers", force: :cascade do |t|
     t.integer "order_id"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20151009081108) do
     t.string   "name"
     t.string   "telephone"
     t.string   "email"
-    t.string   "website"
+    t.string   "web_site"
     t.string   "street"
     t.string   "zip_code"
     t.string   "city"
@@ -67,11 +67,6 @@ ActiveRecord::Schema.define(version: 20151009081108) do
     t.datetime "updated_at",                              null: false
     t.decimal  "original_price", precision: 10, scale: 2
     t.string   "merchant"
-    t.string   "email"
-    t.string   "web_site"
-    t.string   "street"
-    t.string   "zip_code"
-    t.string   "city"
     t.string   "latitude"
     t.string   "longitude"
     t.integer  "merchant_id"

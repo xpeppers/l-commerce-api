@@ -7,11 +7,11 @@ class BoughtOffer < ActiveRecord::Base
   has_one :coupon, through: :order
   has_one :merchant, through: :offer
 
-  delegate :description, :title, :image_url, :images, :merchant, :street, :zip_code,
-           :city, :latitude, :longitude, :email, :web_site, :price,
+  delegate :description, :title, :image_url, :images,
+           :latitude, :longitude, :price,
            to: :offer
 
-  delegate :telephone, to: :merchant
+  delegate :telephone, :email, :web_site, :street, :zip_code, :city, to: :merchant
 
   def purchase_date
     payment.created_at.iso8601

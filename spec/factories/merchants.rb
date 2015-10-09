@@ -3,7 +3,7 @@ FactoryGirl.define do
     name "a string"
     telephone 'A TELEPHONE'
     email 'AN EMAIL'
-    website 'A WEB SITE'
+    web_site 'A WEB SITE'
     street 'A STREET'
     zip_code 'A ZIP CODE'
     city 'A CITY'
