@@ -24,19 +24,5 @@
           = f.text_field :original_price, class: 'form-control', required: true
         = error_span(@offer[:original_price])
 
-  %div.row
-    %div.col-xs-6
-      .controls
-        .input-group
-          %span.input-group-addon Latitude
-          = f.text_field :latitude, class: 'form-control', required: true
-        = error_span(@offer[:latitude])
-    %div.col-xs-6
-      .controls
-        .input-group
-          %span.input-group-addon Longitude
-          = f.text_field :longitude, class: 'form-control', required: true
-      = error_span(@offer[:longitude])
-
   = f.submit nil,class: 'btn btn-primary'
   = link_to t('.cancel', default: t("helpers.links.cancel")), backoffice_offers_path, class: 'btn btn-default'

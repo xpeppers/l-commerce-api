@@ -8,7 +8,9 @@ merchant = Merchant.seed(
     city: "Trento (Tn)",
     telephone: "0461 898989",
     email: "info@somewhere.com",
-    web_site: "http://www.somewhere.com"
+    web_site: "http://www.somewhere.com",
+    latitude: 46.0656509,
+    longitude: 11.1218342
   }
 )
 
@@ -66,9 +68,7 @@ Offer.seed(
     original_price: nil,
     price: 10.50,
     image_gallery: ImageGallery.first,
-    merchant: Merchant.first,
-    latitude: "46.0656509",
-    longitude: "11.1218342"
+    merchant: Merchant.first
   },
   {
     id: 2,
@@ -77,9 +77,7 @@ Offer.seed(
     original_price: 185.90,
     price: 84.50,
     image_gallery: ImageGallery.second,
-    merchant: Merchant.first,
-    latitude: "46.0656509",
-    longitude: "11.1218342"
+    merchant: Merchant.first
   },
   {
     id: 3,
@@ -88,9 +86,7 @@ Offer.seed(
     original_price: 200.00,
     price: 140.00,
     image_gallery: ImageGallery.third,
-    merchant: Merchant.first,
-    latitude: "46.0656509",
-    longitude: "11.1218342"
+    merchant: Merchant.first
   },
   {
     id: 4,
@@ -99,9 +95,7 @@ Offer.seed(
     original_price: 600.00,
     price: 410.00,
     image_gallery: nil,
-    merchant: Merchant.first,
-    latitude: "46.0656509",
-    longitude: "11.1218342"
+    merchant: Merchant.first
   },
   {
     id: 5,
@@ -110,9 +104,7 @@ Offer.seed(
     original_price: 300.00,
     price: 280.00,
     image_gallery: nil,
-    merchant: Merchant.first,
-    latitude: "46.0656509",
-    longitude: "11.1218342"
+    merchant: Merchant.first
   },
   {
     id: 6,
@@ -121,8 +113,6 @@ Offer.seed(
     original_price: nil,
     price: 26.50,
     merchant: Merchant.first,
-    image_gallery: nil,
-    latitude: "46.0656509",
-    longitude: "11.1218342"
+    image_gallery: nil
   },
 )
