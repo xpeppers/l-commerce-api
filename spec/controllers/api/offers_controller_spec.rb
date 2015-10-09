@@ -66,7 +66,7 @@ describe Api::OffersController, type: :controller do
             "latitude": "#{offer.latitude}",
             "longitude": "#{offer.longitude}"
           },
-          "telephone": "#{offer.telephone}",
+          "telephone": "#{offer.merchant.telephone}",
           "email": "#{offer.email}",
           "web_site": "#{offer.web_site}"
         }

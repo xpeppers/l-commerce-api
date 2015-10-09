@@ -6,7 +6,6 @@ FactoryGirl.define do
     original_price nil
     price "9.99"
     merchant
-    telephone 'A TELEPHONE'
     email 'AN EMAIL'
     web_site 'A WEB SITE'
     street 'A STREET'
