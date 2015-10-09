@@ -1,6 +1,5 @@
 -if @offer.original_price.present?
-  %span.label{style: 'color: black'}
-    %strike= "#{'%.2f' % @offer.original_price} €"
-  %span.label.label-success= "#{'%.2f' % @offer.price} €"
+  %span.label.label-price= format_price(@offer.original_price)
+  %span.label.label-success= format_price(@offer.price)
 -else
-  %span.label{style: 'color: black'}= "#{'%.2f' % @offer.price} €"
+  %span.label.label-price= format_price(@offer.price)
