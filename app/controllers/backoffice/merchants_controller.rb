@@ -15,7 +15,7 @@ module Backoffice
       @merchant = Merchant.new(merchant_params)
 
       if @merchant.save
-        redirect_to @merchant, notice: 'Merchant was successfully created.'
+        redirect_to [:backoffice, @merchant], notice: 'Merchant was successfully created.'
       else
         render :new
       end
@@ -23,7 +23,7 @@ module Backoffice
 
     def update
       if @merchant.update(merchant_params)
-        redirect_to @merchant, notice: 'Merchant was successfully updated.'
+        redirect_to [:backoffice, @merchant], notice: 'Merchant was successfully updated.'
       else
         render :edit
       end
@@ -31,7 +31,7 @@ module Backoffice
 
     def destroy
       @merchant.destroy
-      redirect_to merchants_url, notice: 'Merchant was successfully destroyed.'
+      redirect_to backoffice_merchants_url, notice: 'Merchant was successfully destroyed.'
     end
 
     private
@@ -40,7 +40,8 @@ module Backoffice
       end
 
       def merchant_params
-        params[:merchant]
+        params.require(:merchant).permit(:name, :telephone, :email, :web_site, :street, :zip_code, :city, :latitude, :longitude)
       end
+
   end
 end

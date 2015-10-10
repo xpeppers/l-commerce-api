@@ -23,6 +23,8 @@
           %span.input-group-addon €
           = f.text_field :original_price, class: 'form-control', required: true
         = error_span(@offer[:original_price])
+  %div.row
+    = f.collection_select(:merchant_id, Merchant.all, :id, :name)
 
   = f.submit nil,class: 'btn btn-primary'
   = link_to t('.cancel', default: t("helpers.links.cancel")), backoffice_offers_path, class: 'btn btn-default'
