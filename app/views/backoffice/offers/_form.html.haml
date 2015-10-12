@@ -1,8 +1,10 @@
 = form_for [:backoffice, @offer] do |f|
-  %div.row
+  %div.row.form
     .input-group-lg
       = f.text_field :title, class: 'form-control', placeholder: :title, required: true
       = error_span(@offer[:title])
+
+  %div.row.form
     .input-group-lg
       .controls
         = f.text_area :description, class: 'form-control noresize', required: true, size: '60x12'
@@ -23,7 +25,8 @@
           %span.input-group-addon €
           = f.text_field :original_price, class: 'form-control', required: true
         = error_span(@offer[:original_price])
-  %div.row
+
+  %div.row.form
     = f.collection_select(:merchant_id, Merchant.all, :id, :name)
 
   = f.submit nil,class: 'btn btn-primary'
