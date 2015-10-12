@@ -10,5 +10,7 @@ describe Merchant, type: :model do
     it { should validate_presence_of(:street) }
     it { should validate_presence_of(:zip_code) }
     it { should validate_presence_of(:city) }
+    it { should validate_presence_of(:latitude)}
+    it { should validate_presence_of(:longitude)}
   end
 end
