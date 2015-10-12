@@ -1,0 +1,39 @@
+= form_for [:backoffice, @merchant] do |f|
+  %div.row.form
+    .input-group-lg
+      = f.text_field :name, class: 'form-control', placeholder: :name, required: true
+      = error_span(@merchant[:name])
+  %div.row
+    %div.col-xs-6
+      = f.label :street, class: 'control-label'
+      .controls
+        .input-group= f.text_field :street, class: 'form-control', placeholder: :street, required: true
+        = error_span(@merchant[:street])
+    %div.col-xs-6
+      = f.label :zip_code, class: 'control-label'
+      .controls
+        .input-group= f.text_field :zip_code, class: 'form-control', placeholder: :zip_code, required: true
+        = error_span(@merchant[:zip_code])
+    %div.col-xs-6
+      = f.label :city, class: 'control-label'
+      .controls
+        .input-group= f.text_field :city, class: 'form-control', placeholder: :city, required: true
+        = error_span(@merchant[:city])
+    %div.col-xs-6
+      = f.label :web_site, class: 'control-label'
+      .controls
+        .input-group= f.text_field :web_site, class: 'form-control', placeholder: :web_site, required: true
+        = error_span(@merchant[:web_site])
+    %div.col-xs-6
+      = f.label :email, class: 'control-label'
+      .controls
+        .input-group= f.text_field :email, class: 'form-control', placeholder: :email, required: true
+        = error_span(@merchant[:email])
+    %div.col-xs-6
+      = f.label :telephone, class: 'control-label'
+      .controls
+        .input-group= f.text_field :telephone, class: 'form-control', placeholder: :telephone, required: true
+        = error_span(@merchant[:telephone])
+
+  = f.submit nil,class: 'btn btn-primary'
+  = link_to t('.cancel', default: t("helpers.links.cancel")), backoffice_merchants_path, class: 'btn btn-default'

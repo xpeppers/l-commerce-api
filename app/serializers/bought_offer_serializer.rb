@@ -5,6 +5,10 @@ class BoughtOfferSerializer < ActiveModel::Serializer
 
   has_one :coupon
 
+  def merchant
+    object.merchant.name
+  end
+
   def image_gallery
     object.images.map { |image| image.url }
   end
@@ -22,8 +26,8 @@ class BoughtOfferSerializer < ActiveModel::Serializer
       street: object.street,
       zip_code: object.zip_code,
       city: object.city,
-      latitude: object.latitude,
-      longitude: object.longitude
+      latitude: object.merchant.latitude,
+      longitude: object.merchant.longitude
     }
   end
 end

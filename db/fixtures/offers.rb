@@ -1,3 +1,19 @@
+merchant = Merchant.seed(
+  :id,
+  {
+    id: 1,
+    name: 'A test merchant',
+    street: "A street",
+    zip_code: "33122",
+    city: "Trento (Tn)",
+    telephone: "0461 898989",
+    email: "info@somewhere.com",
+    web_site: "http://www.somewhere.com",
+    latitude: 46.0656509,
+    longitude: 11.1218342
+  }
+)
+
 images = Image.seed(
   :id,
   {
@@ -52,15 +68,7 @@ Offer.seed(
     original_price: nil,
     price: 10.50,
     image_gallery: ImageGallery.first,
-    merchant: "A test merchant",
-    street: "A street",
-    zip_code: "33122",
-    city: "Trento (Tn)",
-    latitude: "46.0656509",
-    longitude: "11.1218342",
-    telephone: "0461 898989",
-    email: "info@somewhere.com",
-    web_site: "http://www.somewhere.com"
+    merchant: Merchant.first
   },
   {
     id: 2,
@@ -69,15 +77,7 @@ Offer.seed(
     original_price: 185.90,
     price: 84.50,
     image_gallery: ImageGallery.second,
-    merchant: "A test merchant",
-    street: "A street",
-    zip_code: "33122",
-    city: "Trento (Tn)",
-    latitude: "46.0656509",
-    longitude: "11.1218342",
-    telephone: "0461 898989",
-    email: "info@somewhere.com",
-    web_site: "http://www.somewhere.com"
+    merchant: Merchant.first
   },
   {
     id: 3,
@@ -86,15 +86,7 @@ Offer.seed(
     original_price: 200.00,
     price: 140.00,
     image_gallery: ImageGallery.third,
-    merchant: "A test merchant",
-    street: "A street",
-    zip_code: "33122",
-    city: "Trento (Tn)",
-    latitude: "46.0656509",
-    longitude: "11.1218342",
-    telephone: "0461 898989",
-    email: "info@somewhere.com",
-    web_site: "http://www.somewhere.com"
+    merchant: Merchant.first
   },
   {
     id: 4,
@@ -103,15 +95,7 @@ Offer.seed(
     original_price: 600.00,
     price: 410.00,
     image_gallery: nil,
-    merchant: "A test merchant",
-    street: "A street",
-    zip_code: "33122",
-    city: "Trento (Tn)",
-    latitude: "46.0656509",
-    longitude: "11.1218342",
-    telephone: "0461 898989",
-    email: "info@somewhere.com",
-    web_site: "http://www.somewhere.com"
+    merchant: Merchant.first
   },
   {
     id: 5,
@@ -120,15 +104,7 @@ Offer.seed(
     original_price: 300.00,
     price: 280.00,
     image_gallery: nil,
-    merchant: "A test merchant",
-    street: "A street",
-    zip_code: "33122",
-    city: "Trento (Tn)",
-    latitude: "46.0656509",
-    longitude: "11.1218342",
-    telephone: "0461 898989",
-    email: "info@somewhere.com",
-    web_site: "http://www.somewhere.com"
+    merchant: Merchant.first
   },
   {
     id: 6,
@@ -136,15 +112,7 @@ Offer.seed(
     description: 'descDegustazione agrodolce con 5 salse e sale aromatizzatosit ',
     original_price: nil,
     price: 26.50,
-    merchant: "A test merchant",
-    image_gallery: nil,
-    street: "A street",
-    zip_code: "33122",
-    city: "Trento (Tn)",
-    latitude: "46.0656509",
-    longitude: "11.1218342",
-    telephone: "0461 898989",
-    email: "info@somewhere.com",
-    web_site: "http://www.somewhere.com"
+    merchant: Merchant.first,
+    image_gallery: nil
   },
 )

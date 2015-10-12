@@ -2,6 +2,10 @@ class OfferSerializer < ActiveModel::Serializer
   attributes :id, :title, :description, :original_price, :price, :image_gallery,
              :merchant, :address, :telephone, :email, :web_site
 
+  def merchant
+    object.merchant.name
+  end
+
   def image_gallery
     object.images.map { |image| image.url }
   end

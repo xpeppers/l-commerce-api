@@ -1,45 +1,38 @@
 - model_class = Offer
 .page-header
-  %h1= @offer.title
+  %h1
+    = @offer.title
+    = link_to t('.edit', default: t("helpers.links.edit")), edit_backoffice_offer_path(@offer), class: 'btn btn-primary'
 
 %p.lead= @offer.description
 %h2
-  %span.label{style: 'color: black'}
-    %strike= "#{@offer.original_price} €"
-  %span.label.label-success= "#{@offer.price} €"
+  =render partial: 'prices'
 %p
   %strong= model_class.human_attribute_name(:merchant) + ':'
-  %br= @offer.merchant
+  %br= @offer.merchant.name
 %p
   %strong= model_class.human_attribute_name(:telephone) + ':'
-  %br= @offer.telephone
+  %br= @offer.merchant.telephone
 %p
   %strong= model_class.human_attribute_name(:email) + ':'
-  %br= @offer.email
+  %br= @offer.merchant.email
 %p
   %strong= model_class.human_attribute_name(:web_site) + ':'
-  %br= @offer.web_site
+  %br= @offer.merchant.web_site
 %p
   %strong= model_class.human_attribute_name(:street) + ':'
-  %br= @offer.street
+  %br= @offer.merchant.street
 %p
   %strong= model_class.human_attribute_name(:zip_code) + ':'
-  %br= @offer.zip_code
+  %br= @offer.merchant.zip_code
 %p
   %strong= model_class.human_attribute_name(:city) + ':'
-  %br= @offer.city
+  %br= @offer.merchant.city
 %p
   %strong= model_class.human_attribute_name(:latitude) + ':'
-  %br= @offer.latitude
+  %br= @offer.merchant.latitude
 %p
   %strong= model_class.human_attribute_name(:longitude) + ':'
-  %br= @offer.longitude
+  %br= @offer.merchant.longitude
 
-%address
-  %strong= @offer.merchant
-  %br= @offer.street
-  %br= "#{@offer.zip_code}, #{@offer.city}"
-  %br= @offer.telephone
-
-= link_to t('.edit', default: t("helpers.links.edit")), edit_backoffice_offer_path(@offer), class: 'btn btn-default'
 = link_to t('.destroy', default: t("helpers.links.destroy")), backoffice_offer_path(@offer), method: "delete", data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-danger'

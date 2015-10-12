@@ -40,7 +40,7 @@ module Backoffice
     end
 
     def offer_params
-      params.require(:offer).permit(:title, :description, :price, :original_price, :merchant, :telephone, :email, :web_site, :street, :zip_code, :city, :latitude, :longitude)
+      params.require(:offer).permit(:title, :description, :price, :original_price, :merchant_id)
     end
   end
 end

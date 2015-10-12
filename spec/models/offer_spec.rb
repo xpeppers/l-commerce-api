@@ -4,6 +4,7 @@ describe Offer, type: :model do
 
   it { expect(subject).to have_one :image_gallery }
   it { expect(subject).to have_many(:images).through(:image_gallery) }
+  it { expect(subject).to belong_to(:merchant) }
 
   describe '#image_url' do
     let(:image) { create(:image, resource: File.open("#{Rails.root}/spec/fixtures/images/carne1.jpg")) }

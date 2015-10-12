@@ -22,3 +22,11 @@ en:
       save: "Save %{model}"
       new: "New %{model}"
       delete: "Delete %{model}"
+  activerecord:
+    models:
+    attributes:
+      offer:
+        title: "Titolo"
+        description: "Descrizione"
+        price: "Discounted Price"
+        original_price: "Price"

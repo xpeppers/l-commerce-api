@@ -5,15 +5,7 @@ FactoryGirl.define do
     description "MyText"
     original_price nil
     price "9.99"
-    merchant 'A MERCHANT'
-    telephone 'A TELEPHONE'
-    email 'AN EMAIL'
-    web_site 'A WEB SITE'
-    street 'A STREET'
-    zip_code 'A ZIP CODE'
-    city 'A CITY'
-    latitude 'A LATITUDE'
-    longitude 'A LONGITUDE'
+    merchant
   end
 
 end

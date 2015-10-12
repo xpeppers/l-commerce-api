@@ -1,0 +1,11 @@
+.label-price {
+  color: black;
+}
+
+.label-striked {
+  text-decoration: line-through;
+}
+
+.form {
+    padding: 15px;
+}

@@ -100,15 +100,15 @@ describe Api::BoughtOffersController, type: :controller do
             "description": "#{bought_offer.description}",
             "price": "#{'%.2f' % bought_offer.price}",
             "image_gallery": [],
-            "merchant": "#{bought_offer.merchant}",
+            "merchant": "#{bought_offer.merchant.name}",
             "status": "#{bought_offer.status}",
             "address":
             {
               "street": "#{bought_offer.street}",
               "zip_code": "#{bought_offer.zip_code}",
               "city": "#{bought_offer.city}",
-              "latitude": "#{bought_offer.latitude}",
-              "longitude": "#{bought_offer.longitude}"
+              "latitude": #{bought_offer.latitude},
+              "longitude": #{bought_offer.longitude}
             },
             "telephone": "#{bought_offer.telephone}",
             "email": "#{bought_offer.email}",
