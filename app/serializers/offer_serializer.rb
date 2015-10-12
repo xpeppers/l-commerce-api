@@ -2,18 +2,6 @@ class OfferSerializer < ActiveModel::Serializer
   attributes :id, :title, :description, :original_price, :price, :image_gallery,
              :merchant, :address, :telephone, :email, :web_site
 
-  def telephone
-    object.merchant.telephone
-  end
-
-  def web_site
-    object.merchant.web_site
-  end
-
-  def email
-    object.merchant.email
-  end
-
   def merchant
     object.merchant.name
   end
@@ -24,11 +12,11 @@ class OfferSerializer < ActiveModel::Serializer
 
   def address
     {
-      street: object.merchant.street,
-      zip_code: object.merchant.zip_code,
-      city: object.merchant.city,
-      latitude: object.merchant.latitude,
-      longitude: object.merchant.longitude
+      street: object.street,
+      zip_code: object.zip_code,
+      city: object.city,
+      latitude: object.latitude,
+      longitude: object.longitude
     }
   end
 
