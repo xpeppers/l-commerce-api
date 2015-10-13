@@ -48,7 +48,7 @@
 
 .modal#imgModal
   .modal-dialog.modal-lg
-    = form_tag "/backoffice/images/", multipart: true, class: 'form-horizontal' do
+    = form_tag backoffice_images_path, multipart: true, class: 'form-horizontal' do
       .modal-content
         .modal-header
           %h4.modal-title#imgModalLabel Carica nuova immagine
@@ -56,7 +56,7 @@
           %span.btn.btn-success.fileinput-button
             %i.icon-plus.icon-white
             %span Scegli file ...
-            = file_field_tag :resource
+            = file_field_tag 'image[resource]'
         .modal-footer
           %button.btn.btn-primary.start(type="submit")
             %i.icon-upload.icon-white
