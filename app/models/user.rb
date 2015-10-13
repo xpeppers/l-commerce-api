@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_presence_of :provider_user_id
 
-  validates :token, uniqueness: true
+  validates :token, uniqueness: true, allow_nil: true
 
   def authenticate!(token)
     update_attributes(token: token)

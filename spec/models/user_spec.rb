@@ -7,5 +7,5 @@ describe User, type: :model do
   it { should validate_presence_of(:email) }
   it { should validate_presence_of(:provider_user_id) }
 
-  it { should validate_uniqueness_of(:token) }
+  it { should validate_uniqueness_of(:token).allow_nil }
 end
