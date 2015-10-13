@@ -6,12 +6,12 @@ describe Backoffice::OffersController, type: :controller do
   include BackofficeControllerHelper
 
   before(:each) do
-    authenicate_reseller!
+    authenticate_reseller!
   end
 
-  describe 'POST #create' do
-    let(:image) { create :image, resource: File.open("#{Rails.root}/spec/fixtures/images/carne1.jpg") }
+  let(:image) { create :image, resource: File.open("#{Rails.root}/spec/fixtures/images/carne1.jpg") }
 
+  describe 'POST #create' do
     it 'creates an image gallery' do
       expect{
         post :create, offer: {images: [image.id]}
@@ -22,7 +22,6 @@ describe Backoffice::OffersController, type: :controller do
   describe 'PUT #update' do
 
     context 'with an image gallery' do
-      let(:image) { create :image, resource: File.open("#{Rails.root}/spec/fixtures/images/carne1.jpg") }
       let(:image_gallery) { create :image_gallery, images: [image] }
       let(:offer) { create :offer, image_gallery: image_gallery }
 
@@ -36,7 +35,6 @@ describe Backoffice::OffersController, type: :controller do
     end
 
     context 'without a image gallery' do
-      let(:image) { create :image, resource: File.open("#{Rails.root}/spec/fixtures/images/carne1.jpg") }
       let(:offer) { create :offer }
 
       it 'creates the image gallery' do

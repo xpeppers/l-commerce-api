@@ -8,7 +8,7 @@ describe Backoffice::ImagesController, type: :controller do
   describe 'POST #create' do
 
     before(:each) do
-      authenicate_reseller!
+      authenticate_reseller!
     end
 
     it 'creates a new image' do
