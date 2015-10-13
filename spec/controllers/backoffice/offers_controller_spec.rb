@@ -1,11 +1,12 @@
 require 'rails_helper'
+require 'backoffice_controller_helper'
 
 describe Backoffice::OffersController, type: :controller do
 
+  include BackofficeControllerHelper
+
   before(:each) do
-    username = BACKOFFICE['username']
-    password = BACKOFFICE['password']
-    request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials(username, password)
+    authenicate_reseller!
   end
 
   describe 'POST #create' do
