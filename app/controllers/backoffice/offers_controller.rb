@@ -13,6 +13,8 @@ module Backoffice
     def create
       @offer = Offer.new(offer_params)
 
+      @offer.create_image_gallery(image_ids: images) unless images.empty?
+
       if @offer.save
         redirect_to [:backoffice, @offer], notice: 'Offer was successfully created.'
       else
@@ -21,6 +23,12 @@ module Backoffice
     end
 
     def update
+      if @offer.image_gallery.nil?
+        @offer.create_image_gallery(image_ids: images) unless images.empty?
+      else
+        @offer.image_gallery.update(image_ids: images) unless images.empty?
+      end
+
       if @offer.update(offer_params)
         redirect_to [:backoffice, @offer], notice: 'Offer was successfully updated.'
       else
@@ -41,6 +49,10 @@ module Backoffice
 
     def offer_params
       params.require(:offer).permit(:title, :description, :price, :original_price, :merchant_id)
+    end
+
+    def images
+      params.require(:offer).permit(images: [])[:images] || []
     end
   end
 end
