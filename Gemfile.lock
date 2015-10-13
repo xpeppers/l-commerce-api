@@ -61,6 +61,13 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    coffee-rails (4.1.0)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0, < 5.0)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.9.1.1)
     colorize (0.7.7)
     commonjs (0.2.7)
     debug_inspector (0.0.2)
@@ -78,6 +85,7 @@ GEM
       thor (~> 0.19.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    gmaps4rails (2.1.2)
     haml (4.0.7)
       tilt
     haml-rails (0.9.0)
@@ -222,6 +230,7 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    underscore-rails (1.8.3)
     unicorn (4.9.0)
       kgio (~> 2.6)
       rack
@@ -244,8 +253,10 @@ DEPENDENCIES
   capistrano-rails
   capistrano3-unicorn
   carrierwave
+  coffee-rails (~> 4.1.0)
   factory_girl_rails (~> 4.0)
   foreman
+  gmaps4rails
   haml-rails
   jquery-rails
   json_spec
@@ -264,6 +275,7 @@ DEPENDENCIES
   therubyracer
   twitter-bootstrap-rails
   uglifier
+  underscore-rails
   unicorn
   web-console (~> 2.0)
 

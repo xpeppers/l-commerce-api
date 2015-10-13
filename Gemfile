@@ -25,6 +25,10 @@ gem 'koala', '~> 2.2'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem 'gmaps4rails'
+gem 'underscore-rails' 
+gem 'coffee-rails', '~> 4.1.0' 
+
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'
