@@ -48,7 +48,7 @@
 
 .modal#imgModal
   .modal-dialog.modal-lg
-    = form_tag backoffice_images_path, multipart: true, class: 'form-horizontal' do
+    = form_tag backoffice_images_path, multipart: true, class: 'form-horizontal', id: 'fileupload' do
       .modal-content
         .modal-header
           %button.close{type: 'button', 'data-dismiss': 'modal', 'aria-label': 'Close'}
@@ -60,6 +60,29 @@
             %span Scegli file ...
             = file_field_tag 'image[resource]'
         .modal-footer
-          %button.btn.btn-primary.start(type="submit")
+          %button.btn.btn-primary.start#upload_button(type="button")
             %i.icon-upload.icon-white
             %span Carica
+
+:javascript
+
+$(function () {
+  $('#fileupload').fileupload({
+    dataType: 'json',
+    add: function (e, data) {
+      upload_button = $('#upload_button');
+      upload_button.unbind();
+
+      data.context = upload_button.click(function () {
+        data.submit();
+      });
+    },
+    done: function (e, data) {
+      console.log(data);
+
+      //$.each(data.result.files, function (index, file) {
+      //  $('<p/>').text(file.name).appendTo(document.body);
+      //});
+    }
+  });
+});
