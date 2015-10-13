@@ -7,7 +7,7 @@ describe Backoffice::ImagesController, type: :controller do
 
   describe 'POST #create' do
 
-    before(:each) do
+    before do
       authenticate_reseller!
     end
 

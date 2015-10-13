@@ -5,7 +5,7 @@ describe Backoffice::OffersController, type: :controller do
 
   include BackofficeControllerHelper
 
-  before(:each) do
+  before do
     authenticate_reseller!
   end
 
