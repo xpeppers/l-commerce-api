@@ -39,8 +39,23 @@ images = Image.seed(
   {
     id: 6,
     resource: File.open("#{Rails.root}/spec/fixtures/images/nubilato2.jpg")
+  },
+  {
+    id: 7,
+    resource: File.open("#{Rails.root}/spec/fixtures/images/cereda1.jpg")
+  },
+  {
+    id: 8,
+    resource: File.open("#{Rails.root}/spec/fixtures/images/cereda2.jpg")
+  },
+  {
+    id: 9,
+    resource: File.open("#{Rails.root}/spec/fixtures/images/cereda3.jpg")
+  },
+  {
+    id: 10,
+    resource: File.open("#{Rails.root}/spec/fixtures/images/cereda4.jpg")
   }
-
 )
 
 ImageGallery.seed(
@@ -56,6 +71,10 @@ ImageGallery.seed(
   {
     id: 3,
     images: [images[4], images[5]]
+  },
+  {
+    id: 4,
+    images: [images[6], images[7], images[8], images[9]]
   }
 )
 
@@ -108,11 +127,11 @@ Offer.seed(
   },
   {
     id: 6,
-    title: 'Degustazione agrodolce con 5 salse e sale aromatizzato',
-    description: 'descDegustazione agrodolce con 5 salse e sale aromatizzatosit ',
+    title: 'Degustazione agrodolce con 5 salse e sale aromatizzato: Agritur Dalaip Dei Pape',
+    description: '5 conserve e 1 confezione di sale aromatizzato del mediterraneo per degustare i sapori dell’agriturismo. Ottime per accompagnare selvaggina, bolliti, formaggi, salumi e verdure alla griglia. Acquista l’offerta online e ritira i prodotti direttamente all’agritur Dalaip dei Pape a Todanico. Agriturismo Dalaip dei Pape',
     original_price: nil,
     price: 26.50,
     merchant: Merchant.first,
-    image_gallery: nil
+    image_gallery: ImageGallery.fourth
   },
 )
