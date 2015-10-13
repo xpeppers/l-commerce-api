@@ -51,6 +51,8 @@
     = form_tag backoffice_images_path, multipart: true, class: 'form-horizontal' do
       .modal-content
         .modal-header
+          %button.close{type: 'button', 'data-dismiss': 'modal', 'aria-label': 'Close'}
+            %span{'aria-hidden': 'true'} &times;
           %h4.modal-title#imgModalLabel Carica nuova immagine
         .modal-body
           %span.btn.btn-success.fileinput-button
@@ -61,4 +63,3 @@
           %button.btn.btn-primary.start(type="submit")
             %i.icon-upload.icon-white
             %span Carica
-
