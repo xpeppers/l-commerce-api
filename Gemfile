@@ -11,6 +11,7 @@ gem 'haml-rails'
 gem 'uglifier'
 
 gem 'jquery-rails'
+gem 'jquery-fileupload-rails'
 
 gem 'pg'
 
@@ -26,8 +27,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'gmaps4rails'
-gem 'underscore-rails' 
-gem 'coffee-rails', '~> 4.1.0' 
+gem 'underscore-rails'
+gem 'coffee-rails', '~> 4.1.0'
 
 group :development, :test do
   gem 'sqlite3'

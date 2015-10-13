@@ -9,4 +9,5 @@
 //= require twitter/bootstrap
 //= require underscore
 //= require gmaps/google
+//= require jquery-fileupload/basic
 //= require_tree .
