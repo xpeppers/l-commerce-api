@@ -2,10 +2,10 @@ test: &default
 
   # Credentials for REST APIs
   client_id: clientid
-  client_secret: clientsecret
+  client_secret: EMqQY62PhVS997vxaoSPsW1DoNKchqwxbNxS1CfliaqP20hR-D9wPl7yclYjunx8-VzZVvI1sYmcrK-Y
 
   # Mode can be 'live' or 'sandbox'
-  mode: sandbox
+  mode: live
 
   # Credentials for Classic APIs
   #app_id: APP-80W284485P519543T
