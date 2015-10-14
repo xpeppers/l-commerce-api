@@ -85,7 +85,7 @@ Offer.seed(
     title: 'Cesto degustazione succo di mela e salsa di pomodoro',
     description: 'Lorem ipsum dolor sit amet description Cesto degustazione succo di mela e salsa di pomodoro',
     original_price: nil,
-    price: 10.50,
+    price: 0.01,
     image_gallery: ImageGallery.first,
     merchant: Merchant.first
   },
