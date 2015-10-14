@@ -17,5 +17,7 @@ Rails.application.routes.draw do
     get '/', to: 'offers#index'
     resources :offers
     resources :merchants
+
+    resources :images, only: [:create]
   end
 end

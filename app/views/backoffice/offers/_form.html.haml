@@ -1,33 +1,98 @@
+- model_class = Offer
 = form_for [:backoffice, @offer] do |f|
-  %div.row.form
+  .row.form
     .input-group-lg
       = f.text_field :title, class: 'form-control', placeholder: :title, required: true
       = error_span(@offer[:title])
 
-  %div.row.form
+  .row.form
     .input-group-lg
       .controls
         = f.text_area :description, class: 'form-control noresize', required: true, size: '60x12'
       = error_span(@offer[:description])
 
-  %div.row
-    %div.col-xs-6
-      = f.label :price, class: 'control-label'
-      .controls
+  .row.form
+    = f.label :prices, class: 'lead'
+    .controls
+      .col-xs-6
         .input-group
-          %span.input-group-addon €
+          %span.input-group-addon
+            = "#{model_class.human_attribute_name(:price)} - €"
           = f.text_field :price, class: 'form-control', required: true
         = error_span(@offer[:price])
-    %div.col-xs-6
-      = f.label :original_price, class: 'control-label'
-      .controls
+      .col-xs-6
         .input-group
-          %span.input-group-addon €
+          %span.input-group-addon
+            = "#{model_class.human_attribute_name(:original_price)} - €"
           = f.text_field :original_price, class: 'form-control', required: true
         = error_span(@offer[:original_price])
 
-  %div.row.form
-    = f.collection_select(:merchant_id, Merchant.all, :id, :name)
+  .row.form
+    = f.label :merchant, class: 'lead'
+    .controls
+      = f.collection_select(:merchant_id, Merchant.all, :id, :name)
 
-  = f.submit nil,class: 'btn btn-primary'
-  = link_to t('.cancel', default: t("helpers.links.cancel")), backoffice_offers_path, class: 'btn btn-default'
+  .row.form
+    = f.label :images, class: 'lead'
+    %a.btn.btn-primary{'data-toggle': 'modal', 'data-target': '#imgModal'}
+      = t('.add', default: t("helpers.links.add"))
+    .controls#images
+      - if @offer.images
+        - @offer.images.each do |image|
+          .col-xs-3
+            = f.hidden_field 'images', multiple: true, id: nil, value: image.id
+            = image_tag image.url, class: 'img-responsive img-thumbnail'
+            %button.remove_image.close{type: 'button', onclick: 'remove_image(this)'}
+              %span{'aria-hidden': 'true'} &times;
+
+  .row
+    = f.submit nil,class: 'btn btn-primary'
+    = link_to t('.cancel', default: t("helpers.links.cancel")), backoffice_offers_path, class: 'btn btn-default'
+
+.modal#imgModal
+  .modal-dialog.modal-lg
+    = form_tag backoffice_images_path, multipart: true, class: 'form-horizontal', id: 'fileupload' do
+      .modal-content
+        .modal-header
+          %button.close{type: 'button', 'data-dismiss': 'modal', 'aria-label': 'Close'}
+            %span{'aria-hidden': 'true'} &times;
+          %h4.modal-title#imgModalLabel Carica nuova immagine
+        .modal-body
+          %span.fileinput-button
+            %i.icon-plus.icon-white
+            %span Scegli file ...
+            = file_field_tag 'image[resource]'
+        .modal-footer
+          %button.btn.btn-primary.start#upload_button(type="button")
+            %i.icon-upload.icon-white
+            %span Carica
+
+:javascript
+$(function () {
+  remove_image = function(element) {
+    $(element).parent().remove();
+  };
+
+  $('#fileupload').fileupload({
+    dataType: 'json',
+    add: function (e, data) {
+      var upload_button = $('#upload_button');
+      upload_button.unbind();
+
+      data.context = upload_button.click(function () {
+        data.submit();
+      });
+    },
+    done: function (e, data) {
+      var image_id = data.result.id;
+      var image_url = data.result.url;
+      var html_to_append = "<div class=\"col-xs-3\">"
+      + "<input value=\"" + image_id + "\" multiple=\"multiple\" type=\"hidden\" name=\"offer[images][]\">"
+      + "<img class=\"img-responsive img-thumbnail\" src=\"" + image_url + "\">"
+      + "<button class=\"remove_image close\" type=\"button\" onclick=\"remove_image(this)\"><span aria-hidden=\"true\">×</span></button>"
+      + "</div>";
+
+      $('#images').append(html_to_append);
+    }
+  });
+});

@@ -4,6 +4,8 @@ class Offer < ActiveRecord::Base
   belongs_to :merchant
   has_many :images, through: :image_gallery
 
+  validates_presence_of :merchant, :title, :description, :price
+
   delegate :telephone, :email, :web_site, :street, :zip_code,
          :city, :latitude, :longitude,
          to: :merchant
