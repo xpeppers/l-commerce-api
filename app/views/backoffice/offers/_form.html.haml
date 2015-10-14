@@ -32,15 +32,16 @@
     .controls
       = f.collection_select(:merchant_id, Merchant.all, :id, :name)
 
-  - if @offer.images
-    .row.form
-      = f.label :images, class: 'lead'
-      %a.btn.btn-primary{'data-toggle': 'modal', 'data-target': '#imgModal'}
-        = t('.add', default: t("helpers.links.add"))
-      .controls
+  .row.form
+    = f.label :images, class: 'lead'
+    %a.btn.btn-primary{'data-toggle': 'modal', 'data-target': '#imgModal'}
+      = t('.add', default: t("helpers.links.add"))
+    .controls#images
+      - if @offer.images
         - @offer.images.each do |image|
           .col-xs-3
-            %img{src: image.resource.to_s, style: 'height:100px'}
+            = f.hidden_field 'images', multiple: true, id: nil, value: image.id
+            = image_tag image.url, class: 'img-responsive img-thumbnail'
 
   .row
     = f.submit nil,class: 'btn btn-primary'
@@ -70,7 +71,7 @@ $(function () {
   $('#fileupload').fileupload({
     dataType: 'json',
     add: function (e, data) {
-      upload_button = $('#upload_button');
+      var upload_button = $('#upload_button');
       upload_button.unbind();
 
       data.context = upload_button.click(function () {
@@ -78,11 +79,14 @@ $(function () {
       });
     },
     done: function (e, data) {
-      console.log(data);
+      var image_id = data.result.id;
+      var image_url = data.result.url;
+      var html_to_append = "<div class=\"col-xs-3\">"
+      + "<input value=\"" + image_id + "\" multiple=\"multiple\" type=\"hidden\" name=\"offer[images][]\">"
+      + "<img class=\"img-responsive img-thumbnail\" src=\"" + image_url + "\">"
+      + "</div>";
 
-      //$.each(data.result.files, function (index, file) {
-      //  $('<p/>').text(file.name).appendTo(document.body);
-      //});
+      $('#images').append(html_to_append);
     }
   });
 });

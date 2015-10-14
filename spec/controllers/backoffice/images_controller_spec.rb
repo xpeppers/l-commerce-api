@@ -20,7 +20,10 @@ describe Backoffice::ImagesController, type: :controller do
     it 'returns a 201 created' do
       post :create, image: {resource: File.open("#{Rails.root}/spec/fixtures/images/carne1.jpg")}
 
-      expected_json = %({"id": #{Image.last.id}})
+      expected_json = %({
+        "id": #{Image.last.id},
+        "url": ""
+      })
 
       expect(response).to have_http_status(:created)
       expect(response.body).to be_json_eql(expected_json)
