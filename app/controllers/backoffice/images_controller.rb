@@ -7,6 +7,12 @@ module Backoffice
       render json: @image, status: :created
     end
 
+    def destroy
+      @image = Image.find(params[:id])
+      @image.destroy
+      head :no_content
+    end
+
     private
 
     def image_params

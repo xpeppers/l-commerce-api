@@ -18,6 +18,6 @@ Rails.application.routes.draw do
     resources :offers
     resources :merchants
 
-    resources :images, only: [:create]
+    resources :images, only: [:create, :destroy]
   end
 end

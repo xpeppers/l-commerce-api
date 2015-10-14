@@ -42,7 +42,7 @@
           .col-xs-3
             = f.hidden_field 'images', multiple: true, id: nil, value: image.id
             = image_tag image.url, class: 'img-responsive img-thumbnail'
-            %button.remove_image.close{type: 'button', onclick: 'remove_image(this)'}
+            %button.remove_image.close{type: 'button', id: image.id, onclick: 'remove_image(this)'}
               %span{'aria-hidden': 'true'} &times;
 
   .row
@@ -69,9 +69,19 @@
 
 :javascript
 $(function () {
-  remove_image = function(element) {
-    $(element).parent().remove();
+  remove_image = function(el) {
+    var element = $(el)[0];
+    var id = element.id;
+
+    $.ajax({
+      url: '/backoffice/images/' + id,
+      type: 'DELETE',
+      success: function(result) {
+        $(el).parent().remove()
+      }
+    });
   };
+
 
   $('#fileupload').fileupload({
     dataType: 'json',
@@ -89,7 +99,7 @@ $(function () {
       var html_to_append = "<div class=\"col-xs-3\">"
       + "<input value=\"" + image_id + "\" multiple=\"multiple\" type=\"hidden\" name=\"offer[images][]\">"
       + "<img class=\"img-responsive img-thumbnail\" src=\"" + image_url + "\">"
-      + "<button class=\"remove_image close\" type=\"button\" onclick=\"remove_image(this)\"><span aria-hidden=\"true\">×</span></button>"
+      + "<button class=\"remove_image close\" type=\"button\" id=\"" + image_id + "\" onclick=\"remove_image(this)\"><span aria-hidden=\"true\">×</span></button>"
       + "</div>";
 
       $('#images').append(html_to_append);
