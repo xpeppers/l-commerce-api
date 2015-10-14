@@ -21,5 +21,8 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+staging:
+  <<: *database
+
 production:
   <<: *database

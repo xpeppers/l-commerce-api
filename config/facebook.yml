@@ -6,6 +6,10 @@ test:
   app_id: 'app_id'
   app_secret: 'app_secret'
 
+staging:
+  app_id: 'app_id'
+  app_secret: 'app_secret'
+
 production:
   app_id: 'app_id'
   app_secret: 'app_secret'

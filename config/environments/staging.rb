@@ -77,5 +77,5 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.asset_host = 'http://52.19.150.165'
+  config.asset_host = 'https://linkingcommerce.herokuapp.com'
 end
