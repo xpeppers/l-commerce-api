@@ -92,7 +92,7 @@ Offer.seed(
   {
     id: 2,
     title: 'Pacco famiglia 6,5 kg di carne di manzo fresca e un omaggio',
-    description: 'description Lorem ipsum dolor sit amet Pacco famiglia 6,5 kg di carne di manzo fresca e un omaggio',
+    description: 'Lorem ipsum dolor sit amet Pacco famiglia 6,5 kg di carne di manzo fresca e un omaggio',
     original_price: 185.90,
     price: 84.50,
     image_gallery: ImageGallery.second,
@@ -101,7 +101,7 @@ Offer.seed(
   {
     id: 3,
     title: '1 notte per l’addio al nubilato',
-    description: 'description Lorem ipsum dolor sit amet 1 notte per l’addio al nubilato',
+    description: 'Lorem ipsum dolor sit amet 1 notte per l’addio al nubilato',
     original_price: 200.00,
     price: 140.00,
     image_gallery: ImageGallery.third,
@@ -110,7 +110,7 @@ Offer.seed(
   {
     id: 4,
     title: 'Festa del raccolto 4 notti 2 persone',
-    description: 'description Festa del raccolto 4 notti 2 persone Lorem ipsum dolor sit ',
+    description: 'Festa del raccolto 4 notti 2 persone Lorem ipsum dolor sit ',
     original_price: 600.00,
     price: 410.00,
     image_gallery: nil,
@@ -119,7 +119,7 @@ Offer.seed(
   {
     id: 5,
     title: '2 notti in famiglia',
-    description: 'descrip2 notti in famiglia Lorem ipsum dolor sit ',
+    description: '2 notti in famiglia Lorem ipsum dolor sit ',
     original_price: 300.00,
     price: 280.00,
     image_gallery: nil,
