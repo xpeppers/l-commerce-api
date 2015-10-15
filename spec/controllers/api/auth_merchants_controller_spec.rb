@@ -12,7 +12,7 @@ describe Api::AuthMerchantsController, type: :controller do
       end
 
       it 'creates an authentication token' do
-        expect(UserTokenGenerator).to receive(:generate).and_return(API_TOKEN)
+        expect(TokenGenerator).to receive(:generate).and_return(API_TOKEN)
 
         post :create, email: 'merchant@provider.com', password: 'apassword'
 

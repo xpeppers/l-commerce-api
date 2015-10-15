@@ -1,4 +1,4 @@
-module UserTokenGenerator
+module TokenGenerator
 
   def self.generate
     SecureRandom.uuid.gsub(/\-/, '')
