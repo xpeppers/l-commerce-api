@@ -3,39 +3,39 @@
     %div.form-group
       = f.label :name, class: 'col-lg-2 control-label text-right'
       .div.col-lg-10
-        = f.text_field :name, class: 'form-control', placeholder: :name, required: true
+        = f.text_field :name, class: 'form-control', required: true
     %div.form-group
       = f.label :city, class: 'col-lg-2 control-label text-right'
       .div.col-lg-10
-        = f.text_field :street, class: 'form-control', placeholder: :street, required: true
+        = f.text_field :city, class: 'form-control', required: true
     %div.form-group
       = f.label :street, class: 'col-lg-2 control-label text-right'
       .div.col-lg-10
-        = f.text_field :street, class: 'form-control', placeholder: :street, required: true
+        = f.text_field :street, class: 'form-control', required: true
     %div.form-group
       = f.label :zip_code, class: 'col-lg-2 control-label text-right'
       .div.col-lg-10
-        = f.text_field :zip_code, class: 'form-control', placeholder: :street, required: true
+        = f.text_field :zip_code, class: 'form-control', required: true
     %div.form-group
       = f.label :web_site, class: 'col-lg-2 control-label text-right'
       .div.col-lg-10
-        = f.text_field :web_site, class: 'form-control', placeholder: :street, required: true
+        = f.text_field :web_site, class: 'form-control', required: true
     %div.form-group
       = f.label :email, class: 'col-lg-2 control-label text-right'
       .div.col-lg-10
-        = f.text_field :email, class: 'form-control', placeholder: :street, required: true
+        = f.text_field :email, class: 'form-control', required: true
     %div.form-group
       = f.label :telephone, class: 'col-lg-2 control-label text-right'
       .div.col-lg-10
-        = f.text_field :telephone, class: 'form-control', placeholder: :street, required: true
+        = f.text_field :telephone, class: 'form-control', required: true
     %div.form-group
       = f.label :latitude, class: 'col-lg-2 control-label text-right'
       .div.col-lg-10
-        = f.text_field :latitude, class: 'form-control', placeholder: :street, required: true
+        = f.text_field :latitude, class: 'form-control', required: true
     %div.form-group
       = f.label :longitude, class: 'col-lg-2 control-label text-right'
       .div.col-lg-10
-        = f.text_field :longitude , class: 'form-control', placeholder: :street, required: true
+        = f.text_field :longitude , class: 'form-control', required: true
     %div.form-group
       .div.col-lg-10.col-lg-offset-2
         = link_to t('.cancel', default: t("helpers.links.cancel")), backoffice_merchants_path, class: 'btn btn-default'
