@@ -6,4 +6,8 @@ class Merchant < ActiveRecord::Base
     update_attributes(token: token)
   end
 
+  def authenticated?
+    not token.nil?
+  end
+
 end

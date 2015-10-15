@@ -23,25 +23,21 @@ describe Api::AuthMerchantsController, type: :controller do
         expect(response.body).to be_json_eql(expected_json)
       end
 
-      # context 'already authenticated' do
-      #   before do
-      #     @user.authenticate! API_TOKEN
-      #   end
+      context 'already authenticated' do
+        before do
+          @merchant.authenticate! API_TOKEN
+        end
 
-      #   it 'returns authentication token' do
-      #     post :create, provider: 'facebook', provider_token: PROVIDER_TOKEN
+        it 'returns authentication token' do
+          post :create, email: 'merchant@provider.com', password: 'apassword'
 
-      #     expect(response).to have_http_status(:ok)
+          expect(response).to have_http_status(:ok)
 
-      #     expected_json = %(
-      #       {
-      #         "token": "#{API_TOKEN}"
-      #       }
-      #     )
+          expected_json = %({"token": "#{API_TOKEN}"})
 
-      #     expect(response.body).to be_json_eql(expected_json)
-      #   end
-      # end
+          expect(response.body).to be_json_eql(expected_json)
+        end
+      end
     end
 
     context 'with a unregistered merchant' do
