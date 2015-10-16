@@ -51,13 +51,25 @@ describe Api::AuthUsersController, type: :controller do
       end
     end
 
-    context 'with a unregistered user' do
+    context 'with a facebook unregistered user' do
       it 'responds with unauthorized' do
         INVALID_PROVIDER_TOKEN = 'INVALID PROVIDER TOKEN'
 
         expect(FacebookIdentity).to receive(:user_id_from).with(INVALID_PROVIDER_TOKEN).and_return(nil)
 
         post :create, provider: 'facebook', provider_token: INVALID_PROVIDER_TOKEN
+
+        expect(response).to have_http_status(:unauthorized)
+      end
+    end
+
+    context 'with a unregistered user' do
+      it 'responds with unauthorized' do
+        PROVIDER_TOKEN = 'PROVIDER TOKEN'
+
+        expect(FacebookIdentity).to receive(:user_id_from).with(PROVIDER_TOKEN).and_return('UNKNOWN PROVIDER ID')
+
+        post :create, provider: 'facebook', provider_token: PROVIDER_TOKEN
 
         expect(response).to have_http_status(:unauthorized)
       end
