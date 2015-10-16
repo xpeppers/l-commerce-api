@@ -10,4 +10,8 @@ class Merchant < ActiveRecord::Base
     not token.nil?
   end
 
+  def sold_offers
+    BoughtOffer.joins(:merchant).where(merchants: {id: id})
+  end
+
 end

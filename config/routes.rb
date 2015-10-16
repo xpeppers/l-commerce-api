@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     post 'auth/', to: 'auth#create'
     get 'bought_offers/', to: 'bought_offers#index'
     get 'bought_offers/:id', to: 'bought_offers#show'
+    get 'sold_offers/', to: 'sold_offers#index'
     get 'profile/', to: 'profile#show'
 
     resources :offers, except: [:new, :edit]
