@@ -4,7 +4,7 @@ describe Api::AuthMerchantsController, type: :controller do
 
   describe 'POST #create' do
 
-    API_TOKEN = 'API TOKEN'
+    let(:api_token) { 'API TOKEN' }
 
     context 'with a registered user' do
       before do
@@ -12,20 +12,20 @@ describe Api::AuthMerchantsController, type: :controller do
       end
 
       it 'creates an authentication token' do
-        expect(TokenGenerator).to receive(:generate).and_return(API_TOKEN)
+        expect(TokenGenerator).to receive(:generate).and_return(api_token)
 
         post :create, email: 'merchant@provider.com', password: 'apassword'
 
         expect(response).to have_http_status(:created)
 
-        expected_json = %({"token": "#{API_TOKEN}"})
+        expected_json = %({"token": "#{api_token}"})
 
         expect(response.body).to be_json_eql(expected_json)
       end
 
       context 'already authenticated' do
         before do
-          @merchant.authenticate! API_TOKEN
+          @merchant.authenticate! api_token
         end
 
         it 'returns authentication token' do
@@ -33,7 +33,7 @@ describe Api::AuthMerchantsController, type: :controller do
 
           expect(response).to have_http_status(:ok)
 
-          expected_json = %({"token": "#{API_TOKEN}"})
+          expected_json = %({"token": "#{api_token}"})
 
           expect(response.body).to be_json_eql(expected_json)
         end

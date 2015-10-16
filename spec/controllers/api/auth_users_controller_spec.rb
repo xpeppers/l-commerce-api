@@ -3,27 +3,28 @@ require 'rails_helper'
 describe Api::AuthUsersController, type: :controller do
 
   describe 'POST #create' do
-    PROVIDER_TOKEN = 'A PROVIDER TOKEN'
-    PROVIDER_USER_ID = 'A PROVIDER USER ID'
-    API_TOKEN = 'API TOKEN'
+
+    let (:provider_token) { 'A PROVIDER TOKEN' }
+    let (:provider_user_id) { 'A PROVIDER USER ID' }
+    let (:api_token) { 'API TOKEN' }
 
     context 'with a registered user' do
       before do
-        @user = create(:user, provider_user_id: PROVIDER_USER_ID)
+        @user = create(:user, provider_user_id: provider_user_id)
 
-        expect(FacebookIdentity).to receive(:user_id_from).with(PROVIDER_TOKEN).and_return(PROVIDER_USER_ID)
+        expect(FacebookIdentity).to receive(:user_id_from).with(provider_token).and_return(provider_user_id)
       end
 
       it 'creates an authentication token' do
-        expect(TokenGenerator).to receive(:generate).and_return(API_TOKEN)
+        expect(TokenGenerator).to receive(:generate).and_return(api_token)
 
-        post :create, provider: 'facebook', provider_token: PROVIDER_TOKEN
+        post :create, provider: 'facebook', provider_token: provider_token
 
         expect(response).to have_http_status(:created)
 
         expected_json = %(
           {
-            "token": "#{API_TOKEN}"
+            "token": "#{api_token}"
           }
         )
 
@@ -32,17 +33,17 @@ describe Api::AuthUsersController, type: :controller do
 
       context 'already authenticated' do
         before do
-          @user.authenticate! API_TOKEN
+          @user.authenticate! api_token
         end
 
         it 'returns authentication token' do
-          post :create, provider: 'facebook', provider_token: PROVIDER_TOKEN
+          post :create, provider: 'facebook', provider_token: provider_token
 
           expect(response).to have_http_status(:ok)
 
           expected_json = %(
             {
-              "token": "#{API_TOKEN}"
+              "token": "#{api_token}"
             }
           )
 
@@ -53,11 +54,11 @@ describe Api::AuthUsersController, type: :controller do
 
     context 'with a facebook unregistered user' do
       it 'responds with unauthorized' do
-        INVALID_PROVIDER_TOKEN = 'INVALID PROVIDER TOKEN'
+        invalid_provider_token = 'INVALID PROVIDER TOKEN'
 
-        expect(FacebookIdentity).to receive(:user_id_from).with(INVALID_PROVIDER_TOKEN).and_return(nil)
+        expect(FacebookIdentity).to receive(:user_id_from).with(invalid_provider_token).and_return(nil)
 
-        post :create, provider: 'facebook', provider_token: INVALID_PROVIDER_TOKEN
+        post :create, provider: 'facebook', provider_token: invalid_provider_token
 
         expect(response).to have_http_status(:unauthorized)
       end
@@ -65,11 +66,9 @@ describe Api::AuthUsersController, type: :controller do
 
     context 'with a unregistered user' do
       it 'responds with unauthorized' do
-        PROVIDER_TOKEN = 'PROVIDER TOKEN'
+        expect(FacebookIdentity).to receive(:user_id_from).with(provider_token).and_return('UNKNOWN PROVIDER ID')
 
-        expect(FacebookIdentity).to receive(:user_id_from).with(PROVIDER_TOKEN).and_return('UNKNOWN PROVIDER ID')
-
-        post :create, provider: 'facebook', provider_token: PROVIDER_TOKEN
+        post :create, provider: 'facebook', provider_token: provider_token
 
         expect(response).to have_http_status(:unauthorized)
       end

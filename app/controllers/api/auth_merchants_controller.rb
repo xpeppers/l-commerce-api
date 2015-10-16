@@ -5,23 +5,23 @@ module Api
     before_action :unauthorized?
 
     def create
-      if @merchant.authenticated?
+      if @entity.authenticated?
         status = :ok
       else
-        @merchant.authenticate! TokenGenerator::generate
+        @entity.authenticate! TokenGenerator::generate
         status = :created
       end
-      render json: @merchant, status: status, serializer: AuthTokenSerializer
+      render json: @entity, status: status, serializer: AuthTokenSerializer
     end
 
     private
 
     def set_merchant
-      @merchant = Merchant.find_by(email: params[:email], hashed_password: params[:password])
+      @entity = Merchant.find_by(email: params[:email], hashed_password: params[:password])
     end
 
     def unauthorized?
-      return head status: :unauthorized unless @merchant.present?
+      return head status: :unauthorized unless @entity.present?
     end
   end
 end
