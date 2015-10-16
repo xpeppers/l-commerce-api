@@ -1,6 +1,6 @@
 class Merchant < ActiveRecord::Base
 
-  validates_presence_of :name, :telephone, :email, :web_site, :street, :zip_code, :city, :latitude, :longitude
+  validates_presence_of :name, :telephone, :email, :hashed_password, :web_site, :street, :zip_code, :city, :latitude, :longitude
 
   validates :token, uniqueness: true, allow_nil: true
 
