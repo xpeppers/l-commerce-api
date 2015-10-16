@@ -1,7 +1,9 @@
 module Api
-  class AuthUsersController < FacebookAuthorizeController
+  class AuthUsersController < ApplicationController
 
-    before_action :set_user
+    include AuthorizeFacebookUser
+
+    before_action :set_entity
     before_action :unauthorized?
 
     def create
@@ -16,7 +18,7 @@ module Api
 
     private
 
-    def set_user
+    def set_entity
       @entity = User.find_by(provider_user_id: @facebook_user_id)
     end
 

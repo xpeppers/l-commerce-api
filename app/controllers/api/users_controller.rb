@@ -1,5 +1,8 @@
 module Api
-  class UsersController < FacebookAuthorizeController
+  class UsersController < ApplicationController
+
+    include AuthorizeFacebookUser
+
     before_action :user_already_exists, only: [:create]
 
     def create

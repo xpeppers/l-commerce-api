@@ -1,7 +1,7 @@
 module Api
   class AuthMerchantsController < ApplicationController
 
-    before_action :set_merchant
+    before_action :set_entity
     before_action :unauthorized?
 
     def create
@@ -16,7 +16,7 @@ module Api
 
     private
 
-    def set_merchant
+    def set_entity
       @entity = Merchant.find_by(email: params[:email], hashed_password: params[:password])
     end
 
