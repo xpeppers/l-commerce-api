@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Api::AuthController, type: :controller do
+describe Api::AuthUsersController, type: :controller do
 
   describe 'POST #create' do
     PROVIDER_TOKEN = 'A PROVIDER TOKEN'

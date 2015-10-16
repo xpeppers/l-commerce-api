@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :api do
     get '/', to: 'status#index'
     post 'auth/merchants', to: 'auth_merchants#create'
-    post 'auth/', to: 'auth#create'
+    post 'auth/', to: 'auth_users#create'
     get 'bought_offers/', to: 'bought_offers#index'
     get 'bought_offers/:id', to: 'bought_offers#show'
     get 'sold_offers/', to: 'sold_offers#index'

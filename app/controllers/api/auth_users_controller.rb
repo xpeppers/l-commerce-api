@@ -1,5 +1,5 @@
 module Api
-  class AuthController < FacebookAuthorizeController
+  class AuthUsersController < FacebookAuthorizeController
 
     def create
       user = User.find_by(provider_user_id: @facebook_user_id)
