@@ -38,6 +38,7 @@ describe Api::SoldOffersController, type: :controller do
               "id": #{sold_offers.first.id},
               "title": "#{offer.title}",
               "buyer_email": "#{user.email}",
+              "purchase_date": "#{sold_offers.first.purchase_date}",
               "coupon": {
                 "id": #{coupon.id},
                 "code": "#{coupon.code}"

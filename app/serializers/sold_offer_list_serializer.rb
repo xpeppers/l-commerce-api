@@ -1,5 +1,5 @@
 class SoldOfferListSerializer < ActiveModel::Serializer
-  attributes :id, :title, :buyer_email, :status
+  attributes :id, :title, :buyer_email, :status, :purchase_date
 
   has_one :coupon
 
