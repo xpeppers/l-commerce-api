@@ -11,7 +11,7 @@ class Merchant < ActiveRecord::Base
   end
 
   def password=(new_password)
-    @password = Password.create(new_password)
+    @password = Engine.hash_secret(new_password, BCRYPT_SALT)
     self.hashed_password = @password
   end
 
