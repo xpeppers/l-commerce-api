@@ -22,3 +22,4 @@ Rails.application.configure do
   config.asset_host = 'http://127.0.0.1:3000'
 end
 
+BCRYPT_SALT = '$2a$10$z8SblQIXs7Bp3/xCinvjKO'

@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'bcrypt'
 
 describe Api::AuthMerchantsController, type: :controller do
 
@@ -8,7 +9,8 @@ describe Api::AuthMerchantsController, type: :controller do
 
     context 'with a registered user' do
       before do
-        @merchant = create(:merchant, email: 'merchant@provider.com', hashed_password: 'apassword')
+        hashed_password = BCrypt::Engine.hash_secret('apassword', BCRYPT_SALT)
+        @merchant = create(:merchant, email: 'merchant@provider.com', hashed_password: hashed_password)
       end
 
       it 'creates an authentication token' do

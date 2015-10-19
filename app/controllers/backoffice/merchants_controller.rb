@@ -40,7 +40,7 @@ module Backoffice
       end
 
       def merchant_params
-        params.require(:merchant).permit(:name, :telephone, :email, :web_site, :street, :zip_code, :city, :latitude, :longitude)
+        params.require(:merchant).permit(:name, :telephone, :email, :password, :web_site, :street, :zip_code, :city, :latitude, :longitude)
       end
 
   end

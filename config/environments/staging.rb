@@ -27,3 +27,5 @@ Rails.application.configure do
 
   config.asset_host = 'https://linkingcommerce.herokuapp.com'
 end
+
+BCRYPT_SALT = '$2a$10$p9rVhUGO3fczORIYMwdtD.'

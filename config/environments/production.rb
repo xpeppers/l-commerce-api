@@ -26,3 +26,5 @@ Rails.application.configure do
 
   config.asset_host = 'http://52.19.150.165'
 end
+
+BCRYPT_SALT = '$2a$10$sz5e0w5NyCYaLaDLYhAEp.'
