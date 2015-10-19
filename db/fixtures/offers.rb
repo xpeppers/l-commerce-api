@@ -8,6 +8,7 @@ merchant = Merchant.seed(
     city: "Trento (Tn)",
     telephone: "0461 898989",
     email: "info@somewhere.com",
+    password: "apassword",
     web_site: "http://www.somewhere.com",
     latitude: 46.0656509,
     longitude: 11.1218342
