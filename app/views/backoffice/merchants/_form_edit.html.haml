@@ -1,0 +1,9 @@
+= form_for [:backoffice, @merchant], html: { class: 'form-horizontal'}  do |f|
+  %filldset
+
+    = render partial: 'form_data', locals: { f: f }
+
+    %div.form-group
+      .div.col-lg-10.col-lg-offset-2
+        = link_to t('.cancel', default: t("helpers.links.cancel")), backoffice_merchants_path, class: 'btn btn-default'
+        = f.submit nil, class: 'btn btn-primary'
