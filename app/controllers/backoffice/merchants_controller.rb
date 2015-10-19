@@ -10,7 +10,6 @@ module Backoffice
       @merchant = Merchant.new
     end
 
-
     def create
       @merchant = Merchant.new(merchant_params)
 
