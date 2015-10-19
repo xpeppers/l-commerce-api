@@ -1,7 +1,4 @@
-require 'bcrypt'
-
 class Merchant < ActiveRecord::Base
-  include BCrypt
   include Authentication
 
   validates_presence_of :name, :telephone, :email, :hashed_password, :web_site, :street, :zip_code, :city, :latitude, :longitude
@@ -11,7 +8,7 @@ class Merchant < ActiveRecord::Base
   end
 
   def password=(new_password)
-    @password = Engine.hash_secret(new_password, BCRYPT_SALT)
+    @password = HashGenerator.generate(new_password)
     self.hashed_password = @password
   end
 

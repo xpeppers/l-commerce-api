@@ -9,7 +9,9 @@ describe Api::AuthMerchantsController, type: :controller do
 
     context 'with a registered user' do
       before do
-        hashed_password = BCrypt::Engine.hash_secret('apassword', BCRYPT_SALT)
+        hashed_password = 'anhashedpassword'
+        expect(HashGenerator).to receive(:generate).with('apassword').and_return(hashed_password)
+
         @merchant = create(:merchant, email: 'merchant@provider.com', hashed_password: hashed_password)
       end
 

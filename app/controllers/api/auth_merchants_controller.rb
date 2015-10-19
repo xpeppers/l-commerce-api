@@ -1,5 +1,3 @@
-require 'bcrypt'
-
 module Api
   class AuthMerchantsController < ApplicationController
 
@@ -19,7 +17,7 @@ module Api
     private
 
     def set_entity
-      hashed_password = BCrypt::Engine.hash_secret(params[:password], BCRYPT_SALT)
+      hashed_password = HashGenerator.generate(params[:password])
       @entity = Merchant.find_by(email: params[:email], hashed_password: hashed_password)
     end
 
