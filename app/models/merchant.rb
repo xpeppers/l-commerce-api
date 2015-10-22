@@ -13,7 +13,7 @@ class Merchant < ActiveRecord::Base
   end
 
   def sold_offers
-    BoughtOffer.joins(:merchant).where(merchants: {id: id})
+    BoughtOffer.joins(:payment).joins(:merchant).where(merchants: {id: id})
   end
 
 end
