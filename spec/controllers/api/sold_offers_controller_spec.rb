@@ -94,5 +94,13 @@ describe Api::SoldOffersController, type: :controller do
         expect(response).to have_http_status(:unauthorized)
       end
     end
+
+    describe 'PUT #update' do
+      it 'responds with unauthorized' do
+        put :update, id: 999
+
+        expect(response).to have_http_status(:unauthorized)
+      end
+    end
   end
 end

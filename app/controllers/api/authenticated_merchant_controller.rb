@@ -1,6 +1,6 @@
 module Api
   class AuthenticatedMerchantController < ApplicationController
-    before_action :validate_merchant_authentication, only: [:index, :create, :show]
+    before_action :validate_merchant_authentication, only: [:index, :create, :show, :update]
 
     private
 
