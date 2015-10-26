@@ -9,6 +9,29 @@ describe Api::SoldOffersController, type: :controller do
       request.headers['Authorization'] = "Token token=#{merchant.token}"
     end
 
+    describe 'PUT #update' do
+      let(:user) { create(:user) }
+      let(:offer) { create(:offer, merchant: merchant) }
+      let(:coupon) { create(:coupon) }
+
+      it 'updates th status of a sold offer' do
+        create(:captured_order, user: user, offers: [offer], coupon: coupon)
+
+        sold_offer = merchant.sold_offers.first
+
+        put :update, id: sold_offer, status: 'used'
+
+        expect(response).to have_http_status(:ok)
+
+        expected_json = %({
+          "id": #{sold_offer.id},
+          "status": "used"
+        })
+
+        expect(response.body).to be_json_eql(expected_json)
+      end
+    end
+
     describe 'GET #index' do
       context 'with no sold offers' do
         it 'responds with an empy list' do

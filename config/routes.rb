@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get 'bought_offers/', to: 'bought_offers#index'
     get 'bought_offers/:id', to: 'bought_offers#show'
     get 'sold_offers/', to: 'sold_offers#index'
+    put 'sold_offers/:id', to: 'sold_offers#update'
     get 'profile/', to: 'profile#show'
 
     resources :offers, except: [:new, :edit]
