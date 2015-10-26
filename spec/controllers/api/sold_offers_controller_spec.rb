@@ -58,7 +58,7 @@ describe Api::SoldOffersController, type: :controller do
       let(:offer) { create(:offer, merchant: merchant) }
       let(:coupon) { create(:coupon) }
 
-      it 'updates th status of a sold offer' do
+      it 'updates the status of a sold offer' do
         create(:captured_order, user: user, offers: [offer], coupon: coupon)
 
         sold_offer = merchant.sold_offers.first
