@@ -16,7 +16,11 @@ module Api
     private
 
     def set_sold_offer
-      @sold_offer = BoughtOffer.find(params[:id])
+      begin
+        @sold_offer = BoughtOffer.find(params[:id])
+      rescue
+        return head :not_found
+      end
     end
   end
 end

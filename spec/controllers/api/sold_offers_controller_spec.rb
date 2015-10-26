@@ -74,6 +74,15 @@ describe Api::SoldOffersController, type: :controller do
 
         expect(response.body).to be_json_eql(expected_json)
       end
+
+      context 'for a unexisting sold offer' do
+        it 'responds with not found' do
+          put :update, id: 999, status: 'used'
+
+          expect(response).to have_http_status(:not_found)
+        end
+      end
+
     end
   end
 
