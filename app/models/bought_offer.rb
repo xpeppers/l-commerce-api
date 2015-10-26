@@ -10,8 +10,8 @@ class BoughtOffer < ActiveRecord::Base
   delegate :description, :title, :image_url, :images, :price,
            to: :offer
 
-  delegate :telephone, :email, :web_site, :street, :zip_code, 
-           :city, :latitude, :longitude, 
+  delegate :telephone, :email, :web_site, :street, :zip_code,
+           :city, :latitude, :longitude,
            to: :merchant
 
   def purchase_date
