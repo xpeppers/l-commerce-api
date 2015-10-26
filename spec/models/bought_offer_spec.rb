@@ -9,4 +9,6 @@ describe BoughtOffer, type: :model do
   it { should have_one(:coupon).through(:order) }
   it { should have_one(:merchant).through(:offer) }
 
+  it { should define_enum_for(:status) }
+
 end

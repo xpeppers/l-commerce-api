@@ -1,4 +1,11 @@
 class BoughtOffer < ActiveRecord::Base
+  enum status: {
+         unused: 'unused',
+         used: 'used',
+         canceled: 'canceled',
+         expired: 'expired'
+       }
+
   belongs_to :order
   belongs_to :offer
 
