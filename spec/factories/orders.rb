@@ -1,7 +1,5 @@
 FactoryGirl.define do
-  factory :order do
-
-  end
+  factory :order
 
   factory :captured_order, class: Order do
     association :payment, factory: :payment, status: 'captured', strategy: :build
