@@ -4,9 +4,13 @@ class Coupon < ActiveRecord::Base
 
   belongs_to :order
 
-  def code
+  after_create :set_code
+
+  private
+
+  def set_code
     random = Random.new(id)
     num = random.rand(MIN..MAX)
-    num.to_s
+    self.update(code: num.to_s)
   end
 end
