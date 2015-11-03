@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151028140802) do
+ActiveRecord::Schema.define(version: 20151103142401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,7 +65,12 @@ ActiveRecord::Schema.define(version: 20151028140802) do
     t.float    "longitude"
     t.string   "hashed_password"
     t.string   "token"
+    t.text     "description"
+    t.text     "opening_hours"
+    t.integer  "image_id"
   end
+
+  add_index "merchants", ["image_id"], name: "index_merchants_on_image_id", using: :btree
 
   create_table "offers", force: :cascade do |t|
     t.string   "title"
@@ -111,6 +116,7 @@ ActiveRecord::Schema.define(version: 20151028140802) do
   add_foreign_key "coupons", "orders"
   add_foreign_key "image_galleries", "offers"
   add_foreign_key "images", "image_galleries"
+  add_foreign_key "merchants", "images"
   add_foreign_key "offers", "merchants"
   add_foreign_key "orders", "users"
   add_foreign_key "payments", "orders"

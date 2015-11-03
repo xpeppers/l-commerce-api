@@ -1,6 +1,8 @@
 class Merchant < ActiveRecord::Base
   include Authentication
 
+  has_one :image
+
   validates_presence_of :name, :telephone, :email, :hashed_password, :web_site, :street, :zip_code, :city, :latitude, :longitude
 
   def password
