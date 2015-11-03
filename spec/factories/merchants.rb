@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :merchant do
-    name "a string"
+    name 'A NAME'
+    description 'A DESCRIPTION'
     telephone 'A TELEPHONE'
     email 'AN EMAIL'
     hashed_password 'AN HASHED PASSWORD'

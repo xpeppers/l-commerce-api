@@ -3,6 +3,7 @@ merchant = Merchant.seed(
   {
     id: 1,
     name: 'A test merchant',
+    description: 'a description',
     street: "A street",
     zip_code: "33122",
     city: "Trento (Tn)",

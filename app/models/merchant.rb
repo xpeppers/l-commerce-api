@@ -3,7 +3,7 @@ class Merchant < ActiveRecord::Base
 
   has_one :image
 
-  validates_presence_of :name, :telephone, :email, :hashed_password, :web_site, :street, :zip_code, :city, :latitude, :longitude
+  validates_presence_of :name, :description, :telephone, :email, :hashed_password, :web_site, :street, :zip_code, :city, :latitude, :longitude
 
   def password
     @password ||= Password.new(self.hashed_password) if self.hashed_password.present?
