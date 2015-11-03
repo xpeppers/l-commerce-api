@@ -12,49 +12,61 @@
   %div.panel-body
     %div.row
       %div.col-lg-2.text-right
-        %strong 
+        %strong
+          = :description
+      %div.col-lg-10
+        = @merchant.description
+    %div.row
+      %div.col-lg-2.text-right
+        %strong
+          = :opening_hours
+      %div.col-lg-10
+        = @merchant.opening_hours
+    %div.row
+      %div.col-lg-2.text-right
+        %strong
           = :city
       %div.col-lg-10
         = @merchant.city
     %div.row
       %div.col-lg-2.text-right
-        %strong 
+        %strong
           = :street
       %div.col-lg-10
         = @merchant.street
     %div.row
       %div.col-lg-2.text-right
-        %strong 
+        %strong
           = :zip_code
       %div.col-lg-10
         = @merchant.zip_code
     %div.row
       %div.col-lg-2.text-right
-        %strong 
+        %strong
           = :telephone
       %div.col-lg-10
         = @merchant.telephone
     %div.row
       %div.col-lg-2.text-right
-        %strong 
+        %strong
           = :email
       %div.col-lg-10
         = @merchant.email
     %div.row
       %div.col-lg-2.text-right
-        %strong 
+        %strong
           = :web_site
       %div.col-lg-10
         = @merchant.web_site
     %div.row
       %div.col-lg-2.text-right
-        %strong 
+        %strong
           = :latitude
       %div.col-lg-10
         = @merchant.latitude
     %div.row
       %div.col-lg-2.text-right
-        %strong 
+        %strong
           = :longitude
       %div.col-lg-10
         = @merchant.longitude

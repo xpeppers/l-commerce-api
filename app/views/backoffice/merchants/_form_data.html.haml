@@ -3,6 +3,10 @@
   .div.col-lg-10
     = f.text_area :description, class: 'form-control noresize', required: true, size: '60x12'
 %div.form-group
+  = f.label :opening_hours, class: 'col-lg-2 control-label text-right'
+  .div.col-lg-10
+    = f.text_area :opening_hours, class: 'form-control noresize', size: '60x5'
+%div.form-group
   = f.label :city, class: 'col-lg-2 control-label text-right'
   .div.col-lg-10
     = f.text_field :city, class: 'form-control', required: true
@@ -30,7 +34,3 @@
   = f.label :longitude, class: 'col-lg-2 control-label text-right'
   .div.col-lg-10
     = f.text_field :longitude , class: 'form-control', required: true
-%div.form-group
-  = f.label :opening_hours, class: 'col-lg-2 control-label text-right'
-  .div.col-lg-10
-    = f.text_area :opening_hours, class: 'form-control noresize', size: '60x5'
