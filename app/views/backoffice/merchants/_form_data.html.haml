@@ -7,6 +7,18 @@
   .div.col-lg-10
     = f.text_area :opening_hours, class: 'form-control noresize', size: '60x5'
 %div.form-group
+  = f.label :image, class: 'col-lg-2 control-label text-right'
+  .div.col-lg-10#image
+    %a.btn.btn-primary#add_image_button{'data-toggle': 'modal', 'data-target': '#imgModal', style: toggle_button_for(@merchant.image) }
+      = t('.add', default: t("helpers.links.add"))
+    - if @merchant.image.present?
+      %div.form-group
+        - image = @merchant.image
+        = f.hidden_field 'image_id', id: nil, value: image.id
+        = image_tag image.url, class: 'img-responsive img-thumbnail'
+        %button.remove_image.close{type: 'button', id: image.id, onclick: 'remove_image(this)'}
+          %span{'aria-hidden': 'true'} &times;
+%div.form-group
   = f.label :city, class: 'col-lg-2 control-label text-right'
   .div.col-lg-10
     = f.text_field :city, class: 'form-control', required: true
