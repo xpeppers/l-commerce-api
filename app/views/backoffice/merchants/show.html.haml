@@ -19,6 +19,12 @@
     %div.row
       %div.col-lg-2.text-right
         %strong
+          = :image
+      %div.col-lg-10
+        = image_tag @merchant.image_url, class: 'img-responsive img-thumbnail'
+    %div.row
+      %div.col-lg-2.text-right
+        %strong
           = :opening_hours
       %div.col-lg-10
         = @merchant.opening_hours

@@ -18,4 +18,7 @@ class Merchant < ActiveRecord::Base
     BoughtOffer.joins(:payment).joins(:merchant).where(merchants: {id: id})
   end
 
+  def image_url
+    image.url if image.present?
+  end
 end
