@@ -1,0 +1,15 @@
+- model_class = Path
+= form_for [:backoffice, @path] do |f|
+  .row.form
+    .input-group-lg
+      = f.text_field :title, class: 'form-control', placeholder: :title, required: true
+      = error_span(@path[:title])
+
+  .row.form
+    .input-group-lg
+      .controls
+        = f.text_area :description, class: 'form-control noresize', required: true, size: '60x12'
+      = error_span(@path[:description])
+  .row
+    = f.submit nil,class: 'btn btn-primary'
+    = link_to t('.cancel', default: t("helpers.links.cancel")), backoffice_paths_path, class: 'btn btn-default'
