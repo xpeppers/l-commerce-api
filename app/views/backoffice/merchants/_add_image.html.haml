@@ -1,0 +1,59 @@
+.modal#imgModal
+  .modal-dialog.modal-lg
+    = form_tag backoffice_images_path, multipart: true, class: 'form-horizontal', id: 'fileupload' do
+      .modal-content
+        .modal-header
+          %button.close{type: 'button', 'data-dismiss': 'modal', 'aria-label': 'Close'}
+            %span{'aria-hidden': 'true'} &times;
+          %h4.modal-title#imgModalLabel Carica nuova immagine
+        .modal-body
+          %span.fileinput-button
+            %i.icon-plus.icon-white
+            %span Scegli file ...
+            = file_field_tag 'image[resource]'
+        .modal-footer
+          %button.btn.btn-primary.start#upload_button(type="button")
+            %i.icon-upload.icon-white
+            %span Carica
+
+:javascript
+$(function () {
+  remove_image = function(el) {
+    var element = $(el)[0];
+    var id = element.id;
+
+    $.ajax({
+      url: '/backoffice/images/' + id,
+      type: 'DELETE',
+      success: function(result) {
+        $(el).parent().remove();
+        $('#add_image_button').css('display', 'inline-block');
+      }
+    });
+  };
+
+  $('#fileupload').fileupload({
+    dataType: 'json',
+    add: function (e, data) {
+      var upload_button = $('#upload_button');
+      upload_button.unbind();
+
+      data.context = upload_button.click(function () {
+        data.submit();
+      });
+    },
+    done: function (e, data) {
+      var image_id = data.result.id;
+      var image_url = data.result.url;
+
+      var html_to_append = "<div class=\"form-group\">"
+      + "<input value=\"" + image_id + "\" type=\"hidden\" name=\"merchant[image_id]\">"
+      + "<img class=\"img-responsive img-thumbnail\" src=\"" + image_url + "\">"
+      + "<button class=\"remove_image close\" type=\"button\" id=\"" + image_id + "\" onclick=\"remove_image(this)\"><span aria-hidden=\"true\">×</span></button>"
+      + "</div>";
+
+      $('#image').append(html_to_append);
+      $('#add_image_button').css('display', 'none');
+    }
+  });
+});
