@@ -15,7 +15,9 @@ Rails.application.routes.draw do
       resources :payments, except: [:new, :edit]
     end
 
-    resources :paths, except: [:new, :edit]
+    resources :paths, except: [:new, :edit] do
+      resources :stages, except: [:new, :edit]
+    end
   end
 
   namespace :backoffice do
