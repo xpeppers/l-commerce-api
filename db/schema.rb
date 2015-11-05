@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151104142126) do
+ActiveRecord::Schema.define(version: 20151105105129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,6 +111,20 @@ ActiveRecord::Schema.define(version: 20151104142126) do
 
   add_index "payments", ["order_id"], name: "index_payments_on_order_id", using: :btree
 
+  create_table "stages", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "image_id"
+    t.integer  "path_id"
+    t.integer  "merchant_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "stages", ["image_id"], name: "index_stages_on_image_id", using: :btree
+  add_index "stages", ["merchant_id"], name: "index_stages_on_merchant_id", using: :btree
+  add_index "stages", ["path_id"], name: "index_stages_on_path_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.datetime "created_at",       null: false
@@ -129,4 +143,5 @@ ActiveRecord::Schema.define(version: 20151104142126) do
   add_foreign_key "offers", "merchants"
   add_foreign_key "orders", "users"
   add_foreign_key "payments", "orders"
+  add_foreign_key "stages", "merchants"
 end

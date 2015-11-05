@@ -13,5 +13,25 @@ Path.seed(
     title: 'Cesto degustazione succo di mela e salsa di pomodoro',
     description: 'Lorem ipsum dolor sit amet description Cesto degustazione succo di mela e salsa di pomodoro',
     image: Image.first
+  },
+  {
+    id: 2,
+    title: 'Cesto degustazione succo di mela e salsa di pomodoro',
+    description: 'Lorem ipsum dolor sit amet description Cesto degustazione succo di mela e salsa di pomodoro',
+    image: Image.first
+  },
+
+)
+
+
+Stage.seed(
+  :id,
+  {
+    id: 1,
+    title: 'Cesto degustazione succo di mela e salsa di pomodoro',
+    description: 'Lorem ipsum dolor sit amet description Cesto degustazione succo di mela e salsa di pomodoro',
+    image: Image.first,
+    merchant: Merchant.first,
+    path: Path.first
   }
 )
