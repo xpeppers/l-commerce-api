@@ -13,7 +13,14 @@ Path.seed(
     title: 'Cesto degustazione succo di mela e salsa di pomodoro',
     description: 'Lorem ipsum dolor sit amet description Cesto degustazione succo di mela e salsa di pomodoro',
     image: Image.first
-  }
+  },
+  {
+    id: 2,
+    title: 'Cesto degustazione succo di mela e salsa di pomodoro',
+    description: 'Lorem ipsum dolor sit amet description Cesto degustazione succo di mela e salsa di pomodoro',
+    image: Image.first
+  },
+
 )
 
 

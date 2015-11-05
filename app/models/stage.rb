@@ -5,4 +5,7 @@ class Stage < ActiveRecord::Base
 
   validates_presence_of :title, :description, :image, :merchant, :path
 
+  def image_url
+    image.url if image.present?
+  end
 end
