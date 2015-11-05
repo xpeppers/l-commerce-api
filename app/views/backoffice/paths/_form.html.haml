@@ -10,6 +10,21 @@
       .controls
         = f.text_area :description, class: 'form-control noresize', required: true, size: '60x12'
       = error_span(@path[:description])
+
+  .row.form
+    = f.label :image, class: 'col-lg-2 control-label text-right'
+    .div.col-lg-10#image
+      %a.btn.btn-primary#add_image_button{'data-toggle': 'modal', 'data-target': '#imgModal', style: toggle_button_for(@path.image) }
+        = t('.add', default: t("helpers.links.add"))
+      - if @path.image.present?
+        %div.form-group
+          - image = @path.image
+          = f.hidden_field 'image_id', id: nil, value: image.id
+          = image_tag image.url, class: 'img-responsive img-thumbnail'
+          %button.remove_image.close{type: 'button', id: image.id, onclick: 'remove_image(this)'}
+            %span{'aria-hidden': 'true'} &times;
   .row
     = f.submit nil,class: 'btn btn-primary'
     = link_to t('.cancel', default: t("helpers.links.cancel")), backoffice_paths_path, class: 'btn btn-default'
+
+= render partial: 'add_image'

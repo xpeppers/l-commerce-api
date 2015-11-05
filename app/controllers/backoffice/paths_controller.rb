@@ -40,7 +40,7 @@ module Backoffice
     end
 
     def path_params
-      params.require(:path).permit(:title, :description)
+      params.require(:path).permit(:title, :description, :image_id)
     end
   end
 end
