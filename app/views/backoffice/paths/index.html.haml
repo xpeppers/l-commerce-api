@@ -4,9 +4,6 @@
     = t '.title', default: model_class.model_name.human.pluralize.titleize
     = link_to t('.new', default: t("helpers.links.new")), new_backoffice_path_path, class: 'btn btn-primary'
 %table.table.table-bordered.table-striped
-  %thead
-    %tr
-      %td= model_class.human_attribute_name(:title)
   %tbody
     - @paths.each do |path|
       %tr
@@ -18,4 +15,3 @@
             = link_to t('.preview', default: t("helpers.links.preview")) , backoffice_path_path(path)
             |
             = link_to t('.destroy', default: t("helpers.links.destroy")), backoffice_path_path(path), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }
-        %td= path.title
