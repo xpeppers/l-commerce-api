@@ -22,12 +22,12 @@ describe Api::PathsController, type: :controller do
           {
             "id": #{@first_path.id},
             "title": "MyString",
-            "image_url": "http://127.0.0.1:3000/uploads/image/resource/1/carne1.jpg"
+            "image_url": "http://127.0.0.1:3000/uploads/image/resource/#{image.id}/carne1.jpg"
           },
           {
             "id": #{@second_path.id},
             "title": "MyString",
-            "image_url": "http://127.0.0.1:3000/uploads/image/resource/1/carne1.jpg"
+            "image_url": "http://127.0.0.1:3000/uploads/image/resource/#{image.id}/carne1.jpg"
           }
         ]
       )
@@ -51,7 +51,7 @@ describe Api::PathsController, type: :controller do
           "id": #{path.id},
           "title": "#{path.title}",
           "description": "#{path.description}",
-          "image_url": "http://127.0.0.1:3000/uploads/image/resource/1/carne1.jpg",
+          "image_url": "http://127.0.0.1:3000/uploads/image/resource/#{image.id}/carne1.jpg",
           "stages": []
         }
       )
