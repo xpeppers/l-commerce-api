@@ -24,7 +24,9 @@ Rails.application.routes.draw do
     get '/', to: 'offers#index'
     resources :offers
     resources :merchants
-    resources :paths
+    resources :paths do
+      resources :stages
+    end
 
     resources :images, only: [:create, :destroy]
   end

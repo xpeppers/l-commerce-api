@@ -6,8 +6,8 @@ default: &default
 database: &database
   adapter: postgresql
   database: linking_commerce
-  username: linking_commerce
-  password: linking_commerce
+  username: postgres
+  password: postgres
   host: 127.0.0.1
   encoding: utf8
   port: 5432
