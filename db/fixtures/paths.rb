@@ -33,5 +33,37 @@ Stage.seed(
     image: Image.first,
     merchant: Merchant.first,
     path: Path.first
+  },
+  {
+    id: 2,
+    title: 'Cesto degustazione succo di mela e salsa di pomodoro',
+    description: 'Lorem ipsum dolor sit amet description Cesto degustazione succo di mela e salsa di pomodoro',
+    image: Image.first,
+    merchant: Merchant.first,
+    path: Path.first
+  },
+  {
+    id: 3,
+    title: 'Cesto degustazione succo di mela e salsa di pomodoro',
+    description: 'Lorem ipsum dolor sit amet description Cesto degustazione succo di mela e salsa di pomodoro',
+    image: Image.first,
+    merchant: Merchant.first,
+    path: Path.first
+  },
+  {
+    id: 4,
+    title: 'Cesto degustazione succo di mela e salsa di pomodoro',
+    description: 'Lorem ipsum dolor sit amet description Cesto degustazione succo di mela e salsa di pomodoro',
+    image: Image.first,
+    merchant: Merchant.first,
+    path: Path.first
+  },
+  {
+    id: 5,
+    title: 'Cesto degustazione succo di mela e salsa di pomodoro',
+    description: 'Lorem ipsum dolor sit amet description Cesto degustazione succo di mela e salsa di pomodoro',
+    image: Image.first,
+    merchant: Merchant.first,
+    path: Path.first
   }
 )

@@ -3,6 +3,7 @@
   %h1
     = @path.title
     = link_to t('.edit', default: t("helpers.links.edit")), edit_backoffice_path_path(@path), class: 'btn btn-primary'
+    = link_to t('.destroy', default: t("helpers.links.destroy")), backoffice_path_path(@path), method: "delete", data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-danger'
 
 .container
   .row
@@ -13,5 +14,14 @@
   .row
     .col-lg-10
       = show_image_related_to(@path)
-
-= link_to t('.destroy', default: t("helpers.links.destroy")), backoffice_path_path(@path), method: "delete", data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-danger'
+  .row
+    .col-lg-10
+      %h2 Tappe
+      - @path.stages.each do |stage|
+        .row.top10
+          .col-lg-2
+            = show_circle_image_related_to(stage)
+          .col-lg-10
+            %h2
+              %small
+                = stage.title
