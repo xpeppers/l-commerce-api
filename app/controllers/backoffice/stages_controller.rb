@@ -26,7 +26,7 @@ module Backoffice
 
     def destroy
       @stage.destroy
-      redirect_to backoffice_paths_url, notice: 'Stage was successfully destroyed.'
+      redirect_to backoffice_path_url(params[:path_id]), notice: 'Stage was successfully destroyed.'
     end
 
     private
