@@ -1,0 +1,30 @@
+- model_class = Stage
+= form_for [:backoffice, @stage.path, @stage] do |f|
+  .row.form
+    .input-group-lg
+      = f.text_field :title, class: 'form-control', placeholder: :title, required: true
+      = error_span(@stage[:title])
+
+  .row.form
+    .input-group-lg
+      .controls
+        = f.text_area :description, class: 'form-control noresize', required: true, size: '60x12'
+      = error_span(@stage[:description])
+
+  .row.form
+    = f.label :image, class: 'col-lg-2 control-label text-right'
+    .div.col-lg-10#image
+      %a.btn.btn-primary#add_image_button{'data-toggle': 'modal', 'data-target': '#imgModal', style: toggle_button_for(@stage.image) }
+        = t('.add', default: t("helpers.links.add"))
+      - if @stage.image.present?
+        %div.form-group
+          - image = @stage.image
+          = f.hidden_field 'image_id', id: nil, value: image.id
+          = image_tag image.url, class: 'img-responsive img-thumbnail'
+          %button.remove_image.close{type: 'button', id: image.id, onclick: 'remove_image(this)'}
+            %span{'aria-hidden': 'true'} &times;
+  .row
+    = f.submit nil,class: 'btn btn-primary'
+    = link_to t('.cancel', default: t("helpers.links.cancel")), backoffice_path_path(@stage.path), class: 'btn btn-default'
+
+= render partial: 'add_image'
