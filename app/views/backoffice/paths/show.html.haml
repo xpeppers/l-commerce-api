@@ -14,7 +14,9 @@
       = show_image_related_to(@path)
   .row
     .col-lg-10
-      %h2 Tappe
+      %h2
+        = :stages
+        = link_to t('.edit', default: t("helpers.links.new")), new_backoffice_path_stage_path(@path), class: 'btn btn-primary'
       - @path.stages.each do |stage|
         .row.top10
           .col-lg-2

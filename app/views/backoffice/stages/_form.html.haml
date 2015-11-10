@@ -1,5 +1,6 @@
 - model_class = Stage
 = form_for [:backoffice, @stage.path, @stage] do |f|
+  = f.hidden_field 'path_id', value: @stage.path.id
   .row.form
     .input-group-lg
       = f.text_field :title, class: 'form-control', placeholder: :title, required: true
@@ -10,6 +11,11 @@
       .controls
         = f.text_area :description, class: 'form-control noresize', required: true, size: '60x12'
       = error_span(@stage[:description])
+
+  .row.form
+    = f.label :merchant, class: 'lead'
+    .controls
+      = f.collection_select(:merchant_id, Merchant.all, :id, :name)
 
   .row.form
     = f.label :image, class: 'col-lg-2 control-label text-right'

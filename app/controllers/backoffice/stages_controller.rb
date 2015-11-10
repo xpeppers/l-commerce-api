@@ -8,7 +8,7 @@ module Backoffice
 
     def create
       @stage = Stage.new(stage_params)
-
+      puts stage_params
       if @stage.save
         redirect_to [:backoffice, @stage.path, @stage], notice: 'Stage was successfully created.'
       else
