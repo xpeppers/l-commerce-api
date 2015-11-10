@@ -2,6 +2,15 @@
 
 ## project setup
 
+## setup db for Mac Users
+
+```
+$ createuser --pwprompt linking_commerce
+$ createdb -Olinking_commerce -Eutf8 linking_commerce
+```
+
+# setup the application
+
 ```
 $ bundle
 $ rake db:migrate
