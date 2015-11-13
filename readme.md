@@ -5,41 +5,41 @@
 ## setup db for Mac Users
 
 ```
-$ createuser --pwprompt linking_commerce
-$ createdb -Olinking_commerce -Eutf8 linking_commerce
+createuser --pwprompt linking_commerce (password: linking_commerce)
+createdb -Olinking_commerce -Eutf8 linking_commerce
 ```
 
 # setup the application
 
 ```
-$ bundle
-$ rake db:migrate
+bundle
+rake db:migrate
 ```
 
 ## run tests
 
 ```
-$ rspec
+rspec
 ```
 
 ## run server
 
 ```
-$ rails s
+rails s
 ```
 
 ## seed initial data
 
 ```
-$ rake db:seed_fu
+rake db:seed_fu
 ```
 
 ## deploy development environment with vagrant
 
 ```
-$ vagrant up dev
-$ cap dev deploy
-$ curl http://192.168.33.100/api
+vagrant up dev
+cap dev deploy
+curl http://192.168.33.100/api
 ```
 
 ## deploy test environment with heroku
@@ -49,40 +49,40 @@ Setup
 Heroku account: whereyoufindyouraccount
 
 ```
-$ heroku login
-$ heroku git:remote -a linkingcommerce
+heroku login
+heroku git:remote -a linkingcommerce
 ```
 
 Deploy
 
 ```
-$ git push heroku master
+git push heroku master
 ```
 
 Migrate or seed database
 
 ```
-$ heroku run rake db:migrate
-$ heroku run rake db:seed_fu
+heroku run rake db:migrate
+heroku run rake db:seed_fu
 ```
 
 Access to processes and logs
 
 ```
-$ heroku ps
-$ heroku logs
+heroku ps
+heroku logs
 ```
 
 Open the application in a browser
 
 ```
-$ heroku open
+heroku open
 ```
 
 Test API
 
 ```
-$ curl https//linkingcommerce.herokuapp.com/api
+curl https//linkingcommerce.herokuapp.com/api
 ```
 
 ## deploy production environment with vagrant
@@ -90,11 +90,11 @@ $ curl https//linkingcommerce.herokuapp.com/api
 requirements: `aws-cli` (pip install awscli)
 
 ```
-$ vagrant plugin install vagrant_aws
+vagrant plugin install vagrant_aws
 ```
 
 ```
-$ aws configure
+aws configure
 | AWS Access Key ID: yourawskey
 | AWS Secret Access Key: yourawssecret
 | Default regione name: eu-west-1
@@ -105,8 +105,8 @@ $ aws configure
 perform deploy
 
 ```
-$ cap aws deploy
-$ curl http://52.19.150.165/api
+cap aws deploy
+curl http://52.19.150.165/api
 ```
 
 `52.19.150.165` is the elastic IP automatically assigned by ec2, it
@@ -117,18 +117,18 @@ vagrant can be use to create the ec2 instance. To know the status of
 the machine, run:
 
 ```
-$ vagrant status aws
+vagrant status aws
 ```
 
 to run the provision on that machine:
 
 ```
-$ vagrant provision aws
+vagrant provision aws
 ```
 
 to re-create the instance:
 
 ```
-$ vagrant destroy aws
-$ vagrant up aws
+vagrant destroy aws
+vagrant up aws
 ```
