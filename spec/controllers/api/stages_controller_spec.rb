@@ -51,8 +51,17 @@ describe Api::StagesController, type: :controller do
         {
           "id": #{stage.id},
           "title": "#{stage.title}",
+          "address": {
+            "city": "A CITY",
+            "latitude": 46.0667,
+            "longitude": 11.1167,
+            "street": "A STREET",
+            "zip_code": "A ZIP CODE"
+          },
           "description": "#{stage.description}",
-          "image_url": "http://127.0.0.1:3000/uploads/image/resource/#{image.id}/carne1.jpg"
+          "image_url": "http://127.0.0.1:3000/uploads/image/resource/#{image.id}/carne1.jpg",
+          "merchant": "A NAME",
+          "merchant_image_url": null
         }
       )
 
