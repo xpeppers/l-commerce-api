@@ -12,11 +12,11 @@ class OfferSerializer < ActiveModel::Serializer
 
   def address
     {
-      street: object.street,
-      zip_code: object.zip_code,
-      city: object.city,
-      latitude: object.latitude,
-      longitude: object.longitude
+      street: object.merchant.street,
+      zip_code: object.merchant.zip_code,
+      city: object.merchant.city,
+      latitude: object.merchant.latitude,
+      longitude: object.merchant.longitude
     }
   end
 
