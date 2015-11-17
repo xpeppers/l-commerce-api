@@ -28,3 +28,5 @@ nodes/
 clients/
 env/
 public/uploads
+
+config/.DS_Store
