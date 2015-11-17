@@ -61,7 +61,11 @@ describe Api::StagesController, type: :controller do
           "description": "#{stage.description}",
           "image_url": "http://127.0.0.1:3000/uploads/image/resource/#{image.id}/carne1.jpg",
           "merchant": "A NAME",
-          "merchant_image_url": null
+          "merchant_image_url": null,
+          "merchant_description": "A DESCRIPTION",
+          "telephone" : "A TELEPHONE",
+          "email" : "AN EMAIL",
+          "web_site": "A WEB SITE"
         }
       )
 
