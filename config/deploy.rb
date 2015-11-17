@@ -25,7 +25,6 @@ namespace :deploy do
     invoke 'unicorn:start'
   end
 
-  before :publishing, 'db:seed_fu'
   after :publishing, :unicorn_restart
   after :finishing, 'deploy:cleanup'
 end
