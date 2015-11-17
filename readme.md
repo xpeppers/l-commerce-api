@@ -105,11 +105,11 @@ aws configure
 perform deploy
 
 ```
-cap aws deploy
-curl http://52.19.150.165/api
+cap [aws | aws-vino] deploy
+curl [http://52.19.150.165/api | http://54.77.111.102/api]
 ```
 
-`52.19.150.165` is the elastic IP automatically assigned by ec2, it
+`xx.yy.zzz.www` is the elastic IP automatically assigned by ec2, it
 will change every time we re-create the instance. To know the new
 assigned IP, check the file: `.vagrant/machines/aws/aws/elastic_ip`.
 
@@ -117,18 +117,18 @@ vagrant can be use to create the ec2 instance. To know the status of
 the machine, run:
 
 ```
-vagrant status aws
+vagrant status [aws | aws-vino]
 ```
 
 to run the provision on that machine:
 
 ```
-vagrant provision aws
+vagrant provision [aws | aws-vino]
 ```
 
 to re-create the instance:
 
 ```
-vagrant destroy aws
-vagrant up aws
+vagrant destroy [aws | aws-vino]
+vagrant up [aws | aws-vino]
 ```
