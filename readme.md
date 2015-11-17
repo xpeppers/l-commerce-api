@@ -90,7 +90,7 @@ curl https//linkingcommerce.herokuapp.com/api
 requirements: `aws-cli` (pip install awscli)
 
 ```
-vagrant plugin install vagrant_aws
+vagrant plugin install vagrant-aws
 ```
 
 ```
