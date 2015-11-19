@@ -8,7 +8,7 @@ set :format, :pretty
 set :log_level, :debug
 set :pty, false # sets a non-login, non-interactive shell
 
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/uploads}
 
 set :keep_releases, 5
 set :bundle_without, "development test deploy"
