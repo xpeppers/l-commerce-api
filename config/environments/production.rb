@@ -24,7 +24,7 @@ Rails.application.configure do
 
   config.active_record.dump_schema_after_migration = false
 
-  config.asset_host = 'http://52.19.150.165'
+  config.asset_host = ENV['ASSET_HOST'] || 'http://52.19.150.165'
 end
 
 BCRYPT_SALT = '$2a$10$sz5e0w5NyCYaLaDLYhAEp.'

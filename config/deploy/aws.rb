@@ -14,6 +14,10 @@ role :db, [ "deploy@#{server_addr}" ]
 
 server "#{server_addr}", user: 'deploy', roles: %w(db app web), primary: true
 
+set :default_env, {
+  'ASSET_HOST' => "http://#{server_addr}"
+}
+
 set :ssh_options, {
   forward_agent: false,
   keys: %w(config/deploy/ssh/keys/id_rsa),
