@@ -1,5 +1,7 @@
 class Offer < ActiveRecord::Base
 
+  before_destroy :bought?
+
   has_one :image_gallery, dependent: :destroy
   belongs_to :merchant
   has_many :images, through: :image_gallery
@@ -10,6 +12,12 @@ class Offer < ActiveRecord::Base
 
   def image_url
     images.first.url if images.first.present?
+  end
+
+  private
+
+  def bought?
+    BoughtOffer.where(offer_id: id).empty?
   end
 
 end

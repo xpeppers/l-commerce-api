@@ -34,5 +34,18 @@ describe Offer, type: :model do
       expect(ImageGallery).to have(0).image_galleries
       expect(Image).to have(0).images
     end
+
+    context 'with a bought offer' do
+      let(:user) { create(:user) }
+      let(:offer) { create(:offer, image_gallery: image_gallery) }
+
+      it 'does not delete the offer' do
+        create(:order, user: user, offers: [offer])
+
+        expect{
+          offer.destroy
+        }.to_not change(Offer, :count)
+      end
+    end
   end
 end
