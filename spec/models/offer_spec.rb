@@ -21,4 +21,18 @@ describe Offer, type: :model do
       expect(offer.image_url).to eq("http://127.0.0.1:3000/uploads/image/resource/#{image.id}/carne1.jpg")
     end
   end
+
+  describe '#destroy' do
+    let(:image) { create(:image, resource: File.open("#{Rails.root}/spec/fixtures/images/carne1.jpg")) }
+    let(:image_gallery) { create(:image_gallery, images: [image]) }
+
+    it 'destroys associated image gallery' do
+      offer = create(:offer, image_gallery: image_gallery)
+
+      offer.destroy
+
+      expect(ImageGallery).to have(0).image_galleries
+      expect(Image).to have(0).images
+    end
+  end
 end

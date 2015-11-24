@@ -1,6 +1,6 @@
 class Offer < ActiveRecord::Base
 
-  has_one :image_gallery
+  has_one :image_gallery, dependent: :destroy
   belongs_to :merchant
   has_many :images, through: :image_gallery
 
