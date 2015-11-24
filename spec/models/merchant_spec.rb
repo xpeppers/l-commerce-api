@@ -8,7 +8,6 @@ describe Merchant, type: :model do
     it { should validate_presence_of(:telephone) }
     it { should validate_presence_of(:email) }
     it { should validate_presence_of(:hashed_password) }
-    it { should validate_presence_of(:web_site) }
     it { should validate_presence_of(:street) }
     it { should validate_presence_of(:zip_code) }
     it { should validate_presence_of(:city) }
