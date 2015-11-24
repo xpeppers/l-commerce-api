@@ -112,7 +112,9 @@ describe Api::BoughtOffersController, type: :controller do
             },
             "telephone": "#{bought_offer.telephone}",
             "email": "#{bought_offer.email}",
-            "web_site": "#{bought_offer.web_site}"
+            "web_site": "#{bought_offer.web_site}",
+            "facebook": "#{bought_offer.facebook}",
+            "twitter": "#{bought_offer.twitter}"
           })
 
           expect(response.body).to be_json_eql(expected_json)

@@ -18,7 +18,7 @@ class BoughtOffer < ActiveRecord::Base
            to: :offer
 
   delegate :telephone, :email, :web_site, :street, :zip_code,
-           :city, :latitude, :longitude,
+           :city, :latitude, :longitude, :facebook, :twitter,
            to: :merchant
 
   def purchase_date

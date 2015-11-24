@@ -6,6 +6,8 @@ FactoryGirl.define do
     email 'AN EMAIL'
     hashed_password 'AN HASHED PASSWORD'
     web_site 'A WEB SITE'
+    facebook 'A FACEBOOK PAGE URL'
+    twitter 'A TWITTER PAGE URL'
     street 'A STREET'
     zip_code 'A ZIP CODE'
     city 'A CITY'

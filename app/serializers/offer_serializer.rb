@@ -1,6 +1,6 @@
 class OfferSerializer < ActiveModel::Serializer
   attributes :id, :title, :description, :original_price, :price, :image_gallery,
-             :merchant, :address, :telephone, :email, :web_site
+             :merchant, :address, :telephone, :email, :web_site, :facebook, :twitter
 
   def merchant
     object.merchant.name

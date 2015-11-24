@@ -1,6 +1,6 @@
 class StageSerializer < ActiveModel::Serializer
   attributes :id, :title, :description, :image_url, :merchant, :merchant_description, :merchant_image_url, :address,
-             :telephone , :email , :web_site
+             :telephone , :email , :web_site, :facebook, :twitter
 
   def merchant
     object.merchant.name
@@ -26,6 +26,14 @@ class StageSerializer < ActiveModel::Serializer
     object.merchant.web_site
   end
 
+  def facebook
+    object.merchant.facebook
+  end
+
+  def twitter
+    object.merchant.twitter
+  end
+
   def address
     {
       street: object.merchant.street,
@@ -36,4 +44,3 @@ class StageSerializer < ActiveModel::Serializer
     }
   end
 end
-

@@ -6,7 +6,7 @@ class Offer < ActiveRecord::Base
 
   validates_presence_of :merchant, :title, :description, :price
 
-  delegate :telephone, :email, :web_site, to: :merchant
+  delegate :telephone, :email, :web_site, :facebook, :twitter, to: :merchant
 
   def image_url
     images.first.url if images.first.present?

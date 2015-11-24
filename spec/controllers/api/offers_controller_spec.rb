@@ -68,7 +68,9 @@ describe Api::OffersController, type: :controller do
           },
           "telephone": "#{offer.merchant.telephone}",
           "email": "#{offer.merchant.email}",
-          "web_site": "#{offer.merchant.web_site}"
+          "web_site": "#{offer.merchant.web_site}",
+          "facebook": "#{offer.merchant.facebook}",
+          "twitter": "#{offer.merchant.twitter}"
         }
       )
 

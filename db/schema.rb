@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105105129) do
+ActiveRecord::Schema.define(version: 20151124092610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(version: 20151105105129) do
     t.text     "description"
     t.text     "opening_hours"
     t.integer  "image_id"
+    t.string   "facebook"
+    t.string   "twitter"
   end
 
   add_index "merchants", ["image_id"], name: "index_merchants_on_image_id", using: :btree

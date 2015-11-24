@@ -65,7 +65,9 @@ describe Api::StagesController, type: :controller do
           "merchant_description": "A DESCRIPTION",
           "telephone" : "A TELEPHONE",
           "email" : "AN EMAIL",
-          "web_site": "A WEB SITE"
+          "web_site": "A WEB SITE",
+          "facebook": "A FACEBOOK PAGE URL",
+          "twitter": "A TWITTER PAGE URL"
         }
       )
 

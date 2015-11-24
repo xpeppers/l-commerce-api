@@ -34,13 +34,14 @@ module Backoffice
     end
 
     private
-      def set_merchant
-        @merchant = Merchant.find(params[:id])
-      end
 
-      def merchant_params
-        params.require(:merchant).permit(:name, :telephone, :email, :password, :web_site, :street, :zip_code, :city, :latitude, :longitude, :opening_hours, :description, :image_id)
-      end
+    def set_merchant
+      @merchant = Merchant.find(params[:id])
+    end
+
+    def merchant_params
+      params.require(:merchant).permit!
+    end
 
   end
 end

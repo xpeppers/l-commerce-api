@@ -39,6 +39,14 @@
   .div.col-lg-10
     = f.text_field :web_site, class: 'form-control'
 %div.form-group
+  = f.label :facebook, class: 'col-lg-2 control-label text-right'
+  .div.col-lg-10
+    = f.text_field :facebook, class: 'form-control'
+%div.form-group
+  = f.label :twitter, class: 'col-lg-2 control-label text-right'
+  .div.col-lg-10
+    = f.text_field :twitter, class: 'form-control'
+%div.form-group
   = f.label :telephone, class: 'col-lg-2 control-label text-right'
   .div.col-lg-10
     = f.text_field :telephone, class: 'form-control', required: true

@@ -1,7 +1,8 @@
 class BoughtOfferSerializer < ActiveModel::Serializer
   attributes :id, :title, :description, :status, :merchant,
              :address, :telephone, :email, :web_site, :price,
-             :purchase_date, :user_fullname, :image_gallery
+             :purchase_date, :user_fullname, :image_gallery,
+             :facebook, :twitter
 
   has_one :coupon
 
