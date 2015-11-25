@@ -36,7 +36,7 @@ module Backoffice
     end
 
     def stage_params
-      params.require(:stage).permit(:title, :description, :image_id, :merchant_id, :path_id)
+      params.require(:stage).permit(:title, :description, :image_id, :merchant_id, :path_id, :offer_id)
     end
   end
 end

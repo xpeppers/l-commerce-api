@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124092610) do
+ActiveRecord::Schema.define(version: 20151125102948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,10 +121,12 @@ ActiveRecord::Schema.define(version: 20151124092610) do
     t.integer  "merchant_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "offer_id"
   end
 
   add_index "stages", ["image_id"], name: "index_stages_on_image_id", using: :btree
   add_index "stages", ["merchant_id"], name: "index_stages_on_merchant_id", using: :btree
+  add_index "stages", ["offer_id"], name: "index_stages_on_offer_id", using: :btree
   add_index "stages", ["path_id"], name: "index_stages_on_path_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -146,4 +148,5 @@ ActiveRecord::Schema.define(version: 20151124092610) do
   add_foreign_key "orders", "users"
   add_foreign_key "payments", "orders"
   add_foreign_key "stages", "merchants"
+  add_foreign_key "stages", "offers"
 end

@@ -6,6 +6,7 @@ describe Stage, type: :model do
     it { should belong_to(:image) }
     it { should belong_to(:merchant) }
     it { should belong_to(:path) }
+    it { should belong_to(:offer) }
   end
 
   context 'validation' do
