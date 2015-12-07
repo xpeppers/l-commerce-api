@@ -37,11 +37,8 @@ module Backoffice
     end
 
     def destroy
-      if @offer.destroy
-        redirect_to backoffice_offers_url, notice: 'Offer was successfully destroyed.'
-      else
-        redirect_to [:backoffice, @offer], alert: "Can't delete offer since it is attached to a stage."
-      end
+      @offer.destroy
+      redirect_to backoffice_offers_url, notice: 'Offer was successfully destroyed.'
     end
 
     private
