@@ -1,6 +1,6 @@
 class Offer < ActiveRecord::Base
 
-  before_destroy :bought?
+  before_destroy :bought?, :in_stage?
 
   has_one :image_gallery, dependent: :destroy
   belongs_to :merchant
@@ -18,6 +18,10 @@ class Offer < ActiveRecord::Base
 
   def bought?
     BoughtOffer.where(offer_id: id).empty?
+  end
+
+  def in_stage?
+    Stage.where(offer_id: id).empty?
   end
 
 end
