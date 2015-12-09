@@ -1,6 +1,8 @@
 class Merchant < ActiveRecord::Base
   include Authentication
 
+  before_destroy :has_stages?, :has_offers?
+
   belongs_to :image
 
   validates_presence_of :name, :description, :telephone, :email, :hashed_password, :street, :zip_code, :city, :latitude, :longitude
@@ -21,4 +23,13 @@ class Merchant < ActiveRecord::Base
   def image_url
     image.url if image.present?
   end
+
+  def has_stages?
+    Stage.where(merchant_id: id).empty?
+  end
+
+  def has_offers?
+    Offer.where(merchant_id: id).empty?
+  end
+
 end

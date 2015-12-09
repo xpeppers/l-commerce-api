@@ -1,9 +1,10 @@
 FactoryGirl.define do
   factory :stage do
     title "MyString"
-description "MyText"
-image nil
-merchant nil
+    description "MyText"
+    image
+    merchant nil
+    path
   end
 
 end

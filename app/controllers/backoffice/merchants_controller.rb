@@ -29,8 +29,11 @@ module Backoffice
     end
 
     def destroy
-      @merchant.destroy
-      redirect_to backoffice_merchants_url, notice: 'Merchant was successfully destroyed.'
+      if @merchant.destroy
+        redirect_to backoffice_merchants_url, notice: 'Merchant was successfully destroyed.'
+      else
+        redirect_to backoffice_merchants_url, alert: 'Impossible to delete merchant because it has offers or stages.'
+      end
     end
 
     private
