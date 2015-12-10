@@ -1,4 +1,5 @@
 class Offer < ActiveRecord::Base
+  default_scope { where(active: true) }
 
   before_destroy :bought?
 

@@ -37,8 +37,8 @@ module Backoffice
     end
 
     def destroy
-      @offer.destroy
-      redirect_to backoffice_offers_url, notice: 'Offer was successfully destroyed.'
+      @offer.update(active: false)
+      redirect_to backoffice_offers_url, notice: 'Offer was successfully delete.'
     end
 
     private
