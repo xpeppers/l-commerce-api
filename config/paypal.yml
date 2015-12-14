@@ -1,0 +1,15 @@
+test: &default
+  client_id:
+  client_secret:
+  mode:
+
+development:
+  <<: *default
+
+staging:
+  <<: *default
+
+production:
+  client_id:
+  client_secret:
+  mode:
