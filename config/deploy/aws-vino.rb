@@ -32,6 +32,7 @@ namespace :deploy do
   task :config_reseller do
     on roles(:app) do
       execute :cp, "#{release_path}/config/facebook-vino.yml #{release_path}/config/facebook.yml"
+      execute :cp, "#{release_path}/config/paypal-vino.yml #{release_path}/config/paypal.yml"
     end
   end
 end
