@@ -26,3 +26,14 @@ set :ssh_options, {
 }
 
 set :keep_releases, 5
+
+namespace :deploy do
+
+  task :config_reseller do
+    on roles(:app) do
+      execute :cp, "#{release_path}/config/facebook-vino.yml #{release_path}/config/facebook.yml"
+    end
+  end
+end
+
+after 'deploy:updating', 'deploy:config_reseller'
