@@ -33,6 +33,7 @@ namespace :deploy do
     on roles(:app) do
       execute :cp, "#{release_path}/config/facebook-vino.yml #{release_path}/config/facebook.yml"
       execute :cp, "#{release_path}/config/paypal-vino.yml #{release_path}/config/paypal.yml"
+      execute :cp, "#{release_path}/config/linkingcommerce-vino.yml #{release_path}/config/linkingcommerce.yml"
     end
   end
 end
