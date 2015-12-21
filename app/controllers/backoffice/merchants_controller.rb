@@ -1,5 +1,5 @@
 module Backoffice
-  class MerchantsController < ApplicationController
+  class MerchantsController < AuthenticatedController
     before_action :set_merchant, only: [:show, :edit, :update, :destroy]
 
     def index
