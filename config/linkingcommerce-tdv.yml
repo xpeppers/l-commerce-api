@@ -2,5 +2,5 @@ backoffice:
   username: 'yourusername'
   password: 'yourusername1234'
 
-  title: 'Linking Commerce - Dev'
-  path_active: true
+  title: 'TDV Pass - Linking Commerce'
+  path_active: false
