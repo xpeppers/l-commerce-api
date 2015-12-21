@@ -21,7 +21,9 @@ describe Api::OffersController, type: :controller do
             "image_url": null,
             "original_price": null,
             "price": "9.99",
-            "title": "MyString"
+            "title": "MyString",
+            "latitude": 46.0667,
+            "longitude": 11.1167
           },
           {
             "id": #{@second_offer.id},
@@ -29,7 +31,9 @@ describe Api::OffersController, type: :controller do
             "image_url": null,
             "original_price": "10.99",
             "price": "9.99",
-            "title": "MyString"
+            "title": "MyString",
+            "latitude": 46.0667,
+            "longitude": 11.1167
           }
         ]
       )
