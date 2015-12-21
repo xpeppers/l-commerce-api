@@ -33,7 +33,9 @@ describe Api::OrdersController, type: :controller do
               "image_url": null,
               "original_price": null,
               "price": "9.99",
-              "title": "MyString"
+              "title": "MyString",
+              "latitude": 46.0667,
+              "longitude": 11.1167
             }
           ],
           "status": "pending",
@@ -63,7 +65,9 @@ describe Api::OrdersController, type: :controller do
                 "image_url": null,
                 "original_price": null,
                 "price": "9.99",
-                "title": "MyString"
+                "title": "MyString",
+                "latitude": 46.0667,
+                "longitude": 11.1167
               }
             ],
             "status": "pending",
@@ -93,7 +97,9 @@ describe Api::OrdersController, type: :controller do
                 "image_url": null,
                 "original_price": null,
                 "price": "9.99",
-                "title": "MyString"
+                "title": "MyString",
+                "latitude": 46.0667,
+                "longitude": 11.1167
               }
             ],
             "status": "captured",
