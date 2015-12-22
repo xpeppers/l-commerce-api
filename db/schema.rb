@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151210161403) do
+ActiveRecord::Schema.define(version: 20151221113715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,13 @@ ActiveRecord::Schema.define(version: 20151210161403) do
   end
 
   add_index "payments", ["order_id"], name: "index_payments_on_order_id", using: :btree
+
+  create_table "resellers", force: :cascade do |t|
+    t.text     "how_it_works"
+    t.text     "support"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "stages", force: :cascade do |t|
     t.string   "title"

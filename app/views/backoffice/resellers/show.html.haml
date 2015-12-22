@@ -1,0 +1,14 @@
+- model_class = Reseller
+.page-header
+  %h1
+    Reseller
+    = link_to t('.edit', default: t("helpers.links.edit")), edit_backoffice_reseller_path(@reseller), class: 'btn btn-primary'
+
+%div.container
+  %div.row
+    %h4 How it works:
+    %p
+      = @reseller.how_it_works
+    %h4 Support:
+    %p
+      = @reseller.support

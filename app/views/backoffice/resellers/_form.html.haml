@@ -1,0 +1,19 @@
+- model_class = Reseller
+= form_for [:backoffice, @reseller] do |f|
+
+  .row.form
+    = f.label :how_it_works
+    .input-group-lg
+      .controls
+        = f.text_area :how_it_works, class: 'form-control noresize', required: true, size: '60x12'
+      = error_span(@reseller[:how_it_works])
+
+  .row.form
+    = f.label :support
+    .input-group-lg
+      .controls
+        = f.text_area :support, class: 'form-control noresize', required: true, size: '60x12'
+      = error_span(@reseller[:support])
+
+  .row
+    = f.submit nil, class: 'btn btn-primary'

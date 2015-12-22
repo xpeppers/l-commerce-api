@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :payments, except: [:new, :edit]
     end
 
+    resource :reseller, only: [:show]
     resources :paths, except: [:new, :edit] do
       resources :stages, except: [:new, :edit]
     end
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
       resources :stages
     end
 
+    resource :reseller, only: [:show, :edit, :update]
     resources :images, only: [:create, :destroy]
   end
 end
