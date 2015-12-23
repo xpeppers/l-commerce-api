@@ -15,5 +15,18 @@
         = f.text_area :support, class: 'form-control noresize', required: true, size: '60x12'
       = error_span(@reseller[:support])
 
+  .row.form
+    = f.label :button_text
+    .input-group-lg
+      .controls
+        = f.text_field :button_text, class: 'form-control'
+      = error_span(@reseller[:button_text])
+  .row.form
+    = f.label :custom_url
+    .input-group-lg
+      .controls
+        = f.text_field :custom_url, class: 'form-control'
+      = error_span(@reseller[:custom_url])
+
   .row
     = f.submit nil, class: 'btn btn-primary'

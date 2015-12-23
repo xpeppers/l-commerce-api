@@ -17,7 +17,7 @@ module Backoffice
     end
 
     def reseller_params
-      params.require(:reseller).permit(:how_it_works, :support)
+      params.require(:reseller).permit(:how_it_works, :support, :button_text, :custom_url)
     end
 
   end
