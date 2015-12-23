@@ -88,6 +88,7 @@ Offer.seed(
     description: 'Lorem ipsum dolor sit amet description Cesto degustazione succo di mela e salsa di pomodoro',
     original_price: nil,
     price: 0.01,
+    reservation_price: 2.00,
     image_gallery: ImageGallery.first,
     merchant: Merchant.first
   },
@@ -97,6 +98,7 @@ Offer.seed(
     description: 'Lorem ipsum dolor sit amet Pacco famiglia 6,5 kg di carne di manzo fresca e un omaggio',
     original_price: 185.90,
     price: 84.50,
+    reservation_price: 2.00,
     image_gallery: ImageGallery.second,
     merchant: Merchant.first
   },
@@ -106,6 +108,7 @@ Offer.seed(
     description: 'Lorem ipsum dolor sit amet 1 notte per l’addio al nubilato',
     original_price: 200.00,
     price: 140.00,
+    reservation_price: 2.00,
     image_gallery: ImageGallery.third,
     merchant: Merchant.first
   },
@@ -115,6 +118,7 @@ Offer.seed(
     description: 'Festa del raccolto 4 notti 2 persone Lorem ipsum dolor sit ',
     original_price: 600.00,
     price: 410.00,
+    reservation_price: 2.00,
     image_gallery: nil,
     merchant: Merchant.first
   },
@@ -124,6 +128,7 @@ Offer.seed(
     description: '2 notti in famiglia Lorem ipsum dolor sit ',
     original_price: 300.00,
     price: 280.00,
+    reservation_price: 2.00,
     image_gallery: nil,
     merchant: Merchant.first
   },
@@ -133,6 +138,7 @@ Offer.seed(
     description: '5 conserve e 1 confezione di sale aromatizzato del mediterraneo per degustare i sapori dell’agriturismo. Ottime per accompagnare selvaggina, bolliti, formaggi, salumi e verdure alla griglia. Acquista l’offerta online e ritira i prodotti direttamente all’agritur Dalaip dei Pape a Todanico. Agriturismo Dalaip dei Pape',
     original_price: nil,
     price: 26.50,
+    reservation_price: 2.00,
     merchant: Merchant.first,
     image_gallery: ImageGallery.fourth
   },

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151221113715) do
+ActiveRecord::Schema.define(version: 20151223095236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,13 +77,14 @@ ActiveRecord::Schema.define(version: 20151221113715) do
   create_table "offers", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.decimal  "price",          precision: 10, scale: 2
-    t.datetime "created_at",                                             null: false
-    t.datetime "updated_at",                                             null: false
-    t.decimal  "original_price", precision: 10, scale: 2
+    t.decimal  "price",             precision: 10, scale: 2
+    t.datetime "created_at",                                                null: false
+    t.datetime "updated_at",                                                null: false
+    t.decimal  "original_price",    precision: 10, scale: 2
     t.string   "merchant"
     t.integer  "merchant_id"
-    t.boolean  "active",                                  default: true
+    t.boolean  "active",                                     default: true
+    t.decimal  "reservation_price", precision: 10, scale: 2
   end
 
   add_index "offers", ["merchant_id"], name: "index_offers_on_merchant_id", using: :btree

@@ -7,7 +7,7 @@ class Offer < ActiveRecord::Base
   belongs_to :merchant
   has_many :images, through: :image_gallery
 
-  validates_presence_of :merchant, :title, :description, :price
+  validates_presence_of :merchant, :title, :description, :price, :reservation_price
 
   delegate :telephone, :email, :web_site, :facebook, :twitter, to: :merchant
 

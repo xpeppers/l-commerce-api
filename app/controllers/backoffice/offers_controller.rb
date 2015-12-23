@@ -48,7 +48,7 @@ module Backoffice
     end
 
     def offer_params
-      params.require(:offer).permit(:title, :description, :price, :original_price, :merchant_id)
+      params.require(:offer).permit(:title, :description, :price, :original_price, :reservation_price, :merchant_id)
     end
 
     def images
