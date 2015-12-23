@@ -1,5 +1,5 @@
 class OfferSerializer < ActiveModel::Serializer
-  attributes :id, :title, :description, :original_price, :price, :image_gallery,
+  attributes :id, :title, :description, :original_price, :price, :reservation_price, :image_gallery,
              :merchant, :address, :telephone, :email, :web_site, :facebook, :twitter
 
   def merchant
@@ -27,4 +27,9 @@ class OfferSerializer < ActiveModel::Serializer
   def original_price
     '%.2f' % object.original_price unless object.original_price.nil?
   end
+
+  def reservation_price
+    '%.2f' % object.reservation_price
+  end
+
 end

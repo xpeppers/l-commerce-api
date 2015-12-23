@@ -32,6 +32,7 @@ describe Api::OrdersController, type: :controller do
               "description": "MyText",
               "image_url": null,
               "original_price": null,
+              "reservation_price": "2.00",
               "price": "9.99",
               "title": "MyString",
               "latitude": 46.0667,
@@ -65,6 +66,7 @@ describe Api::OrdersController, type: :controller do
                 "image_url": null,
                 "original_price": null,
                 "price": "9.99",
+                "reservation_price": "2.00",
                 "title": "MyString",
                 "latitude": 46.0667,
                 "longitude": 11.1167
@@ -97,6 +99,7 @@ describe Api::OrdersController, type: :controller do
                 "image_url": null,
                 "original_price": null,
                 "price": "9.99",
+                "reservation_price": "2.00",
                 "title": "MyString",
                 "latitude": 46.0667,
                 "longitude": 11.1167
