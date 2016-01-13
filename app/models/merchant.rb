@@ -6,6 +6,7 @@ class Merchant < ActiveRecord::Base
   belongs_to :image
 
   validates_presence_of :name, :description, :telephone, :email, :hashed_password, :street, :zip_code, :city, :latitude, :longitude
+  validates :email, email_format: { message: "doesn't look like an email address" }
 
   def password
     @password ||= Password.new(self.hashed_password) if self.hashed_password.present?

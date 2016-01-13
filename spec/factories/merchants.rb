@@ -3,7 +3,7 @@ FactoryGirl.define do
     name 'A NAME'
     description 'A DESCRIPTION'
     telephone 'A TELEPHONE'
-    email 'AN EMAIL'
+    email 'test@email.com'
     hashed_password 'AN HASHED PASSWORD'
     web_site 'A WEB SITE'
     facebook 'A FACEBOOK PAGE URL'

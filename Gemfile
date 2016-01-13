@@ -31,6 +31,8 @@ gem 'underscore-rails'
 gem 'coffee-rails', '~> 4.1.0'
 
 gem 'bcrypt'
+gem 'validates_email_format_of'
+
 
 group :development, :test do
   gem 'sqlite3'

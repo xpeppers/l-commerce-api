@@ -16,6 +16,23 @@ describe Merchant, type: :model do
     it { should validate_uniqueness_of(:token).allow_nil }
   end
 
+  context 'email validation' do
+    let (:merchant){ create (:merchant)}
+
+    it 'returns error with an invalid email' do
+        merchant.email = 'invalid email'
+        merchant.valid?
+        expect(merchant.errors[:email].size).to eq(1)
+    end
+  
+    it 'does not return errors with a valid email' do
+        merchant.valid?
+        expect(merchant.errors[:email].size).to eq(0)
+    end
+  
+  end
+
+
   context '#destroy' do
     let(:image) { create :image, resource: File.open("#{Rails.root}/spec/fixtures/images/carne1.jpg") }
     let(:path)  { create :path, image: image }

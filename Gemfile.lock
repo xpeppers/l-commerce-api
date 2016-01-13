@@ -242,6 +242,8 @@ GEM
       rack
       raindrops (~> 0.7)
     uuidtools (2.1.5)
+    validates_email_format_of (1.6.3)
+      i18n
     web-console (2.2.1)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -285,7 +287,8 @@ DEPENDENCIES
   uglifier
   underscore-rails
   unicorn
+  validates_email_format_of
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
