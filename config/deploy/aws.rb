@@ -15,7 +15,7 @@ role :db, [ "deploy@#{server_addr}" ]
 server "#{server_addr}", user: 'deploy', roles: %w(db app web), primary: true
 
 set :default_env, {
-  'ASSET_HOST' => "http://#{server_addr}"
+  'ASSET_HOST' => "https://tdv.xpeppers.com"
 }
 
 set :ssh_options, {
