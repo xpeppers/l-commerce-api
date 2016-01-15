@@ -12,4 +12,4 @@ staging:
 production:
   client_id: clientid
   client_secret: clientsecret
-  mode: sandbox
+  mode: production
