@@ -8,4 +8,9 @@ module OrderHelper
     offer = order.offers.last
     offer.present? ? offer.merchant.name : ''
   end
+
+  def offer_title_from(order)
+    offer = order.offers.last
+    offer.present? ? offer.title : ''
+  end
 end
