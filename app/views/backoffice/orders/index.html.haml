@@ -1,0 +1,12 @@
+- model_class = Order
+.page-header
+  %h1
+    = t '.title', default: model_class.model_name.human.pluralize.titleize
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %td= model_class.human_attribute_name(:status)
+  %tbody
+    - @orders.each do |order|
+      %tr
+        %td= order.status
