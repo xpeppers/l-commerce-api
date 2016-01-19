@@ -5,8 +5,10 @@
 %table.table.table-bordered.table-striped
   %thead
     %tr
+      %td= model_class.human_attribute_name(:timestamp)
       %td= model_class.human_attribute_name(:status)
   %tbody
     - @orders.each do |order|
       %tr
+        %td= order.created_at
         %td= order.status
