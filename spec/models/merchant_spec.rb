@@ -32,6 +32,25 @@ describe Merchant, type: :model do
   
   end
 
+  context '#update' do
+    let (:merchant){ create (:merchant)}
+
+    it 'does not change hashed_password if new password is empty' do
+      old_hashed_password = merchant.hashed_password
+
+      merchant.update(password: '')
+
+      expect(merchant.hashed_password).to eq(old_hashed_password)
+    end
+
+    it 'changes hashed_password if new password is not empty' do
+      old_hashed_password = merchant.hashed_password
+
+      merchant.update(password: 'A NEW PASSWORD')
+
+      expect(merchant.hashed_password).to_not eq(old_hashed_password)
+    end
+  end
 
   context '#destroy' do
     let(:image) { create :image, resource: File.open("#{Rails.root}/spec/fixtures/images/carne1.jpg") }

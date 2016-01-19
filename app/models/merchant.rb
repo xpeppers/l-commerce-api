@@ -9,12 +9,13 @@ class Merchant < ActiveRecord::Base
   validates :email, email_format: { message: "doesn't look like an email address" }
 
   def password
+    @password = ''
     @password ||= Password.new(self.hashed_password) if self.hashed_password.present?
   end
 
   def password=(new_password)
     @password = HashGenerator.generate(new_password)
-    self.hashed_password = @password
+    self.hashed_password = @password if new_password.present?
   end
 
   def sold_offers
