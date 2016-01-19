@@ -9,8 +9,7 @@ class Merchant < ActiveRecord::Base
   validates :email, email_format: { message: "doesn't look like an email address" }
 
   def password
-    @password = ''
-    @password ||= Password.new(self.hashed_password) if self.hashed_password.present?
+    @password ||= BCrypt::Password.new(self.hashed_password) if self.hashed_password.present?
   end
 
   def password=(new_password)
