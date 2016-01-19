@@ -1,6 +1,15 @@
 = form_for [:backoffice, @merchant], html: { class: 'form-horizontal'}  do |f|
   %filldset
 
+    %div.form-group
+      = f.label :email, class: 'col-lg-2 control-label text-right'
+      .div.col-lg-10
+        = f.text_field :email, class: 'form-control', required: true
+    %div.form-group
+      = f.label :password, class: 'col-lg-2 control-label text-right'
+      .div.col-lg-10
+        = f.text_field :password, class: 'form-control'
+
     = render partial: 'form_data', locals: { f: f }
 
     %div.form-group
