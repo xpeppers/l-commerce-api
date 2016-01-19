@@ -106,7 +106,7 @@ perform deploy
 
 ```
 cap [aws | aws-vino] deploy
-curl [http://52.19.150.165/api | http://54.77.111.102/api]
+curl [https://tdv.xpeppers.com/api | http://54.77.111.102/api]
 ```
 
 `xx.yy.zzz.www` is the elastic IP automatically assigned by ec2, it
