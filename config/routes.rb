@@ -29,7 +29,7 @@ Rails.application.routes.draw do
       resources :stages
     end
 
-    resources :orders, only: [:index, :show]
+    resources :orders, only: [:index]
     resource :reseller, only: [:show, :edit, :update]
     resources :images, only: [:create, :destroy]
   end
