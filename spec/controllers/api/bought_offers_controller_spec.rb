@@ -40,6 +40,13 @@ describe Api::BoughtOffersController, type: :controller do
 
           expected_json = %([
             {
+              "id": #{bought_offers.third.id},
+              "title": "#{third_offer.title}",
+              "description": "#{third_offer.description}",
+              "image_url": null,
+              "status": "unused"
+            },
+            {
               "id": #{bought_offers.first.id},
               "title": "#{first_offer.title}",
               "description": "#{first_offer.description}",
@@ -50,13 +57,6 @@ describe Api::BoughtOffersController, type: :controller do
               "id": #{bought_offers.second.id},
               "title": "#{second_offer.title}",
               "description": "#{second_offer.description}",
-              "image_url": null,
-              "status": "unused"
-            },
-            {
-              "id": #{bought_offers.third.id},
-              "title": "#{third_offer.title}",
-              "description": "#{third_offer.description}",
               "image_url": null,
               "status": "unused"
             }
