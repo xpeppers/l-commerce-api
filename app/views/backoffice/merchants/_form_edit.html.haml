@@ -8,7 +8,7 @@
     %div.form-group
       = f.label :password, class: 'col-lg-2 control-label text-right'
       .div.col-lg-10
-        = f.text_field :password, class: 'form-control'
+        = f.text_field :password, :value => '', class: 'form-control'
 
     = render partial: 'form_data', locals: { f: f }
 
