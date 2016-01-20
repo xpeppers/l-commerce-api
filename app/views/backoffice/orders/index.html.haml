@@ -14,7 +14,7 @@
   %tbody
     - @orders.each do |order|
       %tr
-        %td= order.created_at.in_time_zone('Rome')
+        %td= timestamp_from(order)
         %td= order.user.email
         %td= offer_title_from(order)
         %td= merchant_name_from(order)

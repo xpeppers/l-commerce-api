@@ -13,4 +13,9 @@ module OrderHelper
     offer = order.offers.last
     offer.present? ? offer.title : ''
   end
+
+  def timestamp_from(order)
+    timestamp = order.created_at
+    timestamp.present? ? timestamp.in_time_zone('Rome') : ''
+  end
 end
