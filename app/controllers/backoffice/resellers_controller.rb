@@ -13,7 +13,11 @@ module Backoffice
     private
 
     def set_reseller
-      @reseller = Reseller.last
+      if Reseller.last.present?
+        @reseller = Reseller.last
+      else
+        @reseller = Reseller.create
+      end
     end
 
     def reseller_params
