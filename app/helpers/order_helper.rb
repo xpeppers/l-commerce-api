@@ -6,7 +6,9 @@ module OrderHelper
 
   def coupon_status_from(order)
     coupon = order.coupon
-    coupon.present? ? coupon.status : ''
+    bought_offers = order.bought_offers.last
+    status = bought_offers.present? ? bought_offers.status : ''
+    coupon.present? ? status : ''
   end
 
   def merchant_name_from(order)
