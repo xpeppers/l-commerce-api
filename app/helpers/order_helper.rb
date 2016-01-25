@@ -4,6 +4,11 @@ module OrderHelper
     coupon.present? ? coupon.code : ''
   end
 
+  def coupon_status_from(order)
+    coupon = order.coupon
+    coupon.present? ? coupon.status : ''
+  end
+
   def merchant_name_from(order)
     offer = order.offers.last
     offer.present? ? offer.merchant.name : ''

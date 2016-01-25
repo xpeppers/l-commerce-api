@@ -10,7 +10,8 @@
       %td Offer
       %td Merchant
       %td Code
-      %td= model_class.human_attribute_name(:status)
+      %td Coupon Status
+      %td Order Status
   %tbody
     - @orders.each do |order|
       %tr
@@ -19,4 +20,5 @@
         %td= offer_title_from(order)
         %td= merchant_name_from(order)
         %td= coupon_code_from(order)
+        %td= coupon_status_from(order)
         %td= order.status
