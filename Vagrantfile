@@ -11,6 +11,7 @@ Vagrant.configure("2") do |config|
   config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
 
   config.vm.provision :chef_zero, install: true, run: "always"  do |chef|
+    chef.nodes_path = "cookbooks"
     chef.file_cache_path = '/var/chef/cache'
     chef.add_recipe "linking-commerce-api::default"
     chef.verbose_logging
