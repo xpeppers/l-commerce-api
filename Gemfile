@@ -31,13 +31,16 @@ gem 'underscore-rails'
 gem 'coffee-rails', '~> 4.1.0'
 
 gem 'bcrypt'
+gem 'nokogiri', '~> 1.6', '>= 1.6.7'
 gem 'validates_email_format_of'
 
+group :development do
+  gem 'web-console', '~> 2.0'
+end
 
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'
-  gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'rspec-rails'
   gem 'rspec-collection_matchers'
