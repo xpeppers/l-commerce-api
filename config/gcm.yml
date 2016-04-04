@@ -1,0 +1,18 @@
+development:
+    url: "https://gcm-http.googleapis.com/gcm/send?="
+    token: "/topics/global"
+    authorization: 'key=AIzaSyCgURXzkAGItJ-uJpy5wKt_NVDLHUQVUNg'
+test:
+    url: "https://gcm-http.googleapis.com/gcm/send?="
+    token: "/topics/global"
+    authorization: 'key=AIzaSyCgURXzkAGItJ-uJpy5wKt_NVDLHUQVUNg'
+
+staging:
+    url: "https://gcm-http.googleapis.com/gcm/send?="
+    token: "/topics/global"
+    authorization: ''
+
+production:
+    url: "https://gcm-http.googleapis.com/gcm/send?="
+    token: "/topics/global"
+    authorization: ''
