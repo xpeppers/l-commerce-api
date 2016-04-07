@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     put 'sold_offers/:id', to: 'sold_offers#update'
     get 'profile/', to: 'profile#show'
 
-    resources :offers, except: [:new, :edit]
+    resources :offers, except: [:new, :edit] do
+      get 'notify'
+    end
     resources :users, except: [:new, :edit]
     resources :orders, except: [:new, :edit] do
       resources :payments, except: [:new, :edit]
@@ -23,7 +25,7 @@ Rails.application.routes.draw do
 
   namespace :backoffice do
     get '/', to: 'offers#index'
-    resources :offers
+    resources :offers 
     resources :merchants
     resources :paths do
       resources :stages

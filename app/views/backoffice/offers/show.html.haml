@@ -79,10 +79,10 @@
 
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
-        if (xhttp.status == 200) {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
             alert("Notifica mandata con successo");
         }else{
-            alert("Notifica fallita, riprova! " + this.status);
+            //alert("Notifica fallita, riprova! " + this.status);
         }
       };
       xhttp.open("GET", "#{api_offer_notify_path(@offer.id)}", true);
