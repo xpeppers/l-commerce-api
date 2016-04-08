@@ -34,13 +34,11 @@
 
 :javascript
     function notify(){
-
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (xhttp.readyState == 4 && xhttp.status == 200) {
-              alert("Notifica mandata con successo");
+        $.ajax({
+          url: "#{api_generic_notify_path}",
+          type: 'GET',
+          success: function(result) {
+            alert("Notifica mandata con successo");
           }
-        };
-        xhttp.open("GET", "#{api_generic_notify_path}", true);
-        xhttp.send();
+        });
     }

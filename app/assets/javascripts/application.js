@@ -10,4 +10,6 @@
 //= require underscore
 //= require gmaps/google
 //= require jquery-fileupload/basic
+//= require turbolinks
+//= require social-share-button
 //= require_tree .
