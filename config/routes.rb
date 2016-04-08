@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get 'sold_offers/', to: 'sold_offers#index'
     put 'sold_offers/:id', to: 'sold_offers#update'
     get 'profile/', to: 'profile#show'
+    get 'generic_notify', to: 'offers'
 
     resources :offers, except: [:new, :edit] do
       get 'notify'
@@ -25,7 +26,7 @@ Rails.application.routes.draw do
 
   namespace :backoffice do
     get '/', to: 'offers#index'
-    resources :offers 
+    resources :offers
     resources :merchants
     resources :paths do
       resources :stages
