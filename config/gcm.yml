@@ -1,11 +1,11 @@
 development:
     url: "https://gcm-http.googleapis.com/gcm/send?="
     token: "/topics/global"
-    authorization: 'key=AIzaSyCgURXzkAGItJ-uJpy5wKt_NVDLHUQVUNg'
+    authorization: 'key=AIzaSyC20LFgVKFp-shpY-fYV3jrUOqVSIztcVc'
 test:
     url: "https://gcm-http.googleapis.com/gcm/send?="
     token: "/test/"
-    authorization: 'key=AIzaSyCgURXzkAGItJ-uJpy5wKt_NVDLHUQVUNg'
+    authorization: 'key=AIzaSyC20LFgVKFp-shpY-fYV3jrUOqVSIztcVc'
 
 staging:
     url: "https://gcm-http.googleapis.com/gcm/send?="
