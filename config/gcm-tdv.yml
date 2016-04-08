@@ -3,8 +3,9 @@ development:
     token: "/topics/global"
     authorization: 'key=AIzaSyCgURXzkAGItJ-uJpy5wKt_NVDLHUQVUNg'
 test:
+    # TODO: check topen path
     url: "https://gcm-http.googleapis.com/gcm/send?="
-    token: "/topics/test"
+    token: "/test/"
     authorization: 'key=AIzaSyCgURXzkAGItJ-uJpy5wKt_NVDLHUQVUNg'
 
 staging:

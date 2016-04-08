@@ -4,7 +4,7 @@ development:
     authorization: 'key=AIzaSyCgURXzkAGItJ-uJpy5wKt_NVDLHUQVUNg'
 test:
     url: "https://gcm-http.googleapis.com/gcm/send?="
-    token: "/topics/global"
+    token: "/test/"
     authorization: 'key=AIzaSyCgURXzkAGItJ-uJpy5wKt_NVDLHUQVUNg'
 
 staging:
