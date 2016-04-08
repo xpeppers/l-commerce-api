@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get 'sold_offers/', to: 'sold_offers#index'
     put 'sold_offers/:id', to: 'sold_offers#update'
     get 'profile/', to: 'profile#show'
-    get 'generic_notify', to: 'offers'
+    get 'generic_notify/', to: 'offers#generic_notify'
 
     resources :offers, except: [:new, :edit] do
       get 'notify'
