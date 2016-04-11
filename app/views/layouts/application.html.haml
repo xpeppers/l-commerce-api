@@ -1,6 +1,8 @@
 !!! 5
 %html(lang="en")
   %head
+    %style
+      = yield :stylesheets
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
@@ -26,7 +28,7 @@
           %span.icon-bar
           %span.icon-bar
         %a.navbar-brand= BACKOFFICE['title']
-        .navbar-collapse.collapse.navbar-responsive-collapse
+        #top_menu.navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
             %li= link_to 'Offerte', backoffice_offers_path
           %ul.nav.navbar-nav
@@ -34,7 +36,7 @@
           %ul.nav.navbar-nav
             %li= link_to 'Orders', backoffice_orders_path
           %ul.nav.navbar-nav
-            %li= link_to 'Reseller', backoffice_reseller_path  
+            %li= link_to 'Reseller', backoffice_reseller_path
           - if  BACKOFFICE['path_active']
             %ul.nav.navbar-nav
               %li= link_to 'Paths', backoffice_paths_path

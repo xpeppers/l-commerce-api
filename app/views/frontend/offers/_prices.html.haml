@@ -1,0 +1,5 @@
+-if @offer.original_price.present?
+  %span.label.label-price.label-striked= format_price(@offer.original_price)
+  %span.label.label-success= format_price(@offer.price)
+-else
+  %span.label.label-price= format_price(@offer.price)
