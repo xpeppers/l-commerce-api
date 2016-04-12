@@ -4,7 +4,7 @@
     = @offer.title
     = link_to t('.edit', default: t("helpers.links.edit")), edit_backoffice_offer_path(@offer), class: 'btn btn-primary'
     %a(onclick="notify()") Notifica
-    = social_share_button_tag("My Home Page", :url => "http://dev.tapjoy.com/faq/how-to-find-sender-id-and-api-key-for-gcm/")
+    = social_share_button_tag("My Home Page", :url => "#{request.host_with_port}#{frontend_offers_path}/#{@offer.id}")
 
 %div.container
   %div.row
@@ -76,7 +76,7 @@
     });
   }
 
-  function notify(){ 
+  function notify(){
       $.ajax({
         url: "#{api_offer_notify_path(@offer.id)}",
         type: 'GET',
