@@ -1,7 +1,4 @@
-Rails.application.routes.draw do
-  namespace :frontend do
-    resources :offers
-  end
+Rails.application.routes.draw do 
   namespace :api do
     get '/', to: 'status#index'
     post 'auth/merchants', to: 'auth_merchants#create'
@@ -42,6 +39,6 @@ Rails.application.routes.draw do
 
 
   namespace :frontend do
-      resources :offers
+      resources :offers,  only: [:show]
   end
 end
