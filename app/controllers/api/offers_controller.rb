@@ -16,7 +16,7 @@ module Api
 
     # TODO: refactor this and change message
     def generic_notify
-        json_data = {:id => "generic", :title => "Lo sapevi che ci cono nuove offerte?"}
+        json_data = {"generic" => "true", "title" => "Lo sapevi che ci cono nuove offerte?"}
         render json: GcmHelper::send_generic_notification(json_data)
     end
 
