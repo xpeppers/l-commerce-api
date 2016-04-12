@@ -202,12 +202,21 @@ GEM
     ruby_parser (3.7.1)
       sexp_processor (~> 4.1)
     sass (3.4.19)
+    sass-rails (5.0.4)
+      railties (>= 4.0.0, < 5.0)
+      sass (~> 3.1)
+      sprockets (>= 2.8, < 4.0)
+      sprockets-rails (>= 2.0, < 4.0)
+      tilt (>= 1.1, < 3)
     seed-fu (2.3.5)
       activerecord (>= 3.1, < 4.3)
       activesupport (>= 3.1, < 4.3)
     sexp_processor (4.6.0)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
+    social-share-button (0.1.10)
+      coffee-rails
+      sass-rails
     spring (1.3.6)
     sprockets (3.3.3)
       rack (~> 1.0)
@@ -226,6 +235,8 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
+    turbolinks (2.5.3)
+      coffee-rails
     twitter-bootstrap-rails (3.2.0)
       actionpack (~> 4.1)
       execjs (~> 2.2)
@@ -281,9 +292,11 @@ DEPENDENCIES
   rspec-rails
   seed-fu (~> 2.3)
   shoulda-matchers
+  social-share-button (~> 0.1.6)
   spring
   sqlite3
   therubyracer
+  turbolinks (~> 2.5, >= 2.5.3)
   twitter-bootstrap-rails
   uglifier
   underscore-rails
