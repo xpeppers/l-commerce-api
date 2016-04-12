@@ -4,7 +4,7 @@
     = @offer.title
     = link_to t('.edit', default: t("helpers.links.edit")), edit_backoffice_offer_path(@offer), class: 'btn btn-primary'
     %a(onclick="notify()") Notifica
-    = social_share_button_tag("My Home Page", :url => "#{request.host_with_port}#{frontend_offers_path}/#{@offer.id}")
+    = social_share_button_tag("My Home Page", :url => "#{request.host_with_port}#{frontend_offer_path}/#{@offer.id}")
 
 %div.container
   %div.row
