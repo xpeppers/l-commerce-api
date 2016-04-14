@@ -1,17 +1,17 @@
 module GcmHelper
 
     def self.send_notification(offer)
-        return sendToGCM({"id" => offer.id, "title" => offer.title})
+        return sendToGCM(GCM_CONFIG["token_global"], {"id" => offer.id, "title" => offer.title})
     end
 
 
-    def self.send_generic_notification(data)
-        return sendToGCM(data)
+    def self.send_generic_notification( data)
+        return sendToGCM(GCM_CONFIG["token_generic"], data)
     end
 
 
     private
-    def self.sendToGCM(data)
+    def self.sendToGCM(token, data)
         headers = {"Content-Type" => "application/json",
                    "Authorization" => GCM_CONFIG["authorization"]}
 
@@ -21,7 +21,7 @@ module GcmHelper
         http.use_ssl = true
         http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-        body = {:to => GCM_CONFIG["token"],
+        body = {:to => token,
                 :data => {"message" => data }}
 
         resp, dat = http.post(url.path, body.to_json, headers)

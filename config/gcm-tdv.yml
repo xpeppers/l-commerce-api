@@ -1,19 +1,22 @@
 development:
     url: "https://gcm-http.googleapis.com/gcm/send?="
-    token: "/topics/global"
-    authorization: 'key=AIzaSyC20LFgVKFp-shpY-fYV3jrUOqVSIztcVc'
+    token_global: "/topics/global"
+    token_generic: "/topics/generic"
+    authorization: 'key=yourgcmkey'
 test:
-    # TODO: check topen path
     url: "https://gcm-http.googleapis.com/gcm/send?="
-    token: "/test/"
-    authorization: 'key=AIzaSyC20LFgVKFp-shpY-fYV3jrUOqVSIztcVc'
+    token_global: "/test/"
+    token_generic: "/test/"
+    authorization: 'key=yourgcmkey'
 
 staging:
     url: "https://gcm-http.googleapis.com/gcm/send?="
-    token: "/topics/global"
-    authorization: ''
+    token_global: "/topics/global"
+    token_generic: "/topics/generic"
+    authorization: 'key=yourgcmkey'
 
 production:
     url: "https://gcm-http.googleapis.com/gcm/send?="
-    token: "/topics/global"
-    authorization: ''
+    token_global: "/topics/global"
+    token_generic: "/topics/generic"
+    authorization: 'key=yourgcmkey'
