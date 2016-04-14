@@ -38,7 +38,7 @@
           url: "#{api_generic_notify_path}",
           type: 'GET',
           success: function(result) {
-            alert("Notifica mandata con successo");
+            alert("Notifica mandata con successo " + JSON.stringify(result));
           }
         });
     }

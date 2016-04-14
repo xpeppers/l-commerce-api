@@ -1,6 +1,8 @@
 class OfferSerializer < ActiveModel::Serializer
+  include Rails.application.routes.url_helpers
+
   attributes :id, :title, :description, :original_price, :price, :reservation_price, :image_gallery,
-             :merchant, :address, :telephone, :email, :web_site, :facebook, :twitter
+             :merchant, :address, :telephone, :email, :web_site, :facebook, :twitter, :url
 
   def merchant
     object.merchant.name
@@ -30,6 +32,10 @@ class OfferSerializer < ActiveModel::Serializer
 
   def reservation_price
     '%.2f' % object.reservation_price
+  end
+
+  def url
+      frontend_offer_url(object, host: Rails.configuration.asset_host)
   end
 
 end

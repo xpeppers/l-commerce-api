@@ -1,4 +1,5 @@
 class Offer < ActiveRecord::Base
+
   default_scope { where(active: true) }
 
   before_destroy :bought?
@@ -14,6 +15,8 @@ class Offer < ActiveRecord::Base
   def image_url
     images.first.url if images.first.present?
   end
+
+
 
   private
 

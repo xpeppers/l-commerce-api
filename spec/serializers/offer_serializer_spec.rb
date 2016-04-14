@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe OfferSerializer, type: :serializer do
 
-  let(:resource) { build(:offer, price: 9.9) }
+  let(:resource) { build(:offer, price: 9.9, id: 1) }
 
   let(:serializer) { OfferSerializer.new(resource) }
   let(:serialization) { ActiveModel::Serializer::Adapter.create(serializer) }
