@@ -14,8 +14,6 @@ Rails.application.configure do
 
   config.assets.digest = true
 
-  config.log_level = :debug
-
   config.i18n.fallbacks = true
 
   config.active_support.deprecation = :notify
@@ -27,6 +25,8 @@ Rails.application.configure do
   config.asset_host = ENV['ASSET_HOST'] || 'http://52.19.150.165'
 
   config.logger = Logger.new(STDOUT)
+  config.logger.level = Logger.const_get('DEBUG')
+  config.log_level    = :debug
 end
 
 BCRYPT_SALT = '$2a$10$sz5e0w5NyCYaLaDLYhAEp.'
