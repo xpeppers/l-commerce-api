@@ -36,7 +36,8 @@ describe Api::OrdersController, type: :controller do
               "price": "9.99",
               "title": "MyString",
               "latitude": 46.0667,
-              "longitude": 11.1167
+              "longitude": 11.1167,
+              "url": "http://127.0.0.1:3000/frontend/offers/#{offer.id}"
             }
           ],
           "status": "pending",
@@ -69,7 +70,8 @@ describe Api::OrdersController, type: :controller do
                 "reservation_price": "2.00",
                 "title": "MyString",
                 "latitude": 46.0667,
-                "longitude": 11.1167
+                "longitude": 11.1167,
+                "url": "http://127.0.0.1:3000/frontend/offers/#{offer.id}"
               }
             ],
             "status": "pending",
@@ -102,7 +104,8 @@ describe Api::OrdersController, type: :controller do
                 "reservation_price": "2.00",
                 "title": "MyString",
                 "latitude": 46.0667,
-                "longitude": 11.1167
+                "longitude": 11.1167,
+                "url": "http://127.0.0.1:3000/frontend/offers/#{offer.id}"
               }
             ],
             "status": "captured",

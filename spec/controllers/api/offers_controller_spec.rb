@@ -24,7 +24,8 @@ describe Api::OffersController, type: :controller do
             "reservation_price": "2.00",
             "title": "MyString",
             "latitude": 46.0667,
-            "longitude": 11.1167
+            "longitude": 11.1167,
+            "url": "http://127.0.0.1:3000/frontend/offers/#{@first_offer.id}"
           },
           {
             "id": #{@second_offer.id},
@@ -35,7 +36,8 @@ describe Api::OffersController, type: :controller do
             "reservation_price": "2.00",
             "title": "MyString",
             "latitude": 46.0667,
-            "longitude": 11.1167
+            "longitude": 11.1167,
+            "url": "http://127.0.0.1:3000/frontend/offers/#{@second_offer.id}"
           }
         ]
       )
