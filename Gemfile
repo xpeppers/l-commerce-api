@@ -37,6 +37,8 @@ gem 'bcrypt'
 gem 'nokogiri', '~> 1.6', '>= 1.6.7'
 gem 'validates_email_format_of'
 
+gem 'rails_12factor', group: :production
+
 group :development do
   gem 'web-console', '~> 2.0'
 end
