@@ -15,8 +15,6 @@ Rails.application.configure do
 
   config.assets.digest = true
 
-  config.log_level = :debug
-
   config.i18n.fallbacks = true
 
   config.active_support.deprecation = :notify
@@ -26,6 +24,10 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.asset_host = 'https://linkingcommerce.herokuapp.com'
+
+  config.logger = Logger.new(STDOUT)
+  config.logger.level = Logger.const_get('DEBUG')
+  config.log_level = :debug
 end
 
 BCRYPT_SALT = '$2a$10$p9rVhUGO3fczORIYMwdtD.'

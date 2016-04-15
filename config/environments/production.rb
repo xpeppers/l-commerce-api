@@ -23,9 +23,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.asset_host = ENV['ASSET_HOST'] || 'http://52.19.150.165'
-
-  config.logger = Logger.new(STDOUT)
-  config.logger.level = Logger.const_get('DEBUG')
+ 
   config.log_level    = :debug
 end
 
