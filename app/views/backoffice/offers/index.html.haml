@@ -4,6 +4,7 @@
     = t '.title', default: model_class.model_name.human.pluralize.titleize
     = link_to t('.new', default: t("helpers.links.new")), new_backoffice_offer_path, class: 'btn btn-primary'
 %a(onclick="notify()") Notifica aggiornamenti
+%p= t('general_notification_content')
 
 %table.table.table-bordered.table-striped
   %thead
@@ -38,7 +39,11 @@
           url: "#{api_generic_notify_path}",
           type: 'GET',
           success: function(result) {
-            alert("Notifica mandata con successo " + JSON.stringify(result));
+            if(result.code && result.code != "success"){
+                alert("Errore: " + JSON.stringify(result));
+            }else{
+                alert("Notifica mandata con successo ");
+            }
           }
         });
     }

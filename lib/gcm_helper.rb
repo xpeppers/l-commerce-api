@@ -24,9 +24,16 @@ module GcmHelper
         body = {:to => token,
                 :data => {"message" => data }}
 
-        resp, dat = http.post(url.path, body.to_json, headers)
+        resp_code, resp_data = http.post(url.path, body.to_json, headers)
 
-        return {:code => resp.code.to_i, :message => dat }
+        if resp_data != nil && resp_data.status != nil && resp_data.status != 200
+            resp_code = "error"
+        else
+            resp_code = "success"
+        end
+
+
+        return {:code => resp_code, :message => resp_data }
     end
 
 end

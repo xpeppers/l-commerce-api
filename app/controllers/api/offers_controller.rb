@@ -13,10 +13,9 @@ module Api
         json_data =  Offer.find(params[:offer_id])
         render json: GcmHelper::send_notification(json_data)
     end
-
-    # TODO: refactor this and change message
+ 
     def generic_notify
-        json_data = {"generic" => "true", "title" => "Lo sapevi che ci cono nuove offerte?"}
+        json_data = {"generic" => "true", "title" => t(:general_notification_content)}
         render json: GcmHelper::send_generic_notification(json_data)
     end
 

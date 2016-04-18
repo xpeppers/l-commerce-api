@@ -81,7 +81,11 @@
         url: "#{api_offer_notify_path(@offer.id)}",
         type: 'GET',
         success: function(result) {
-          alert("Notifica mandata con successo");
+          if(result.code && result.code != "success"){
+              alert("Errore: " + JSON.stringify(result));
+          }else{
+              alert("Notifica mandata con successo ");
+          }
         }
       });
   }
