@@ -1,0 +1,11 @@
+development:
+    certificate: "/home/linnal/unitn/stage/docs/TdvCertification.pem"
+
+test:
+    certificate: "/home/linnal/unitn/stage/docs/TdvCertification.pem"
+
+staging:
+    certificate: "/home/linnal/unitn/stage/docs/TdvCertification.pem"
+
+production:
+    certificate: "/home/linnal/unitn/stage/docs/TdvCertification.pem"

@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     resources :paths, except: [:new, :edit] do
       resources :stages, except: [:new, :edit]
     end
+
+    resources :apple
   end
 
   namespace :backoffice do
