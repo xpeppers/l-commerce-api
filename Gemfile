@@ -37,6 +37,8 @@ gem 'bcrypt'
 gem 'nokogiri', '~> 1.6', '>= 1.6.7'
 gem 'validates_email_format_of'
 
+gem 'rails-push-notifications', '~> 0.2.0'
+
 gem 'rails_12factor', group: :production
 
 group :development do
