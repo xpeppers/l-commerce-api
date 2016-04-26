@@ -6,9 +6,7 @@ module GcmHelper
 
 
     def self.send_generic_notification( data, device_tokens=[])
-        response = {:gcm => sendToGCM(GCM_CONFIG["token_generic"], data),
-                    :apns => sendToAPNS(device_tokens, data)}
-        return
+        return sendToGCM(GCM_CONFIG["token_generic"], data)
     end
 
 
