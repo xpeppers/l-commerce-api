@@ -5,8 +5,10 @@ module GcmHelper
     end
 
 
-    def self.send_generic_notification( data)
-        return sendToGCM(GCM_CONFIG["token_generic"], data)
+    def self.send_generic_notification( data, device_tokens=[])
+        response = {:gcm => sendToGCM(GCM_CONFIG["token_generic"], data),
+                    :apns => sendToAPNS(device_tokens, data)}
+        return
     end
 
 
@@ -35,5 +37,31 @@ module GcmHelper
 
         return {:code => resp_code, :message => resp_data }
     end
+
+    private
+    def self.sendToAPNS(device_tokens, data)
+        app = RailsPushNotifications::APNSApp.new
+        app.apns_dev_cert = File.read(APNS_CONFIG["certificate"])
+        app.apns_prod_cert = File.read(APNS_CONFIG["certificate"])
+        app.sandbox_mode = true
+
+        if app.save
+          notif = app.notifications.build(
+            destinations: device_tokens,
+            data: { aps: { alert: data, sound: 'default', badge: 1 } }
+          )
+
+          if notif.save
+            app.push_notifications
+            notif.reload
+            render json: {:code => "success", :message => "Notification successfully pushed through!. Results #{notif.results.success} succeded, #{notif.results.failed} failed"}
+
+          else
+            render  json: {:code => "error", :message => notif.errors.full_messages }
+          end
+        else
+          render json: {:code => "error", :message => app.errors.full_messages }
+        end
+      end
 
 end

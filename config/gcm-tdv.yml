@@ -1,22 +1,22 @@
 development:
     url: "https://gcm-http.googleapis.com/gcm/send?="
-    token_global: "/topics/global"
-    token_generic: "/topics/generic"
+    token_global: "/topics/staging-global"
+    token_generic: "/topics/staging-generic"
     authorization: 'key=yourgcmkey'
 test:
     url: "https://gcm-http.googleapis.com/gcm/send?="
-    token_global: "/test/"
-    token_generic: "/test/"
+    token_global: "/topics/test-global"
+    token_generic: "/topics/test-generic"
     authorization: 'key=yourgcmkey'
 
 staging:
     url: "https://gcm-http.googleapis.com/gcm/send?="
-    token_global: "/topics/global"
-    token_generic: "/topics/generic"
+    token_global: "/topics/staging-global"
+    token_generic: "/topics/staging-generic"
     authorization: 'key=yourgcmkey'
 
 production:
     url: "https://gcm-http.googleapis.com/gcm/send?="
-    token_global: "/topics/global"
-    token_generic: "/topics/generic"
+    token_global: "/topics/tdv-global"
+    token_generic: "/topics/tdv-generic"
     authorization: 'key=yourgcmkey'
