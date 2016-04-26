@@ -1,11 +1,11 @@
 development:
-    certificate: "/home/linnal/unitn/stage/docs/TdvCertification.pem"
+    certificate: "apns/TdvCertification_dev.pem"
 
 test:
-    certificate: "/home/linnal/unitn/stage/docs/TdvCertification.pem"
+    certificate: "apns/TdvCertification_dev.pem"
 
 staging:
-    certificate: "/home/linnal/unitn/stage/docs/TdvCertification.pem"
+    certificate: "apns/TdvCertification_dev.pem"
 
 production:
-    certificate: "/home/linnal/unitn/stage/docs/TdvCertification.pem"
+    certificate: "apns/TdvCertification_dev.pem"

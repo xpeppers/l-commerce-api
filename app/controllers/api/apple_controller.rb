@@ -6,8 +6,8 @@ module Api
       def create
 
         app = RailsPushNotifications::APNSApp.new
-        app.apns_dev_cert = File.read(APNS_CONFIG["certificate"])
-        app.apns_prod_cert = File.read(APNS_CONFIG["certificate"])
+        app.apns_dev_cert = File.read(File.join(Rails.root, 'config', APNS_CONFIG["certificate"]))
+        app.apns_prod_cert = File.read(File.join(Rails.root, 'config', APNS_CONFIG["certificate"]))
         app.sandbox_mode = true
 
         if app.save
