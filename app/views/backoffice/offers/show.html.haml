@@ -17,7 +17,7 @@
         = image_tag @offer.image_url, class: 'img-responsive img-thumbnail'
       %h4.text-uppercase
         = 'Descrizione'
-      %p.lead= @offer.description
+      %p.lead= @offer.description.html_safe
       %h4.text-uppercase
         = 'Dove utilizzare'
       %div#basic_map{style: 'height: 300px;'}
