@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     post 'notification/android', to: 'notification#android'
 
     resources :offers, except: [:new, :edit] do
-      get 'notify'
+      post 'notify'
     end
     resources :users, except: [:new, :edit]
     resources :orders, except: [:new, :edit] do
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     resources :paths, except: [:new, :edit] do
       resources :stages, except: [:new, :edit]
     end
- 
+
   end
 
   namespace :backoffice do

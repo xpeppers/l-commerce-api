@@ -1,24 +1,26 @@
 module NotificationHelper
 
-    def self.notify_all(params)
-        ios_data = params[:ios]
-        android_data = params[:android]
+    def self.notify(params)
 
-        ios_result = sendToAPNS(ios_data[:destinations], ios_data[:message])
-        android_result = sendToGCM(android_data[:token], android_data[:message])
+        result = {}
 
-        return { :android => android_result, :ios => ios_result }
+        if params[:ios]
+            ios_data = params[:ios]
+            ios_result = sendToAPNS(ios_data[:destinations], ios_data[:message])
+            result[:ios] = ios_result
+        end
+
+        if params[:android]
+            android_data = params[:android]
+            android_result = sendToGCM(android_data[:token], android_data[:message])
+            result[:android] = android_result
+        end
+
+        return result
 
     end
 
-    def self.notify_ios(destinations, message)
-        sendToAPNS(destinations, message)
-    end
 
-    def self.notify_android(token, message)
-        sendToGCM(destinations, message) #{"id" => offer.id, "title" => offer.title}
-    end
- 
 
 
     private

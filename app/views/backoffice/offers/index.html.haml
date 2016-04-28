@@ -3,29 +3,11 @@
   %h1
     = t '.title', default: model_class.model_name.human.pluralize.titleize
     = link_to t('.new', default: t("helpers.links.new")), new_backoffice_offer_path, class: 'btn btn-primary'
-%div.float_left
+%div
   %a.float_left(onclick="notify()") Notifica aggiornamenti:
   %p.margin_left.float_left= t('general_notification_content')
-  %a#android_error.margin_left.float_left.error_label(onclick="notifyAndroid()") Riprova per Android
-  %a#ios_error.margin_left.float_left.error_label(onclick="notifyIos()") Riprova per iOS
-
-
-
-%div.sk-circle.float_left.margin_50
-  %div.sk-circle1.sk-child
-  %div.sk-circle2.sk-child
-  %div.sk-circle3.sk-child
-  %div.sk-circle4.sk-child
-  %div.sk-circle5.sk-child
-  %div.sk-circle6.sk-child
-  %div.sk-circle7.sk-child
-  %div.sk-circle8.sk-child
-  %div.sk-circle9.sk-child
-  %div.sk-circle10.sk-child
-  %div.sk-circle11.sk-child
-  %div.sk-circle12.sk-child
-
-
+  =render partial: 'notification'
+  
 %table.table.table-bordered.table-striped
   %thead
     %tr
@@ -55,58 +37,36 @@
 
 :javascript
     function notify(){
-        $.ajax({
-            url: "#{api_device_token_path}",
-            type: 'GET',
-            success: function(tokens){
-                tokens_array = _.map(tokens, function(elem){ return elem.token });
 
-                $.ajax({
-                  url: "#{api_generic_notify_path}",
-                  type: 'POST',
-                  data: {"tokens" : tokens_array},
-                  success: function(result) { 
-                     if(result.android.status === "success" && result.ios.status === "success"){
-                        alert("Notifica mandata con successo a tutti i device")
-                     }else{
-                        var message = "";
-                        if(result.android.status === "error"){
-                            $("#android_error").show();
-                            message = "La notifica in Android non e' andata a buon fine.\n"
-                        }
-                        if(result.ios.status === "error"){
-                            $("#ios_error").show();
-                            message += "La notifica in iOS non e' andata a buon fine.\n"
-                        }
-
-                        message += "Riprova!"
-
-                        alert(message);
-                     }
-                  }
-                });
+        send_generic_notification("#{api_generic_notify_path}", "android|ios", function(result){
+            if(result.android.status === "success" && result.ios.status === "success"){
+                hide_android_error();
+                hide_ios_error();
+                alertSuccess();
+            }else{
+               hadle_error(result);
             }
-        });
-
+        })
     }
 
     function notifyAndroid(){
-
+        send_generic_notification("android", function(result){
+            if(result.android.status === "success"){
+               hide_android_error();
+               alertSuccess();
+            }else{
+               hadle_error(result);
+            }
+        })
     }
 
     function notifyIos(){
-
+        send_generic_notification("ios", function(result){
+             if(result.ios.status === "success"){
+                hide_ios_error();
+                alertSuccess();
+             }else{
+                hadle_error(result);
+             }
+        });
     }
-
-    $( document ).ready(function() {
-      $(".sk-circle").hide();
-      $("#android_error").hide();
-      $("#ios_error").hide();
-
-      $(document).ajaxStart(function(){
-        $(".sk-circle").show();
-      });
-      $(document).ajaxStop(function(){
-        $(".sk-circle").hide();
-      });
-    });

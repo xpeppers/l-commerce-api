@@ -1,0 +1,81 @@
+%div.float_left
+  %a#android_error.margin_left.float_left.error_label(onclick="notifyAndroid()") Riprova per Android
+  %a#ios_error.margin_left.float_left.error_label(onclick="notifyIos()") Riprova per iOS
+
+
+
+%div.sk-circle.float_left.margin_50
+  %div.sk-circle1.sk-child
+  %div.sk-circle2.sk-child
+  %div.sk-circle3.sk-child
+  %div.sk-circle4.sk-child
+  %div.sk-circle5.sk-child
+  %div.sk-circle6.sk-child
+  %div.sk-circle7.sk-child
+  %div.sk-circle8.sk-child
+  %div.sk-circle9.sk-child
+  %div.sk-circle10.sk-child
+  %div.sk-circle11.sk-child
+  %div.sk-circle12.sk-child
+
+
+:javascript
+
+
+    function alertSuccess(){
+        alert("Notifica mandata con successo a tutti i device");
+    }
+
+    function hide_android_error(){
+        $("#android_error").hide();
+    }
+
+    function show_android_error(){
+        $("#android_error").show();
+    }
+
+    function hide_ios_error(){
+        $("#android_error").hide();
+    }
+
+    function show_ios_error(){
+        $("#android_error").show();
+    }
+
+    function hadle_error(result){
+        var message = "";
+        if(result.android.status === "error"){
+            show_android_error();
+            message = "La notifica in Android non e' andata a buon fine.\n"
+        }
+        if(result.ios.status === "error"){
+            show_ios_error();
+            message += "La notifica in iOS non e' andata a buon fine.\n"
+        }
+        message += "Riprova!"
+        alert(message);
+    }
+
+    function send_generic_notification(url, platform, callback){
+        $.ajax({
+          url: url,
+          type: 'POST',
+          data: {"platform": platform},
+          success: function(result) {
+                callback(result)
+          }
+       });
+    }
+
+    $( document ).ready(function() {
+      $(".sk-circle").hide();
+      $("#android_error").hide();
+      $("#ios_error").hide();
+
+      $(document).ajaxStart(function(){
+        $(".sk-circle").show();
+      });
+      $(document).ajaxStop(function(){
+        $(".sk-circle").hide();
+      });
+    });

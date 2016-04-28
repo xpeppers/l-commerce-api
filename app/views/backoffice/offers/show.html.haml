@@ -3,8 +3,11 @@
   %h1
     = @offer.title
     = link_to t('.edit', default: t("helpers.links.edit")), edit_backoffice_offer_path(@offer), class: 'btn btn-primary'
-    %a(onclick="notify()") Notifica
     = social_share_button_tag("My Home Page", :url => "#{request.host_with_port}#{frontend_offer_path}")
+
+  %div.div_notification.float_left
+    %a.float_left(onclick="notify()") Notifica evento
+    =render partial: 'notification'
 
 %div.container
   %div.row
@@ -77,17 +80,38 @@
   }
 
   function notify(){
-      $.ajax({
-        url: "#{api_offer_notify_path(@offer.id)}",
-        type: 'GET',
-        success: function(result) {
-          if(result.code && result.code != "success"){
-              alert("Errore: " + JSON.stringify(result));
+
+      send_generic_notification("#{api_offer_notify_path(@offer.id)}", "android|ios", function(result){
+          if(result.android.status === "success" && result.ios.status === "success"){
+              hide_android_error();
+              hide_ios_error();
+              alertSuccess();
           }else{
-              alert("Notifica mandata con successo ");
+             hadle_error(result);
           }
-        }
-      });
+      })
+
+      function notifyAndroid(){
+          send_generic_notification("#{api_offer_notify_path(@offer.id)}", "android", function(result){
+              if(result.android.status === "success"){
+                 hide_android_error();
+                 alertSuccess();
+              }else{
+                 hadle_error(result);
+              }
+          })
+      }
+
+      function notifyIos(){
+          send_generic_notification("#{api_offer_notify_path(@offer.id)}", "ios", function(result){
+               if(result.ios.status === "success"){
+                  hide_ios_error();
+                  alertSuccess();
+               }else{
+                  hadle_error(result);
+               }
+          });
+      }
   }
 
 :javascript

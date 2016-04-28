@@ -19,10 +19,20 @@
     margin-left: 30px
 }
 
-.margin_50 {
-    margin: 50px
+.margin_30 {
+    margin: 30px
 }
 
 .error_label {
     color: red
+}
+
+.div_notification {
+    width : 100%;
+    padding: 10px;
+}
+
+.social-share-button {
+    display: inline-block;
+    padding: 30px;
 }
