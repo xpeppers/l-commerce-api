@@ -9,3 +9,20 @@
 .form {
     padding: 15px;
 }
+
+.float_left {
+    float: left
+}
+
+
+.margin_left {
+    margin-left: 30px
+}
+
+.margin_50 {
+    margin: 50px
+}
+
+.error_label {
+    color: red
+}

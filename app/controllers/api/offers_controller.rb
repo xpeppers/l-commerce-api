@@ -10,14 +10,21 @@ module Api
     end
 
     def notify
-        json_data =  Offer.find(params[:offer_id])
-        render json: GcmHelper::send_notification(json_data)
+    #     json_data =  Offer.find(params[:offer_id])
+    #     render json: GcmHelper::send_notification(json_data)
     end
- 
+    
     def generic_notify
-        json_data = {"generic" => "true", "title" => t(:general_notification_content)}
-        render json: GcmHelper::send_generic_notification(json_data)
+
+        json_data = {:ios => {:destinations => params["tokens"],
+                              :message => t(:general_notification_content)},
+                    :android => {:token => GCM_CONFIG["token_generic"],
+                                 :message => t(:general_notification_content)}}
+
+        render json: NotificationHelper::notify_all(json_data)
     end
+
+
 
 
   end

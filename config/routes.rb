@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     get 'sold_offers/', to: 'sold_offers#index'
     put 'sold_offers/:id', to: 'sold_offers#update'
     get 'profile/', to: 'profile#show'
-    get 'generic_notify/', to: 'offers#generic_notify'
+    post 'generic_notify/', to: 'offers#generic_notify'
+    post 'notification/ios', to: 'notification#ios'
+    post 'notification/android', to: 'notification#android'
 
     resources :offers, except: [:new, :edit] do
       get 'notify'
@@ -24,8 +26,7 @@ Rails.application.routes.draw do
     resources :paths, except: [:new, :edit] do
       resources :stages, except: [:new, :edit]
     end
-
-    resources :apple
+ 
   end
 
   namespace :backoffice do
