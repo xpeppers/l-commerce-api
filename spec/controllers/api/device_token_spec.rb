@@ -4,12 +4,11 @@ describe Api::DeviceTokenController, type: :controller do
     describe 'GET #index' do
       before do
         @first = create :device_token
-        @second = create :device_token, platform: "android"
 
         get :index
       end
 
-      it 'return two device tokens' do
+      it 'return 1 device tokens' do
           expect(response).to have_http_status(:ok)
 
           expected_json = %(
@@ -17,10 +16,6 @@ describe Api::DeviceTokenController, type: :controller do
               {
                 "token": "MyToken",
                 "platform": "MyPlatform"
-              },
-              {
-                "token": "MyToken",
-                "platform": "android"
               }
             ]
           )
@@ -32,8 +27,8 @@ describe Api::DeviceTokenController, type: :controller do
   describe 'POST #create' do
 
       let(:token) { 'MyToken' }
-      let(:platform) { 'android' }
-      
+      let(:platform) { 'MyPlatform' }
+
       it 'returns created device token' do
           post :create, token: token, platform: platform
           expect(response).to have_http_status(:created)
