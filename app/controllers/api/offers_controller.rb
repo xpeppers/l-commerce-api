@@ -11,34 +11,34 @@ module Api
 
     def notify
         offer =  Offer.find(params[:offer_id])
-        json_data = package_notification(GCM_CONFIG["token_global"], offer.title, params[:platform])
+        json_data = package_notification(GCM_CONFIG["token_global"], offer.title, params[:platform], offer.id)
         render json: NotificationHelper::notify(json_data)
     end
 
     def generic_notify
-        json_data = package_notification(GCM_CONFIG["token_global"],  t(:general_notification_content), params[:platform])
+        json_data = package_notification(GCM_CONFIG["token_global"],  t(:general_notification_content), params[:platform], "generic")
         render json: NotificationHelper::notify(json_data)
     end
 
 
     private
-    def package_notification(token, title, platform)
+    def package_notification(token, title, platform, offer_id)
         json_data = {}
         if platform == "ios"
-            json_data = {:ios => package_notification_ios(title)}
+            json_data = {:ios => package_notification_ios(title, offer_id)}
         elsif platform == "android"
             json_data = {:android => package_notification_android(token, title)}
         else
-            json_data = {:ios => package_notification_ios(title),
+            json_data = {:ios => package_notification_ios(title, offer_id),
                         :android => package_notification_android(token, title)}
         end
         return json_data
     end
 
     private
-    def package_notification_ios(title)
+    def package_notification_ios(title, offer_id)
         destinations = getDestinations()
-        return {:destinations => destinations, :message => title}
+        return {:destinations => destinations, :message => title, :offer_id => offer_id}
     end
 
     private

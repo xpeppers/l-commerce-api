@@ -6,7 +6,7 @@ module NotificationHelper
 
         if params[:ios]
             ios_data = params[:ios]
-            ios_result = sendToAPNS(ios_data[:destinations], ios_data[:message])
+            ios_result = sendToAPNS(ios_data[:destinations], ios_data[:message], ios_data[:offer_id])
             result[:ios] = ios_result
         end
 
@@ -50,7 +50,7 @@ module NotificationHelper
     end
 
     private
-    def self.sendToAPNS(destinations, message)
+    def self.sendToAPNS(destinations, message, offer_id)
         app = RailsPushNotifications::APNSApp.new
         app.apns_dev_cert = File.read(File.join(Rails.root, 'config', APNS_CONFIG["certificate"]))
         app.apns_prod_cert = File.read(File.join(Rails.root, 'config', APNS_CONFIG["certificate"]))
@@ -62,7 +62,7 @@ module NotificationHelper
         if app.save
           notif = app.notifications.build(
             destinations: destinations,
-            data: { aps: { alert: message, sound: 'default', badge: 1 } }
+            data: { aps: { alert: message, sound: 'default', badge: 1 , offer_id: offer_id} }
           )
 
           if notif.save
