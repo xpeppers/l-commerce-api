@@ -24,26 +24,35 @@ module Api
     private
     def package_notification(token, title, platform, offer_id)
         json_data = {}
-        if platform == "ios"
-            json_data = {:ios => package_notification_ios(title, offer_id)}
-        elsif platform == "android"
-            json_data = {:android => package_notification_android(token, title)}
+        content = {}
+        if offer_id == 'generic'
+            content["generic"] = offer_id
         else
-            json_data = {:ios => package_notification_ios(title, offer_id),
-                        :android => package_notification_android(token, title)}
+            content["id"] = offer_id
+        end
+        content["title"] = title
+
+
+        if platform == "ios"
+            json_data = {:ios => package_notification_ios(title, content)}
+        elsif platform == "android"
+            json_data = {:android => package_notification_android(token, content)}
+        else
+            json_data = {:ios => package_notification_ios(title, content),
+                        :android => package_notification_android(token, content)}
         end
         return json_data
     end
 
     private
-    def package_notification_ios(title, offer_id)
+    def package_notification_ios(title, content)
         destinations = getDestinations()
-        return {:destinations => destinations, :message => title, :offer_id => offer_id}
+        return {:destinations => destinations, :content => content}
     end
 
     private
-    def package_notification_android(token, title)
-        return {:token => token, :message => title}
+    def package_notification_android(token, content)
+        return {:token => token, :content => content}
     end
 
     private

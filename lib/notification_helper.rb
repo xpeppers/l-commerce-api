@@ -6,13 +6,13 @@ module NotificationHelper
 
         if params[:ios]
             ios_data = params[:ios]
-            ios_result = sendToAPNS(ios_data[:destinations], ios_data[:message], ios_data[:offer_id])
+            ios_result = sendToAPNS(ios_data[:destinations], ios_data[:content])
             result[:ios] = ios_result
         end
 
         if params[:android]
             android_data = params[:android]
-            android_result = sendToGCM(android_data[:token], android_data[:message])
+            android_result = sendToGCM(android_data[:token], android_data[:content])
             result[:android] = android_result
         end
 
@@ -24,7 +24,7 @@ module NotificationHelper
 
 
     private
-    def self.sendToGCM(token, message)
+    def self.sendToGCM(token, content)
         headers = {"Content-Type" => "application/json",
                    "Authorization" => GCM_CONFIG["authorization"]}
 
@@ -35,7 +35,7 @@ module NotificationHelper
         http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
         body = {:to => token,
-                :data => {"message" => message }}
+                :data => {"message" => content }}
 
         resp_code, resp_data = http.post(url.path, body.to_json, headers)
 
@@ -50,19 +50,24 @@ module NotificationHelper
     end
 
     private
-    def self.sendToAPNS(destinations, message, offer_id)
+    def self.sendToAPNS(destinations, content)
         app = RailsPushNotifications::APNSApp.new
         app.apns_dev_cert = File.read(File.join(Rails.root, 'config', APNS_CONFIG["certificate"]))
         app.apns_prod_cert = File.read(File.join(Rails.root, 'config', APNS_CONFIG["certificate"]))
         app.sandbox_mode = true
 
         resp_code = "error"
-        resp_data = ""
-
+        resp_data = "" 
         if app.save
+            aps_data = { alert: content["title"], sound: 'default', badge: 1 }
+            if content["generic"]
+                aps_data["generic"] = content["generic"]
+            else
+                aps_data["id"] = content["id"]
+            end
           notif = app.notifications.build(
             destinations: destinations,
-            data: { aps: { alert: message, sound: 'default', badge: 1 , offer_id: offer_id} }
+            data: { aps:  aps_data }
           )
 
           if notif.save
