@@ -74,16 +74,12 @@
   }
 
   function openApplication(){
-    $.ajax({
-      url: "tdvpass://offer/#{@offer.id}",
-      type: 'GET',
-      success: function(result) { }
-   });
+    window.location = "tdvpass://offer/#{@offer.id}" ;
   }
 
 
   window.onload = function(e){
-    setTimeout(function(){ 
+    setTimeout(function(){
         if( isMobile.iOS() ){
             $('.invisible').css('visibility','visible');
         }
