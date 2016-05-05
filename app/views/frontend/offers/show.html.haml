@@ -76,6 +76,9 @@
   }
 
   function openApplication(){
+    setTimeout(function() {
+      window.location = 'itms://itunes.apple.com'
+    }, 500);
     window.location = "tdvpass://offer/#{@offer.id}" ;
   }
 
