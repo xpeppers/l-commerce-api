@@ -8,7 +8,10 @@
     %div.col-lg-6.col-lg-offset-3.col-md-8.col-md-offset-2.col-sm-10.col-sm-offset-1.col-xs-12
       %h2.text-center{style: 'margin: 20px 0; padding: 10px 0; border: solid 1px #bbb; background-color: #eee;'}
         =render partial: 'prices'
-      %p.lead.text-uppercase
+
+      %a#button_app.invisible.float_right.btn.btn-primary(onclick="openApplication()") Apri con TDVpass
+
+      %p.lead.text-uppercase.padding_top
         = @offer.title
       %div
         = image_tag @offer.image_url, class: 'img-responsive img-thumbnail'
@@ -30,7 +33,6 @@
         = model_class.human_attribute_name(:email) + ': ' + @offer.merchant.email
         %br
         = model_class.human_attribute_name(:web_site) + ': ' + @offer.merchant.web_site
-      %a#button_app.invisible.float_left.btn.btn-primary(onclick="openApplication()") Apri con TDVpass
 
 
 %script{src: '//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry', type: 'text/javascript'}
@@ -80,6 +82,7 @@
 
   window.onload = function(e){
     setTimeout(function(){
+
         if( isMobile.iOS() ){
             $('.invisible').css('visibility','visible');
         }
