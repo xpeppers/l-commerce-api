@@ -1,3 +1,7 @@
+body {
+    -webkit-text-size-adjust: auto;
+}
+
 .label-price {
   color: black;
 }
