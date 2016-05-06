@@ -6,9 +6,13 @@ module Api
     end
 
     def create
-      device_token = DeviceToken.new(device_params)
-      if device_token.save
-          render json: device_token, status: :created
+      begin
+        device_token = DeviceToken.new(device_params)
+        if device_token.save
+            render json: device_token, status: :created
+        end
+      rescue => ex
+        render json: { "message": ex.message }
       end
     end
 
