@@ -8,4 +8,4 @@ staging:
     certificate: "apns/TdvCertification_dev.pem"
 
 production:
-    certificate: "apns/TdvCertification_dev.pem"
+    certificate: "apns/production_com.xpeppers.TrentinoDaVivere.pem"
