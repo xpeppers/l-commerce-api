@@ -2,7 +2,7 @@ module Api
   class OffersController < ApplicationController
 
     def index
-      render json: Offer.all, each_serializer: OfferListSerializer
+      render json: Offer.order("created_at desc").all, each_serializer: OfferListSerializer
     end
 
     def show
