@@ -3,7 +3,7 @@ module Backoffice
     before_action :set_offer, only: [:show, :edit, :update, :destroy]
 
     def index
-      @offers = Offer.all
+      @offers = Offer.order("created_at desc").all
     end
 
     def new
