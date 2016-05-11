@@ -86,14 +86,15 @@
 
   function openApplication(){
     var loadedAt = new Date().getTime();
-    window.location = "tdvpass://offer/#{@offer.id}";
     if(isMobile.Android()){
         setTimeout(function(){
             if(new Date().getTime() - loadedAt < 2000){
-                window.location.href = "market://details?id=com.xpeppers.tdvpass";
+                window.location = "market://details?id=com.xpeppers.tdvpass";
             }
         }, 500)
     }
+    window.location = "tdvpass://offer/#{@offer.id}";
+    
   }
 
 
