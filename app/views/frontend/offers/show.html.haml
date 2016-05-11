@@ -85,11 +85,7 @@
   };
 
   function openApplication(){
-    if( isMobile.iOS() ){
-        window.location = "tdvpass://offer/#{@offer.id}" ;
-    }else if( isMobile.Android() ){
-        window.location = "#{Rails.application.secrets.protocol}#{request.host_with_port}#{frontend_offer_path}"
-    }
+    window.location = "tdvpass://offer/#{@offer.id}"
   }
 
 
