@@ -9,7 +9,7 @@
       %h2.text-center{style: 'margin: 20px 0; padding: 10px 0; border: solid 1px #bbb; background-color: #eee;'}
         =render partial: 'prices'
 
-      %a#button_app.invisible.float_right.btn.btn-primary(onclick="openApplication()") Apri con TDVpass
+      %a#button_app.invisible.float_right.btn.btn-primary(onclick="openApplication()") Prenota con TDVpass
 
       %p.lead.text-uppercase.padding_top
         = @offer.title
@@ -75,24 +75,30 @@
     });
   }
 
-  function openApplication(){ 
-    window.location = "tdvpass://offer/#{@offer.id}" ;
+  var isMobile = {
+      iOS: function() {
+          return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+      },
+      Android: function() {
+          return navigator.userAgent.match(/Android/i);
+      }
+  };
+
+  function openApplication(){
+    if( isMobile.iOS() ){
+        window.location = "tdvpass://offer/#{@offer.id}" ;
+    }else if( isMobile.Android() ){
+        window.location = "#{Rails.application.secrets.protocol}#{request.host_with_port}#{frontend_offer_path}"
+    }
   }
 
 
   window.onload = function(e){
     setTimeout(function(){
-
-        if( isMobile.iOS() ){
+        if( isMobile.iOS() || isMobile.Android()){
             $('.invisible').css('visibility','visible');
         }
-    }, 10)
-    var isMobile = {
-        iOS: function() {
-            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        }
-    };
-
+    }, 100)
   }
 
 :javascript
