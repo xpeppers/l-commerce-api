@@ -85,10 +85,13 @@
   };
 
   function openApplication(){
-    window.location = "tdvpass://offer/#{@offer.id}"
+    var loadedAt = new Date().getTime();
+    window.location = "tdvpass://offer/#{@offer.id}";
     if(isMobile.Android()){
         setTimeout(function(){
-            window.location = "market://details?id=com.xpeppers.tdvpass";
+            if(new Date().getTime() - loadedAt < 2000){
+                window.location.href = "market://details?id=com.xpeppers.tdvpass";
+            }
         }, 500)
     }
   }
