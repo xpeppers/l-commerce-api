@@ -86,20 +86,21 @@
 
   function openApplication(){
     var clickedAt = new Date().getTime();
-    if(isMobile.iOS()){
-        var appstorefail = "itms://itunes.apple.com/us/app/facebook/id284882215?mt=8&uo=6";
+
+    function openStore(store_link, timeout){
         setTimeout(function(){
             if (new Date().getTime() - clickedAt < 2000){
-                window.location = appstorefail;
+                window.location = store_link;
             }
-        }, 25)
+        }, timeout)
+    }
+
+    if(isMobile.iOS()){
+    // TODO this should have the real link to tdv app in appstore
+        openStore("itms://itunes.apple.com/us/app/facebook/id284882215?mt=8&uo=6", 100);
     }
     if(isMobile.Android()){
-        setTimeout(function(){
-            if (new Date().getTime() - clickedAt < 2000){
-                window.location = "market://details?id=com.xpeppers.tdvpass";
-            }
-        }, 25)
+        openStore("market://details?id=com.xpeppers.tdvpass", 100);
     }
   }
 
