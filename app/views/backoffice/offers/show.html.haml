@@ -3,7 +3,7 @@
   %h1
     = @offer.title
     = link_to t('.edit', default: t("helpers.links.edit")), edit_backoffice_offer_path(@offer), class: 'btn btn-primary'
-    = social_share_button_tag("My Home Page", :url => "#{request.protocol}#{request.host_with_port}#{frontend_offer_path}")
+    = social_share_button_tag("My Home Page", :url => "#{Rails.application.secrets.protocol}#{request.host_with_port}#{frontend_offer_path}")
 
   %div.div_notification.float_left
     %a.float_left(onclick="notify()") Notifica evento
