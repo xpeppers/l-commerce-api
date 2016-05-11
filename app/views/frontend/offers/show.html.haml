@@ -9,7 +9,7 @@
       %h2.text-center{style: 'margin: 20px 0; padding: 10px 0; border: solid 1px #bbb; background-color: #eee;'}
         =render partial: 'prices'
 
-      %a#button_app.invisible.float_right.btn.btn-primary(onclick="openApplication()") Prenota con TDVpass
+      %a#button_app.invisible.float_right.btn.btn-primary{href:"tdvpass://offer/#{@offer.id}"}(onclick="openApplication()") Prenota con TDVpass
 
       %p.lead.text-uppercase.padding_top
         = @offer.title
@@ -85,16 +85,24 @@
   };
 
   function openApplication(){
-    var loadedAt = new Date().getTime();
+    var clickedAt = new Date().getTime();
+    if(isMobile.iOS()){
+        var appstorefail = "itms://itunes.apple.com/us/app/facebook/id284882215?mt=8&uo=6";
+        setTimeout(function(){
+            if (new Date().getTime() - clickedAt < 2000){
+                window.location = appstorefail;
+            }
+        }, 2000)
+    }
     if(isMobile.Android()){
         setTimeout(function(){
-            if(new Date().getTime() - loadedAt < 2000){
+            if (new Date().getTime() - clickedAt < 2000){
                 window.location = "market://details?id=com.xpeppers.tdvpass";
             }
-        }, 500)
+        }, 2000)
     }
-    window.location = "tdvpass://offer/#{@offer.id}";
-    
+    //window.location = "tdvpass://offer/#{@offer.id}";
+
   }
 
 
