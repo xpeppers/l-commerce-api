@@ -86,6 +86,11 @@
 
   function openApplication(){
     window.location = "tdvpass://offer/#{@offer.id}"
+    if(isMobile.Android()){
+        setTimeout(function(){
+            window.location = "market://details?id=com.xpeppers.tdvpass";
+        }, 500)
+    }
   }
 
 
