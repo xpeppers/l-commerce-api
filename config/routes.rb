@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     get '/', to: 'status#index'
     post 'auth/merchants', to: 'auth_merchants#create'
     post 'auth/', to: 'auth_users#create'
+    post 'auth/email', to: 'auth_users#email'
+    post 'users/email', to: 'users_#email'
     get 'device_token', to: 'device_token#index'
     post 'device_token', to: 'device_token#create'
     get 'bought_offers/', to: 'bought_offers#index'

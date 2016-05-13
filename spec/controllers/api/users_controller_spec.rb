@@ -28,13 +28,13 @@ describe Api::UsersController, type: :controller do
             "email": "email@address.com"
           }
         )
-
+        puts expected_json
         expect(response.body).to be_json_eql(expected_json)
       end
 
       it 'responds with user details if user already exists' do
         user = create(:user, provider_user_id: 'AN ID')
-        post :create, email: 'email@address.com', provider: 'facebook', provider_token: 'ANY TOKEN'
+        post :create, email: 'MyString', provider: 'facebook', provider_token: 'ANY TOKEN'
 
         expect(response).to have_http_status(200)
         expect(response.header['Location']).to eq(api_user_path(user))
@@ -47,7 +47,6 @@ describe Api::UsersController, type: :controller do
         )
 
         expect(response.body).to be_json_eql(expected_json)
-
       end
     end
 
