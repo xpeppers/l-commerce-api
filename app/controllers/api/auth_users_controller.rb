@@ -19,7 +19,7 @@ module Api
     end
 
     def email
-      render json: @entity
+      render json: @entity, status: :ok
     end
 
     private

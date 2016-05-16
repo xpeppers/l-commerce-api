@@ -15,7 +15,7 @@ module Api
     def email
       user = User.create(user_params)
       if user.save
-        render json: user, status: :created
+        render json: user, status: :created, location: api_user_path(user)
       else
         render json: user, status: :unauthorized if user_params[:password].nil?
       end
@@ -36,15 +36,15 @@ module Api
     def update_fb_user_id
       if @user.provider_user_id.nil?
           @user.update_attributes({provider_user_id: @facebook_user_id})
+          render json: @user, status: :ok, location: api_user_path(@user)
       end
-      render json: @user, status: :ok, location: api_user_path(@user)
     end
 
     def update_user_pass
         if @user.password.nil?
           @user.update_attributes(user_params)
+          render json: @user, status: :ok, location: api_user_path(@user)
         end
-        render json: @user, status: :ok, location: api_user_path(@user)
     end
 
   end
