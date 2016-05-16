@@ -47,10 +47,5 @@ module Api
         render json: @user, status: :ok, location: api_user_path(@user)
     end
 
-    def get_user_by_email
-      return User.find_by(email: params[:email])
-    end
-
-
   end
 end

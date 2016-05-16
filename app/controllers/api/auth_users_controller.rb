@@ -3,8 +3,10 @@ module Api
 
     include AuthorizeFacebookUser
 
-    before_action :set_entity
-    before_action :handle_facebook_authorization?, only: [:create]
+    before_action :set_entity_via_facebook, only: [:create]
+    before_action :set_entity_via_email_and_pass, only: [:email]
+    before_action :handle_authorization?
+
 
     def create
       if @entity.authenticated?
@@ -17,16 +19,20 @@ module Api
     end
 
     def email
-        render json: params
+      render json: @entity
     end
 
     private
 
-    def set_entity
+    def set_entity_via_facebook
       @entity = User.find_by(provider_user_id: @facebook_user_id)
     end
 
-    def handle_facebook_authorization?
+    def set_entity_via_email_and_pass
+      @entity = User.find_by(email: params[:email], password: params[:password])
+    end
+
+    def handle_authorization?
       return head status: :unauthorized unless @entity.present?
     end
   end
