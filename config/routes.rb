@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   namespace :api do
+
+    resources :users, except: [:new, :edit]
+    
+
     get '/', to: 'status#index'
     post 'auth/merchants', to: 'auth_merchants#create'
     post 'auth/', to: 'auth_users#create'
@@ -21,7 +25,6 @@ Rails.application.routes.draw do
     resources :offers, except: [:new, :edit] do
       post 'notify'
     end
-    resources :users, except: [:new, :edit]
     resources :orders, except: [:new, :edit] do
       resources :payments, except: [:new, :edit]
     end
