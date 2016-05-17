@@ -21,7 +21,13 @@ module Api
       end
     end
 
+    def reset_password_link
+        ExampleMailer.welcome_email(@user).deliver_later
+        render nothing: true
+    end
 
+    def reset_password
+    end
 
     private
 

@@ -28,6 +28,20 @@ Rails.application.configure do
   config.logger = Logger.new(STDOUT)
   config.logger.level = Logger.const_get('DEBUG')
   config.log_level = :debug
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.smtp_settings = {
+      :address => "smtp.gmail.com",
+      :port => 587,
+      :domain => 'linkingcommerce.herokuapp.com',
+      :user_name => "youraccount@yourdomain.com",
+      :password => "yourpassword",
+      :authentication => :plain,
+      :enable_starttls_auto => true
+  }
 end
 
 BCRYPT_SALT = '$2a$10$p9rVhUGO3fczORIYMwdtD.'
