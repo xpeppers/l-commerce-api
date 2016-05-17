@@ -22,17 +22,21 @@ module Api
     end
 
     def reset_password_auto
-      @user.update_attributes({password: (0...6).map { ('A'..'Z').to_a[rand(26)] }.join})
-      ExampleMailer.welcome_email(@user).deliver_later
-      render nothing: true
+      if @user.present?
+        @user.update_attributes({password: (0...6).map { ('A'..'Z').to_a[rand(26)] }.join})
+        ExampleMailer.welcome_email(@user).deliver_later
+        render nothing: true
+      else
+        render json: {message: "Email not found"}, status: :unauthorized
+      end
     end
 
     def reset_password
-      if @user.password == params[:current_password] and params[:updated_password].present?
+      if  @user.present? and @user.password == params[:current_password] and params[:updated_password].present?
         @user.update_attributes({password: params[:updated_password] })
         render nothing: true
       else
-        render json: @user, status: :unauthorized
+        render json: {message: "Email not found"}, status: :unauthorized
       end
     end
 
