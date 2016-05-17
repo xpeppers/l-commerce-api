@@ -1,1 +1,10 @@
-%strong "welcome email"
+- model_class = User
+
+%p
+  = "Ciao "  + @user.email.split("@")[0]
+
+%p
+  = "Usa la seguente password per fare login."
+
+%strong
+  = @user.password

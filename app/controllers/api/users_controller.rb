@@ -5,7 +5,7 @@ module Api
 
     before_action :set_user
     before_action :update_fb_user_id, only: [:create], unless: -> { @user.nil? }
-    before_action :update_user_pass, only: [:email] , unless: -> { @user.nil? }
+    before_action :update_password, only: [:email] , unless: -> { @user.nil? }
 
     def create
       user = User.create(user_params.merge!(provider_user_id: @facebook_user_id))
@@ -21,12 +21,19 @@ module Api
       end
     end
 
-    def reset_password_link
-        ExampleMailer.welcome_email(@user).deliver_later
-        render nothing: true
+    def reset_password_auto
+      @user.update_attributes({password: (0...6).map { ('A'..'Z').to_a[rand(26)] }.join})
+      ExampleMailer.welcome_email(@user).deliver_later
+      render nothing: true
     end
 
     def reset_password
+      if @user.password == params[:current_password] and params[:updated_password].present?
+        @user.update_attributes({password: params[:updated_password] })
+        render nothing: true
+      else
+        render json: @user, status: :unauthorized 
+      end
     end
 
     private
@@ -41,16 +48,16 @@ module Api
 
     def update_fb_user_id
       if @user.provider_user_id.nil?
-          @user.update_attributes({provider_user_id: @facebook_user_id})
-          render json: @user, status: :ok, location: api_user_path(@user)
+        @user.update_attributes({provider_user_id: @facebook_user_id})
+        render json: @user, status: :ok, location: api_user_path(@user)
       end
     end
 
-    def update_user_pass
-        if @user.password.nil?
-          @user.update_attributes(user_params)
-          render json: @user, status: :ok, location: api_user_path(@user)
-        end
+    def update_password
+      if @user.password.nil?
+        @user.update_attributes(user_params)
+        render json: @user, status: :ok, location: api_user_path(@user)
+      end
     end
 
   end
