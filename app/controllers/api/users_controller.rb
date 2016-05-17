@@ -32,7 +32,7 @@ module Api
         @user.update_attributes({password: params[:updated_password] })
         render nothing: true
       else
-        render json: @user, status: :unauthorized 
+        render json: @user, status: :unauthorized
       end
     end
 
@@ -49,8 +49,8 @@ module Api
     def update_fb_user_id
       if @user.provider_user_id.nil?
         @user.update_attributes({provider_user_id: @facebook_user_id})
-        render json: @user, status: :ok, location: api_user_path(@user)
       end
+      render json: @user, status: :ok, location: api_user_path(@user)
     end
 
     def update_password
