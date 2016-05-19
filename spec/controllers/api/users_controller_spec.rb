@@ -64,14 +64,9 @@ describe Api::UsersController, type: :controller do
 
     end
 
-  end
-
-
-  describe 'POST #email' do
-
     context 'user creation with email and password' do
         it 'responds with new user details' do
-          post :email, { email: 'email@address.com', password: 'facebook' }
+          post :create, { email: 'email@address.com', provider_token: 'mypass', provider: "email" }
 
           expect(response).to have_http_status(:created)
           expect(response.header['Location']).to eq(api_user_path(User.last))
@@ -86,12 +81,14 @@ describe Api::UsersController, type: :controller do
         end
 
         it 'responds with unauthorized when password not setted' do
-          post :email, email: 'email@address.com'
+          post :create, email: 'email@address.com'
 
           expect(response).to have_http_status(:unauthorized)
         end
     end
+
   end
+
 
 
 

@@ -2,7 +2,7 @@ module AuthorizeFacebookUser
   extend ActiveSupport::Concern
 
   included do
-    before_action :authorize_facebook_user, only: [:create]
+    before_action :authorize_facebook_user, only: [:create], if: -> {params[:provider] == "facebook"}
   end
 
   private

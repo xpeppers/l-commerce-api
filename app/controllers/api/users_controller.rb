@@ -2,24 +2,32 @@ module Api
   class UsersController < ApplicationController
 
     include AuthorizeFacebookUser
-
+    
     before_action :set_user
-    before_action :update_fb_user_id, only: [:create], unless: -> { @user.nil? }
-    before_action :update_password, only: [:email] , unless: -> { @user.nil? }
+
+    before_action :update_empty_password, if: -> { not @user.nil? and params[:provider] == "email"}
+    before_action :update_fb_empty_user_id, if: -> { not @user.nil? and params[:provider] == "facebook"}
+
+
 
     def create
-      user = User.create(user_params.merge!(provider_user_id: @facebook_user_id))
-      render json: user, status: :created, location: api_user_path(user)
-    end
-
-    def email
-      user = User.create(user_params)
-      if user.save
-        render json: user, status: :created, location: api_user_path(user)
+      if @user.nil?
+        if user_params[:provider] == "facebook"
+          user = User.create(user_params.merge!(provider_user_id: @facebook_user_id))
+          render json: user, status: :created, location: api_user_path(user)
+        else
+          user = User.create(user_params.merge!(password: params[:provider_token]))
+          if user.save
+            render json: user, status: :created, location: api_user_path(user)
+          else
+            render json: user, status: :unauthorized if user_params[:password].nil?
+          end
+        end
       else
-        render json: user, status: :unauthorized if user_params[:password].nil?
+        render json: @user, status: :ok, location: api_user_path(@user)
       end
     end
+
 
     def reset_password_auto
       if @user.present?
@@ -43,21 +51,25 @@ module Api
     private
 
     def set_user
-      @user = User.find_by(email: params[:email])
+      if params[:provider] == "facebook"
+        @user = User.find_by(email: params[:email], provider_user_id: @facebook_user_id)
+      elsif params[:provider] == "email"
+        @user = User.find_by(email: params[:email], password: params[:provider_token])
+      end
     end
 
     def user_params
-      params.permit(:email, :password)
+      params.permit(:email)
     end
 
-    def update_fb_user_id
+    def update_fb_empty_user_id
       if @user.provider_user_id.nil?
         @user.update_attributes({provider_user_id: @facebook_user_id})
       end
       render json: @user, status: :ok, location: api_user_path(@user)
     end
 
-    def update_password
+    def update_empty_password
       if @user.password.nil?
         @user.update_attributes(user_params)
         render json: @user, status: :ok, location: api_user_path(@user)

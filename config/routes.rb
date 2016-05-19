@@ -1,16 +1,10 @@
 Rails.application.routes.draw do
   namespace :api do
-
-    resources :users, except: [:new, :edit]
-    
-
     get '/', to: 'status#index'
     post 'auth/merchants', to: 'auth_merchants#create'
     post 'auth/', to: 'auth_users#create'
-    post 'auth/email', to: 'auth_users#email'
-    post 'users/email', to: 'users#email'
     post 'users/reset_password_auto', to: 'users#reset_password_auto'
-    post 'users/reset_password', to: 'users#reset_password'
+    post 'users/reset_password', to: 'users#reset_password_auto'
     get 'device_token', to: 'device_token#index'
     post 'device_token', to: 'device_token#create'
     get 'bought_offers/', to: 'bought_offers#index'
@@ -25,6 +19,7 @@ Rails.application.routes.draw do
     resources :offers, except: [:new, :edit] do
       post 'notify'
     end
+    resources :users, except: [:new, :edit]
     resources :orders, except: [:new, :edit] do
       resources :payments, except: [:new, :edit]
     end

@@ -74,15 +74,14 @@ describe Api::AuthUsersController, type: :controller do
       end
     end
 
-  end
-
-  describe 'POST #email' do
-    context 'with a unregistered user' do
+    context 'with a unregistered user email' do
       it 'responds with unauthorized' do
-        post :email, { email: 'email_not_registered@address.com', password: 'facebook' }
+        post :create, { email: 'email_not_registered@address.com', provider_token: 'facebook', provider: "email" }
         expect(response).to have_http_status(:unauthorized)
       end
     end
+
   end
+
 
 end
