@@ -34,9 +34,9 @@ module Api
       if @user.present?
         @user.update_attributes({password: (0...6).map { ('A'..'Z').to_a[rand(26)] }.join})
         ExampleMailer.welcome_email(@user).deliver_later
-        render nothing: true
+        render json: {message: "Abbiamo mandato una mail con la nuova password!"}, status: :unauthorized
       else
-        render json: {message: "Email not found"}, status: :unauthorized
+        render json: {message: "Email non trovato"}, status: :unauthorized
       end
     end
 
@@ -45,7 +45,7 @@ module Api
         @user.update_attributes({password: params[:updated_password] })
         render nothing: true
       else
-        render json: {message: "Email not found"}, status: :unauthorized
+        render json: {message: "Email non trovato"}, status: :unauthorized
       end
     end
 
