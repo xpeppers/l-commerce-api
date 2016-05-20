@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     post 'auth/merchants', to: 'auth_merchants#create'
     post 'auth/', to: 'auth_users#create'
     post 'users/reset_password_auto', to: 'users#reset_password_auto'
-    post 'users/reset_password', to: 'users#reset_password_auto'
+    post 'users/reset_password', to: 'users#reset_password'
     get 'device_token', to: 'device_token#index'
     post 'device_token', to: 'device_token#create'
     get 'bought_offers/', to: 'bought_offers#index'

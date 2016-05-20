@@ -2,7 +2,7 @@ module Api
   class UsersController < ApplicationController
 
     include AuthorizeFacebookUser
-    
+
     before_action :set_user
 
     before_action :update_empty_password, if: -> { not @user.nil? and params[:provider] == "email"}
@@ -30,6 +30,7 @@ module Api
 
 
     def reset_password_auto
+      @user = User.find_by(email: params[:email])
       if @user.present?
         @user.update_attributes({password: (0...6).map { ('A'..'Z').to_a[rand(26)] }.join})
         ExampleMailer.welcome_email(@user).deliver_later
