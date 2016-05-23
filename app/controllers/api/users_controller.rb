@@ -11,20 +11,22 @@ module Api
 
 
     def create
-      if @user.nil?
-        if user_params[:provider] == "facebook"
-          user = User.create(user_params.merge!(provider_user_id: @facebook_user_id))
+
+      if !@user.nil?
+        render json: @user, status: :ok, location: api_user_path(@user)
+        return
+      end
+
+      if user_params[:provider] == "facebook"
+        user = User.create(user_params.merge!(provider_user_id: @facebook_user_id))
+        render json: user, status: :created, location: api_user_path(user)
+      else
+        user = User.create(user_params.merge!(password: params[:provider_token]))
+        if user.save
           render json: user, status: :created, location: api_user_path(user)
         else
-          user = User.create(user_params.merge!(password: params[:provider_token]))
-          if user.save
-            render json: user, status: :created, location: api_user_path(user)
-          else
-            render json: user, status: :unauthorized if user_params[:password].nil?
-          end
+          render json: user, status: :unauthorized if user_params[:password].nil?
         end
-      else
-        render json: @user, status: :ok, location: api_user_path(@user)
       end
     end
 
@@ -36,7 +38,7 @@ module Api
         ExampleMailer.welcome_email(@user).deliver_later
         render json: {message: "Abbiamo mandato una mail con la nuova password!"}, status: :unauthorized
       else
-        render json: {message: "Email non trovato"}, status: :unauthorized
+        render json: {message: "Email non trovato"}, status: :not_found
       end
     end
 
@@ -45,7 +47,7 @@ module Api
         @user.update_attributes({password: params[:updated_password] })
         render nothing: true
       else
-        render json: {message: "Email non trovato"}, status: :unauthorized
+        render json: {message: "Email non trovato"}, status: :not_found
       end
     end
 
