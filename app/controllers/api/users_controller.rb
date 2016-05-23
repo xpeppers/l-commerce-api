@@ -36,7 +36,7 @@ module Api
       if @user.present?
         @user.update_attributes({password: (0...6).map { ('A'..'Z').to_a[rand(26)] }.join})
         ExampleMailer.welcome_email(@user).deliver_later
-        render json: {message: "Abbiamo mandato una mail con la nuova password!"}, status: :unauthorized
+        render json: {message: "Abbiamo mandato una mail con la nuova password!"}, status: :ok
       else
         render json: {message: "Email non trovato"}, status: :not_found
       end
