@@ -5,15 +5,14 @@ module Api
 
     before_action :set_user
 
-    before_action :update_empty_password, if: -> { not @user.nil? and params[:provider] == "email"}
-    before_action :update_fb_empty_user_id, if: -> { not @user.nil? and params[:provider] == "facebook"}
+    before_action :check_password, if: -> { @user.present? and params[:provider] == "email"}
+    before_action :check_provider_user_id, if: -> { @user.present? and params[:provider] == "facebook"}
 
 
 
     def create
-
-      if !@user.nil?
-        render json: @user, status: :ok, location: api_user_path(@user)
+      if params[:provider_token].nil?
+        render json: {message: "provider_token manca"}, status: :unauthorized
         return
       end
 
@@ -25,7 +24,7 @@ module Api
         if user.save
           render json: user, status: :created, location: api_user_path(user)
         else
-          render json: user, status: :unauthorized if user_params[:password].nil?
+          render json: user, status: :orized if user_params[:password].nil?
         end
       end
     end
@@ -38,7 +37,7 @@ module Api
         ExampleMailer.welcome_email(@user).deliver_later
         render json: {message: "Abbiamo mandato una mail con la nuova password!"}, status: :ok
       else
-        render json: {message: "Email non trovato"}, status: :not_found
+        render json: {message: "Email non trovata"}, status: :not_found
       end
     end
 
@@ -47,35 +46,39 @@ module Api
         @user.update_attributes({password: params[:updated_password] })
         render nothing: true
       else
-        render json: {message: "Email non trovato"}, status: :not_found
+        render json: {message: "Email non trovata"}, status: :not_found
       end
     end
 
     private
 
     def set_user
-      if params[:provider] == "facebook"
-        @user = User.find_by(email: params[:email], provider_user_id: @facebook_user_id)
-      elsif params[:provider] == "email"
-        @user = User.find_by(email: params[:email], password: params[:provider_token])
-      end
+      @user = User.find_by(email: params[:email])
     end
 
     def user_params
       params.permit(:email)
     end
 
-    def update_fb_empty_user_id
+    def check_provider_user_id
       if @user.provider_user_id.nil?
         @user.update_attributes({provider_user_id: @facebook_user_id})
       end
       render json: @user, status: :ok, location: api_user_path(@user)
     end
 
-    def update_empty_password
+    def check_password
+      if params[:provider_token].nil?
+        render json: {message: "provider_token manca"}, status: :unauthorized
+        return
+      end
       if @user.password.nil?
-        @user.update_attributes(user_params)
+        @user.update_attributes({:password => params[:provider_token]})
         render json: @user, status: :ok, location: api_user_path(@user)
+      elsif @user.password == params[:provider_token]
+        render json: @user, status: :ok, location: api_user_path(@user)
+      else
+        render json: {message: "Utente gia' registrato"}, status: :unauthorized
       end
     end
 
