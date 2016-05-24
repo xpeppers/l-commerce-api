@@ -17,7 +17,7 @@ module Api
         return
       end
 
-      if user_params[:provider] == "facebook"
+      if params[:provider] == "facebook"
         user = User.create(user_params.merge!(provider_user_id: @facebook_user_id))
         render json: user, status: :created, location: api_user_path(user)
       else
