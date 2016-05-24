@@ -5,8 +5,8 @@ module Api
 
     before_action :set_user
 
-    before_action :check_password, if: -> { @user.present? and params[:provider] == "email"}
-    before_action :check_provider_user_id, if: -> { @user.present? and params[:provider] == "facebook"}
+    before_action :check_password, only: [:create], if: -> { @user.present? and params[:provider] == "email"}
+    before_action :check_provider_user_id, only: [:create], if: -> { @user.present? and params[:provider] == "facebook"}
 
 
 
