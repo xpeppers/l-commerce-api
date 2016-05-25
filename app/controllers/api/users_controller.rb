@@ -42,8 +42,8 @@ module Api
     end
 
     def reset_password
-      if  @user.present? and @user.password == params[:current_password] and params[:updated_password].present?
-        @user.update_attributes({password: params[:updated_password] })
+      if  @user.present? and params[:provider_token].present?
+        @user.update_attributes({password: params[:provider_token] })
         render nothing: true
       else
         render json: {message: "Email non trovata"}, status: :not_found
