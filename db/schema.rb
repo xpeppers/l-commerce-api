@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512135910) do
+ActiveRecord::Schema.define(version: 20160526073305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -183,6 +183,14 @@ ActiveRecord::Schema.define(version: 20160512135910) do
   add_index "stages", ["image_id"], name: "index_stages_on_image_id", using: :btree
   add_index "stages", ["merchant_id"], name: "index_stages_on_merchant_id", using: :btree
   add_index "stages", ["path_id"], name: "index_stages_on_path_id", using: :btree
+
+  create_table "temporary_codes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "code"
+    t.datetime "validity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email"

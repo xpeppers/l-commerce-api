@@ -3,7 +3,8 @@ require "rails_helper"
 describe ExampleMailer, type: :mailer do
   describe 'welcome_email' do
     let(:user) { create(:user, email: "emailhere") }
-    let(:mail) { described_class.welcome_email(user).deliver_now }
+    let(:temp_code) { TemporaryCode.create({user_id: user.id}) }
+    let(:mail) { described_class.welcome_email(user, temp_code).deliver_now }
 
     it 'renders the subject' do
       expect(mail.subject).to eq('TDVpass recupera password')

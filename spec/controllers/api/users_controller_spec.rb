@@ -87,6 +87,22 @@ describe Api::UsersController, type: :controller do
         end
     end
 
+    context 'user temporary login with email and  provided code' do
+      it 'responds ok if validity date is >= now' do
+        post :create, { email: 'email@address.com', provider_token: 'mypass', provider: "email" }
+        temp_code = TemporaryCode.create({user_id: User.last.id})
+        expect(temp_code.code.present?).to eq(true)
+
+        post :temporary_login,  { email: 'email@address.com', provider_token: temp_code.code, provider: "email" }
+        expect(response).to have_http_status(:ok)
+ 
+        expect(TemporaryCode.last.present?).to eq(false)
+
+      end
+
+      it 'responds unauthorized if validity date is <= now' do
+      end
+    end
   end
 
 

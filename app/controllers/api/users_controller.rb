@@ -31,11 +31,14 @@ module Api
 
 
     def reset_password_auto
-      @user = User.find_by(email: params[:email])
       if @user.present?
-        @user.update_attributes({password: (0...6).map { ('A'..'Z').to_a[rand(26)] }.join})
-        ExampleMailer.welcome_email(@user).deliver_later
-        render json: {message: "Abbiamo mandato una mail con la nuova password!"}, status: :ok
+        temp_code = TemporaryCode.create({user_id: @user.id})
+        if temp_code.save
+          ExampleMailer.welcome_email(@user, temp_code).deliver_later
+          render json: {message: "Abbiamo mandato una mail con la nuova password."}, status: :ok
+        else
+          render json: {message: "Non e'stata possbile creare una password temporanea."}, status: :unauthorized
+        end
       else
         render json: {message: "Email non trovata"}, status: :not_found
       end
@@ -45,6 +48,20 @@ module Api
       if  @user.present? and params[:provider_token].present?
         @user.update_attributes({password: params[:provider_token] })
         render json: {message: "Password aggiornata"}, status: :ok
+      else
+        render json: {message: "Email non trovata"}, status: :not_found
+      end
+    end
+
+    def temporary_login
+      if @user.present?
+        temp_code = TemporaryCode.where(user_id: @user.id, code: params[:provider_token]).where("validity >= ? ", Time.now.utc).first
+        if temp_code.present?
+          render json: nil, status: :ok
+        else
+          render json: {message: "Codice scaduto."}, status: :unauthorized
+        end
+        TemporaryCode.destroy_all(user_id: @user.id)
       else
         render json: {message: "Email non trovata"}, status: :not_found
       end
