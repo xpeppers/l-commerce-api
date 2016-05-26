@@ -4,7 +4,9 @@
   = "Ciao "  + @user.email.split("@")[0]
 
 %p
-  = "Usa il segunte codice per fare login."
+  = "Qualcuno ha chiesto di recente di reimpostare la tua password di TDVpass."
+%p
+  = "Inserire il seguente codice per la reimpostazione della password:"
 
 %strong
   = @temporary_code.code
