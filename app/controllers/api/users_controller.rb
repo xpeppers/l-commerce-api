@@ -57,11 +57,11 @@ module Api
       if @user.present?
         temp_code = TemporaryCode.where(user_id: @user.id, code: params[:provider_token]).where("validity >= ? ", Time.now.utc).first
         if temp_code.present?
+          TemporaryCode.destroy_all(user_id: @user.id)
           render json: nil, status: :ok
         else
           render json: {message: "Codice scaduto."}, status: :unauthorized
-        end
-        TemporaryCode.destroy_all(user_id: @user.id)
+        end 
       else
         render json: {message: "Email non trovata"}, status: :not_found
       end
