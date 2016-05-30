@@ -28,5 +28,5 @@ en:
       offer:
         title: "Titolo"
         description: "Descrizione"
-        price: "Discounted Price"
-        original_price: "Price"
+        price: "Current Price"
+        original_price: "Original Price"

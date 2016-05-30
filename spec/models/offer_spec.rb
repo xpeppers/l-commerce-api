@@ -23,6 +23,14 @@ describe Offer, type: :model do
     end
   end
 
+  it "price must be less than original_price" do
+    valid_offer = create(:offer, price: 10, original_price: 20)
+    expect(valid_offer.valid?).to be(true)
+
+    invalid_offer = build(:offer, price: 20, original_price: 15)
+    expect(invalid_offer.valid?).to be(false)
+  end
+
   describe '#destroy' do
     let(:image) { create(:image, resource: File.open("#{Rails.root}/spec/fixtures/images/carne1.jpg")) }
     let(:image_gallery) { create(:image_gallery, images: [image]) }

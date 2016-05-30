@@ -18,6 +18,7 @@ module Backoffice
       if @offer.save
         redirect_to [:backoffice, @offer], notice: 'Offer was successfully created.'
       else
+        flash[:error] = "Current price can not be greater than original price" unless @offer.valid?
         render :new
       end
     end

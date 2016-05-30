@@ -24,7 +24,7 @@
         .input-group
           %span.input-group-addon
             = "#{model_class.human_attribute_name(:original_price)} - €"
-          = f.text_field :original_price, class: 'form-control', required: true
+          = f.text_field :original_price, class: 'form-control'
         = error_span(@offer[:original_price])
       .col-xs-6
         .input-group
