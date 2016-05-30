@@ -1,4 +1,4 @@
--if @offer.price.present? && @offer.original_price > @offer.price
+-if @offer.original_price.present? && @offer.original_price > @offer.price
   %span.label.label-price.label-striked= format_price(@offer.original_price)
   %span.label.label-success= format_price(@offer.price)
 -else
