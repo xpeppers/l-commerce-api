@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index]
     resource :reseller, only: [:show, :edit, :update]
     resources :images, only: [:create, :destroy]
+    resources :users, only: [:index]
   end
 
 

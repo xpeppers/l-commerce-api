@@ -1,0 +1,8 @@
+- model_class = User
+
+.page-header
+  %h1
+    = t '.title', default: model_class.model_name.human.pluralize.titleize
+
+- @users.each do |user|
+  %h5= user.email
