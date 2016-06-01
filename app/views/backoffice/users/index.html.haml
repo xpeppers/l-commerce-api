@@ -4,5 +4,14 @@
   %h1
     = t '.title', default: model_class.model_name.human.pluralize.titleize
 
-- @users.each do |user|
-  %h5= user.email
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %td= model_class.human_attribute_name(:email)
+      %td= model_class.human_attribute_name(:created_at)
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.email
+        %td= user.created_at 
