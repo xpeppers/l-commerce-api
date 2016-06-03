@@ -245,6 +245,8 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
+    tinymce-rails (4.3.12)
+      railties (>= 3.1.1)
     turbolinks (2.5.3)
       coffee-rails
     twitter-bootstrap-rails (3.2.0)
@@ -308,6 +310,7 @@ DEPENDENCIES
   spring
   sqlite3
   therubyracer
+  tinymce-rails
   turbolinks (~> 2.5, >= 2.5.3)
   twitter-bootstrap-rails
   uglifier
