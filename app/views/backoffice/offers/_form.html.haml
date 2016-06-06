@@ -1,6 +1,6 @@
 - model_class = Offer
 = tinymce_assets
--# = tinymce :alternate
+= tinymce
 = form_for [:backoffice, @offer] do |f|
   .row.form
     .input-group-lg
@@ -10,10 +10,7 @@
   .row.form
     .input-group-lg
       .controls
-        = f.text_area :description, :rows => 10, :cols => 120, class: "form-control tinymce", required: true
-        = tinymce :alternate
-        -# = f.label :controls
-        -# = f.text_area :controls, class: "tinymce"
+        = f.text_area :description, size: '60x12', class: "tinymce"
         -# = f.text_area :description, class: 'form-control noresize', required: true, size: '60x12'
       = error_span(@offer[:description])
 
@@ -62,5 +59,4 @@
     = link_to t('.cancel', default: t("helpers.links.cancel")), backoffice_offers_path, class: 'btn btn-default'
 
 = render partial: 'add_image'
-
-= tinymce
+ 
