@@ -1,6 +1,10 @@
 class Merchant < ActiveRecord::Base
   include Authentication
 
+  acts_as_mappable :units => :kms,
+                   :lat_column_name => :latitude,
+                   :lng_column_name => :longitude
+
   before_destroy :has_stages?, :has_offers?
 
   belongs_to :image

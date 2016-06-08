@@ -2,7 +2,18 @@ module Api
   class OffersController < ApplicationController
 
     def index
-      render json: Offer.order("created_at desc").all, each_serializer: OfferListSerializer
+      if params[:lat].nil? && params[:lon].nil?
+        render json: Offer.order("created_at desc").all, each_serializer: OfferListSerializer
+      else 
+        merchant_ids = Merchant.by_distance(:origin => [46.076389,11.1190963]).select(:id).map(&:id)
+        result = []
+        for m in merchant_ids do
+          for o in Offer.order("created_at desc").where(:merchant_id => m) do
+            result << o
+          end
+        end
+        render json: result, each_serializer: OfferListSerializer
+      end
     end
 
     def show

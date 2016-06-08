@@ -4,6 +4,7 @@ ruby '2.2.4'
 gem 'social-share-button', '~> 0.1.6'
 gem 'turbolinks', '~> 2.5', '>= 2.5.3'
 gem 'tinymce-rails'
+gem 'geokit-rails'
 
 gem 'rails', '4.2.3'
 gem 'active_model_serializers', '0.10.0.rc2'

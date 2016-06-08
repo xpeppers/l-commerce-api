@@ -46,6 +46,58 @@ describe Api::OffersController, type: :controller do
     end
   end
 
+
+  describe 'GET #index?lat=46.076389&lon=11.121285' do
+    before do
+      @merchat_near = create :merchant, latitude: 46.0760398, longitude: 11.1217031
+      @merchat_far = create :merchant, latitude: 46.077290, longitude: 11.1287953
+      @first_offer = create :offer, merchant: @merchat_far
+      @second_offer = create :offer, original_price: 10.99, merchant: @merchat_near
+
+      params = {
+        lat: 46.076389,
+        lon: 11.121285
+      }
+      get :index, params
+    end
+
+    it 'returns two offers' do
+      expect(response).to have_http_status(:ok)
+
+      expected_json = %(
+        [
+          {
+            "id": #{@second_offer.id},
+            "description": "MyText",
+            "image_url": null,
+            "original_price": "10.99",
+            "price": "9.99",
+            "reservation_price": "2.00",
+            "title": "MyString",
+            "latitude": 46.0760398,
+            "longitude": 11.1217031,
+            "url": "http://127.0.0.1:3000/frontend/offers/#{@second_offer.id}"
+          },
+          {
+            "id": #{@first_offer.id},
+            "description": "MyText",
+            "image_url": null,
+            "original_price": null,
+            "price": "9.99",
+            "reservation_price": "2.00",
+            "title": "MyString",
+            "latitude": 46.077290,
+            "longitude": 11.1287953,
+            "url": "http://127.0.0.1:3000/frontend/offers/#{@first_offer.id}"
+          }
+        ]
+      )
+
+      expect(response.body).to be_json_eql(expected_json)
+    end
+  end
+
+
   describe 'GET #show' do
 
     let(:image) { create :image, resource: File.open("#{Rails.root}/spec/fixtures/images/carne1.jpg") }
