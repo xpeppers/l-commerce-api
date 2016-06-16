@@ -51,8 +51,8 @@ describe Api::OffersController, type: :controller do
     before do
       @merchat_near = create :merchant, latitude: 46.0760398, longitude: 11.1217031
       @merchat_far = create :merchant, latitude: 46.077290, longitude: 11.1287953
-      @first_offer = create :offer, merchant: @merchat_far
-      @second_offer = create :offer, original_price: 10.99, merchant: @merchat_near
+      @first_offer = create :offer, merchant: @merchat_near
+      @second_offer = create :offer, original_price: 10.99, merchant: @merchat_far
 
       params = {
         lat: 46.076389,
@@ -67,18 +67,6 @@ describe Api::OffersController, type: :controller do
       expected_json = %(
         [
           {
-            "id": #{@second_offer.id},
-            "description": "MyText",
-            "image_url": null,
-            "original_price": "10.99",
-            "price": "9.99",
-            "reservation_price": "2.00",
-            "title": "MyString",
-            "latitude": 46.0760398,
-            "longitude": 11.1217031,
-            "url": "http://127.0.0.1:3000/frontend/offers/#{@second_offer.id}"
-          },
-          {
             "id": #{@first_offer.id},
             "description": "MyText",
             "image_url": null,
@@ -86,9 +74,21 @@ describe Api::OffersController, type: :controller do
             "price": "9.99",
             "reservation_price": "2.00",
             "title": "MyString",
+            "latitude": 46.0760398,
+            "longitude": 11.1217031,
+            "url": "http://127.0.0.1:3000/frontend/offers/#{@first_offer.id}"
+          },
+          {
+            "id": #{@second_offer.id},
+            "description": "MyText",
+            "image_url": null,
+            "original_price": "10.99",
+            "price": "9.99",
+            "reservation_price": "2.00",
+            "title": "MyString",
             "latitude": 46.077290,
             "longitude": 11.1287953,
-            "url": "http://127.0.0.1:3000/frontend/offers/#{@first_offer.id}"
+            "url": "http://127.0.0.1:3000/frontend/offers/#{@second_offer.id}"
           }
         ]
       )
