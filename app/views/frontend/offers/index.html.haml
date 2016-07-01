@@ -1,0 +1,18 @@
+- model_class = Offer
+.page-header
+  %h1
+    = t '.title', default: model_class.model_name.human.pluralize.titleize
+
+%div.grid_container
+  %div.row.custom_row
+    - @offers.each do |offer|
+      - @offer = offer
+      %div.col-md-5.well.grid_elem
+        %p.lead.text-uppercase
+          = offer.title
+        %div
+          = image_tag offer.image_url, class: 'img-responsive img-thumbnail'
+          %h2.text-center{style: 'margin: 20px 0; padding: 10px 0; border: solid 1px #bbb; background-color: #eee;'}
+            =render partial: 'prices'
+        %p.little_font= offer.description[0..100].html_safe + " ..."
+        = link_to t('.details', default: t("helpers.links.details")), frontend_offer_path(@offer), class: 'btn btn-primary btn_long'

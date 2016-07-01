@@ -16,6 +16,7 @@ en:
       destroy: "Delete"
       new: "New"
       edit: "Edit"
+      details: "Dettagli"
       preview: "Preview"
     titles:
       edit: "Edit %{model}"

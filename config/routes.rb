@@ -48,6 +48,6 @@ Rails.application.routes.draw do
 
 
   namespace :frontend do
-      resources :offers,  only: [:show]
+      resources :offers,  only: [:show, :index]
   end
 end

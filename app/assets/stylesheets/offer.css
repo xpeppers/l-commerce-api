@@ -39,6 +39,13 @@
     padding: 10px;
 }
 
+.btn_long {
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 12px;
+  display: block;
+}
+
 .social-share-button {
     display: inline-block;
     padding: 30px;
@@ -46,4 +53,25 @@
 
 .invisible {
     visibility: hidden;
+}
+
+.well {
+  margin: 20px;
+}
+
+.custom_row {
+  -webkit-box-sizing: content-box;
+  margin: 0px;
+}
+
+.grid_container {
+
+}
+
+.grid_elem {
+  background-color: white;
+}
+
+.little_font {
+  font-size: 20px;
 }
