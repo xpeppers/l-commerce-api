@@ -74,4 +74,5 @@
 
 .little_font {
   font-size: 20px;
+  box-sizing:border-box
 }
