@@ -103,14 +103,18 @@
     }
   }
 
-
-  window.onload = function(e){
+  document.addEventListener("turbolinks:load", function() {
     setTimeout(function(){
+        console.log("ciao da window")
         if( isMobile.iOS() || isMobile.Android()){
             $('.invisible').css('visibility','visible');
         }
     }, 100)
-  }
+  })
+
+  / window.onload = function(e){
+
+  / }
 
 :javascript
   google.maps.event.addDomListener(window, 'load', init_map);
