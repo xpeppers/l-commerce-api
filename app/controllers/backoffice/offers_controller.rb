@@ -1,6 +1,6 @@
 module Backoffice
   class OffersController < AuthenticatedController
-    before_action :set_offer, only: [:show, :edit, :update, :destroy]
+    before_action :set_offer, only: [:show, :edit, :update, :destroy, :update_row_order]
 
     def index
       @offers = Offer.order("created_at desc").all
@@ -42,15 +42,28 @@ module Backoffice
       redirect_to backoffice_offers_url, notice: 'Offer was successfully delete.'
     end
 
-    private
+
+    def update_row_order
+      @offer = Offer.find(@offer.id) 
+      @offer.row_order = order_params[:row_order] 
+      @offer.save 
+      render nothing: true # this is a POST action, updates sent via AJAX, no view rendered
+    end 
+
+
+
+    private 
 
     def set_offer
       @offer = Offer.find(params[:id])
     end
 
-    def offer_params
-      puts params
+    def offer_params 
       params.require(:offer).permit(:title, :description, :price, :original_price, :reservation_price, :merchant_id)
+    end
+
+    def order_params
+      params.permit(:row_order)
     end
 
     def images

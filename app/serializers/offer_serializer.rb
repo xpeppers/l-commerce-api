@@ -2,7 +2,7 @@ class OfferSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
 
   attributes :id, :title, :description, :original_price, :price, :reservation_price, :image_gallery,
-             :merchant, :address, :telephone, :email, :web_site, :facebook, :twitter, :url
+             :merchant, :address, :telephone, :email, :web_site, :facebook, :twitter, :url, :row_order
 
   def merchant
     object.merchant.name

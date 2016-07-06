@@ -1,5 +1,8 @@
 class Offer < ActiveRecord::Base
 
+  include RankedModel
+  ranks :row_order
+
   default_scope { where(active: true) }
 
   before_destroy :bought?

@@ -43,6 +43,9 @@ gem 'rails-push-notifications', '~> 0.2.0'
 
 gem 'rails_12factor', group: :production
 
+gem 'ranked-model'
+gem 'jquery-ui-rails'
+
 group :development do
   gem 'web-console', '~> 2.0'
 end

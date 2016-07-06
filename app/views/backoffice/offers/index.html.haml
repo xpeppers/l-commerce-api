@@ -3,12 +3,14 @@
   %h1
     = t '.title', default: model_class.model_name.human.pluralize.titleize
     = link_to t('.new', default: t("helpers.links.new")), new_backoffice_offer_path, class: 'btn btn-primary'
+
+
 %div
   %a.float_left(onclick="notify()") Notifica aggiornamenti:
   %p.margin_left.float_left= t('general_notification_content')
   =render partial: 'notification'
 
-%table.table.table-bordered.table-striped
+%table#sortable.table.table-bordered.table-striped
   %thead
     %tr
       %td= model_class.human_attribute_name(:title)
@@ -19,7 +21,7 @@
       %td= model_class.human_attribute_name(:email)
   %tbody
     - @offers.each do |offer|
-      %tr
+      %tr.offer{"data-offer-id": offer.id}
         %td
           %h5= link_to offer.title, backoffice_offer_path(offer)
           %div

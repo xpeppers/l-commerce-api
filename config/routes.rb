@@ -34,7 +34,9 @@ Rails.application.routes.draw do
 
   namespace :backoffice do
     get '/', to: 'offers#index'
-    resources :offers
+    resources :offers do
+      post :update_row_order
+    end
     resources :merchants
     resources :paths do
       resources :stages
