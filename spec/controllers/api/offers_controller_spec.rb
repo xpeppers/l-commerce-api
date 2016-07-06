@@ -118,6 +118,7 @@ describe Api::OffersController, type: :controller do
           "price": "#{offer.price}",
           "title": "#{offer.title}",
           "reservation_price": "2.00",
+          "row_order": 0,
           "merchant": "#{offer.merchant.name}",
           "url": "http://127.0.0.1:3000/frontend/offers/#{offer.id}",
           "address":
