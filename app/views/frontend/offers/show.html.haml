@@ -102,19 +102,25 @@
         openStore("market://details?id=com.xpeppers.tdvpass", 100);
     }
   }
+ 
 
-  document.addEventListener("turbolinks:load", function() {
+  function checkSO(){
+    if( isMobile.iOS() || isMobile.Android()){
+        $('.invisible').css('visibility','visible');
+    }
+  }
+
+  $(document).on('page:load', function(e){
     setTimeout(function(){
-        console.log("ciao da window")
-        if( isMobile.iOS() || isMobile.Android()){
-            $('.invisible').css('visibility','visible');
-        }
+      checkSO()
     }, 100)
-  })
+  }); 
 
-  / window.onload = function(e){
-
-  / }
+  window.onload = function(e){
+    setTimeout(function(){
+      checkSO()
+    }, 100)
+  }
 
 :javascript
   google.maps.event.addDomListener(window, 'load', init_map);
