@@ -2,8 +2,9 @@ module Backoffice
   class OffersController < AuthenticatedController
     before_action :set_offer, only: [:show, :edit, :update, :destroy, :update_row_order]
 
-    def index
-      @offers = Offer.order("created_at desc").all
+    def index 
+      @offers = Offer.where("row_order >= 0").order("row_order")
+      @offers += Offer.where("row_order < 0").order("created_at desc")
     end
 
     def new
@@ -43,8 +44,7 @@ module Backoffice
     end
 
 
-    def update_row_order
-      @offer = Offer.find(@offer.id) 
+    def update_row_order 
       @offer.row_order = order_params[:row_order] 
       @offer.save 
       render nothing: true # this is a POST action, updates sent via AJAX, no view rendered
