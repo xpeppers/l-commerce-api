@@ -3,8 +3,8 @@ module Backoffice
     before_action :set_offer, only: [:show, :edit, :update, :destroy, :update_row_order]
 
     def index 
-      @offers = Offer.where("row_order >= 0").order("row_order")
-      @offers += Offer.where("row_order < 0").order("created_at desc")
+      @offers = Offer.rank("row_order").all
+      # @offers += Offer.where("row_order < 0").order("created_at desc")
     end
 
     def new
@@ -13,6 +13,7 @@ module Backoffice
 
     def create
       @offer = Offer.new(offer_params)
+      @offer.row_order = 0
 
       @offer.create_image_gallery(image_ids: images) unless images.empty?
 
