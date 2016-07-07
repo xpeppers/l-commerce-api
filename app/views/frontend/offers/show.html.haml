@@ -89,7 +89,7 @@
 
     function openStore(store_link, timeout){
         setTimeout(function(){
-            if (new Date().getTime() - clickedAt < 2000){
+            if (new Date().getTime()clickedAt < 2000){
                 window.location = store_link;
             }
         }, timeout)
@@ -115,6 +115,13 @@
       checkSO()
     }, 100)
   }); 
+
+  window.onload = function(e){
+    setTimeout(function(){
+      checkSO()
+    }, 100)
+  }
+ 
 
 :javascript
   google.maps.event.addDomListener(window, 'load', init_map);
