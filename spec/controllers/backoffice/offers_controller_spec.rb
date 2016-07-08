@@ -55,7 +55,7 @@ describe Backoffice::OffersController, type: :controller do
 
     it 'returns row_order updated' do  
       post :update_row_order, offer_id: @offer.id, id: @offer.id, row_order: 2
-      expect(response).to have_http_status(:ok)  
+      expect(response).to have_http_status(:ok)   
     end
   end
 end
