@@ -110,7 +110,17 @@
     }
   }
 
-  checkSO() 
+  $(document).on('page:load', function(e){
+    setTimeout(function(){
+      checkSO() 
+    }, 100)
+  }); 
+
+  window.onload = function(e){
+    setTimeout(function(){
+      checkSO()
+    }, 100)
+  }
  
 
 :javascript

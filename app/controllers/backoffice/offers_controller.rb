@@ -3,7 +3,7 @@ module Backoffice
     before_action :set_offer, only: [:show, :edit, :update, :destroy, :update_row_order]
 
     def index 
-      @offers = Offer.rank("row_order").all 
+      @offers = Offer.order("row_order").all 
     end
 
     def new
@@ -45,6 +45,8 @@ module Backoffice
 
 
     def update_row_order 
+      update_nex_row_order(@offer.row_order, order_params[:row_order].to_f)
+
       @offer.row_order = order_params[:row_order] 
       @offer.save 
       render nothing: true # this is a POST action, updates sent via AJAX, no view rendered
@@ -53,6 +55,27 @@ module Backoffice
 
 
     private 
+
+    def update_nex_row_order(_from, _to)
+      if _from != nil and _to != nil  
+        while _from < _to
+          offers = Offer.order("row_order").where("row_order > #{_from} and row_order <= #{_to}")
+          offers.each do |offer|
+            offer.row_order = _from
+            offer.save
+            _from += 1 
+          end
+        end  
+        while _to < _from
+          offers = Offer.order("row_order").where("row_order >= #{_to} and row_order < #{_from}")
+          offers.each do |offer|
+            _to += 1 
+            offer.row_order = _to
+            offer.save 
+          end
+        end  
+      end
+    end
 
     def set_offer
       @offer = Offer.find(params[:id])
