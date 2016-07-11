@@ -16,6 +16,8 @@ module Backoffice
 
       @offer.create_image_gallery(image_ids: images) unless images.empty?
 
+      update_next_row_order(0, nil)
+
       if @offer.save
         redirect_to [:backoffice, @offer], notice: 'Offer was successfully created.'
       else
@@ -45,7 +47,8 @@ module Backoffice
 
 
     def update_row_order 
-      update_nex_row_order(@offer.row_order, order_params[:row_order].to_f)
+      puts @offer
+      update_next_row_order(@offer.row_order, order_params[:row_order].to_f)
 
       @offer.row_order = order_params[:row_order] 
       @offer.save 
@@ -56,25 +59,29 @@ module Backoffice
 
     private 
 
-    def update_nex_row_order(_from, _to)
+    def update_next_row_order(_from, _to)
+      start_from = _from
+      offers = []
+
       if _from != nil and _to != nil  
-        while _from < _to
-          offers = Offer.order("row_order").where("row_order > #{_from} and row_order <= #{_to}")
-          offers.each do |offer|
-            offer.row_order = _from
-            offer.save
-            _from += 1 
-          end
+        if _from < _to
+          offers = Offer.order("row_order").where("row_order > #{_from} and row_order <= #{_to}") 
         end  
-        while _to < _from
-          offers = Offer.order("row_order").where("row_order >= #{_to} and row_order < #{_from}")
-          offers.each do |offer|
-            _to += 1 
-            offer.row_order = _to
-            offer.save 
-          end
+        if _to < _from
+          offers = Offer.order("row_order").where("row_order >= #{_to} and row_order < #{_from}") 
+          start_from = _to + 1
         end  
+      else
+        offers = Offer.order("row_order") 
+        start_from = _from + 1
       end
+
+      offers.each do |offer|
+        offer.row_order = start_from
+        offer.save
+        start_from += 1 
+      end
+
     end
 
     def set_offer
