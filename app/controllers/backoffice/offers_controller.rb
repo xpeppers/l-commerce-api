@@ -52,7 +52,7 @@ module Backoffice
 
       @offer.row_order = order_params[:row_order] 
       @offer.save 
-      render nothing: true # this is a POST action, updates sent via AJAX, no view rendered
+      render nothing: true 
     end 
 
 

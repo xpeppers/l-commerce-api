@@ -102,7 +102,7 @@ describe Api::OffersController, type: :controller do
 
     let(:image) { create :image, resource: File.open("#{Rails.root}/spec/fixtures/images/carne1.jpg") }
     let(:image_gallery) { create :image_gallery, images: [image] }
-    let(:offer) { create :offer, original_price: 10.44, image_gallery: image_gallery }
+    let(:offer) { create :offer, original_price: 10.44, image_gallery: image_gallery, row_order: 1 }
 
     it 'returns offer details' do
       get :show, id: offer
@@ -118,7 +118,7 @@ describe Api::OffersController, type: :controller do
           "price": "#{offer.price}",
           "title": "#{offer.title}",
           "reservation_price": "2.00",
-          "row_order": 0,
+          "row_order": 1,
           "merchant": "#{offer.merchant.name}",
           "url": "http://127.0.0.1:3000/frontend/offers/#{offer.id}",
           "address":
