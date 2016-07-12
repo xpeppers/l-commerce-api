@@ -105,9 +105,9 @@
  
 
   function checkSO(){
-    if( isMobile.iOS() || isMobile.Android()){
+    //if( isMobile.iOS() || isMobile.Android()){
         $('.invisible').css('visibility','visible');
-    }
+    //}
   }
 
   $(document).on('page:load', function(e){
@@ -121,7 +121,5 @@
       checkSO()
     }, 100)
   }
- 
-
-:javascript
+  
   google.maps.event.addDomListener(window, 'load', init_map);
