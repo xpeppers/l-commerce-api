@@ -65,14 +65,27 @@ describe Backoffice::OffersController, type: :controller do
 
 
 
-  describe 'POST #update_row_order' do
+  describe 'POST #update_row_order' do 
     before do
-      @offer = create :offer 
+      @merchant = create :merchant
+      @offer = build :offer, merchant: @merchant
     end
 
-    it 'returns row_order updated' do
-      post :update_row_order, offer_id: @offer.id, id: @offer.id, row_order: 2
-      expect(response).to have_http_status(:ok)
+    it 'updates highest order priority for the specified offer and the others if neccessary' do  
+      post :create, offer: {title: "title", description: "anything", price: 1, reservation_price: 1, merchant_id: @merchant.id}
+      first_offer = Offer.last  
+      post :create, offer: {title: "another title", description: "anything", price: 1, reservation_price: 1, merchant_id: @merchant.id}
+      second_offer = Offer.last
+      post :create, offer: {title: "another title", description: "anything", price: 1, reservation_price: 1, merchant_id: @merchant.id}
+      third_offer = Offer.last
+      expect(first_offer.reload.row_order).to be(2)
+      expect(second_offer.reload.row_order).to be(1)
+      expect(third_offer.row_order).to be(0)
+
+      post :update_row_order, offer_id: first_offer.id, id: first_offer.id, row_order: 0
+      expect(first_offer.reload.row_order).to be(0)
+      expect(second_offer.reload.row_order).to be(2)
+      expect(third_offer.reload.row_order).to be(1)
     end
   end
 end
