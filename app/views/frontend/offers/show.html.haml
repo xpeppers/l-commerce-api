@@ -9,7 +9,7 @@
       %h2.text-center{style: 'margin: 20px 0; padding: 10px 0; border: solid 1px #bbb; background-color: #eee;'}
         =render partial: 'prices'
 
-      %a#button_app.invisible.float_right.btn.btn-primary{href:"tdvpass://offer/#{@offer.id}"}(onclick="openApplication()") Prenota con TDVpass
+      %a#button_app.my_invisible.float_right.btn.btn-primary{href:"tdvpass://offer/#{@offer.id}"}(onclick="openApplication()") Prenota con TDVpass
 
       %p.lead.text-uppercase.padding_top
         = @offer.title
@@ -89,7 +89,7 @@
 
     function openStore(store_link, timeout){
         setTimeout(function(){
-            if (new Date().getTime()clickedAt < 2000){
+            if (new Date().getTime()-clickedAt < 2000){
                 window.location = store_link;
             }
         }, timeout)
@@ -105,9 +105,9 @@
  
 
   function checkSO(){
-    //if( isMobile.iOS() || isMobile.Android()){
-        $('.invisible').css('visibility','visible');
-    //}
+    if( isMobile.iOS() || isMobile.Android()){
+        $('.my_invisible').css('visibility','visible');
+    }
   }
 
   $(document).on('page:load', function(e){
@@ -122,4 +122,8 @@
     }, 100)
   }
   
+
+
+  
+:javascript
   google.maps.event.addDomListener(window, 'load', init_map);
