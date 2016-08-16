@@ -28,4 +28,5 @@ clients/
 env/
 public/uploads
 
-config/.DS_Store
+.DS_Store
+*/.DS_Store
