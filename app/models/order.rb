@@ -1,8 +1,6 @@
 class Order < ActiveRecord::Base
   default_scope { order(created_at: :desc) }
 
-  validates_presence_of :offer_ids
-
   belongs_to :user
   has_many :bought_offers
   has_many :offers, through: :bought_offers
