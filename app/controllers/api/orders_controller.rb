@@ -3,9 +3,9 @@ module Api
 
     def create
       order = Order.new(order_params)
-      order.validate!
       puts "***order_params***", order_params.to_h
       puts "***order***", order
+      order.validate!
       puts "***order errors***", order.errors
       if order.save
         render json: order, status: :created, location: api_order_path(order)
