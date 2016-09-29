@@ -1,7 +1,7 @@
 test: &default
-  client_id:
-  client_secret:
-  mode:
+  client_id: clientid
+  client_secret: clientsecret
+  mode: sandbox
 
 development:
   <<: *default
