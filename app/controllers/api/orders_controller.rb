@@ -4,7 +4,7 @@ module Api
     def create
       order = Order.new(order_params)
       puts "***order_params***", order_params.to_h
-      puts "***order***", order
+      puts "***order***", order.to_s
       order.validate!
       puts "***order errors***", order.errors
       if order.save
