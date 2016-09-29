@@ -21,6 +21,11 @@ rake db:migrate
 ```
 rspec
 ```
+## run integration tests
+
+```
+rspec --tag integration
+```
 
 ## run server
 
