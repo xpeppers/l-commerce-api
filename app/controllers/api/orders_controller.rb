@@ -5,6 +5,8 @@ module Api
       order = Order.new(order_params)
       if order.save
         render json: order, status: :created, location: api_order_path(order)
+      else
+        render json: { status: :unprocessable_entity }
       end
     end
 

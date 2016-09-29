@@ -1,6 +1,8 @@
 class Order < ActiveRecord::Base
   default_scope { order(created_at: :desc) }
 
+  validates :offer_ids, length: { minimum: 1 }
+
   belongs_to :user
   has_many :bought_offers
   has_many :offers, through: :bought_offers

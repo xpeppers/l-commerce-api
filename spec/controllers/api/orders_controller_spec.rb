@@ -17,6 +17,12 @@ describe Api::OrdersController, type: :controller do
         }.to change(Order, :count).by(1)
       end
 
+      it 'cannot create an empty order' do
+        expect{
+          post :create, offer_ids: []
+        }.to change(Order, :count).by(0)
+      end
+
       it 'responds with order details' do
         post :create, offer_ids: [offer]
 
