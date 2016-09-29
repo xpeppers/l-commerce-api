@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.5'
+ruby '2.2.4'
 
 gem 'social-share-button', '~> 0.1.6'
 gem 'turbolinks', '~> 2.5', '>= 2.5.3'
