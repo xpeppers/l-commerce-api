@@ -6,6 +6,9 @@ module Api
       if order.save
         render json: order, status: :created, location: api_order_path(order)
       else
+        puts "*** order.errors.to_h ***"
+        puts order.errors.to_h
+        puts "*** order.errors.to_h ***"
         render json: { status: :unprocessable_entity }
       end
     end
