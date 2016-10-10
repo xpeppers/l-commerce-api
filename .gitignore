@@ -18,9 +18,7 @@
 
 *.sublime-workspace
 
-.vagrant/machines/dev
-.vagrant/machines/aws*/aws/synced_folders
-.vagrant/machines/aws*/aws/berkshelf
+.vagrant/
 
 .berks-cookbooks
 nodes/
@@ -30,3 +28,6 @@ public/uploads
 
 .DS_Store
 */.DS_Store
+
+Berksfile.lock
+cookbooks/vagrant-*.json
