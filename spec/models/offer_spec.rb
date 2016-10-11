@@ -29,7 +29,7 @@ describe Offer, type: :model do
     expect(valid_offer.valid?).to be(true)
 
     invalid_offer = build(:offer, price: 20, original_price: 15)
-    # expect(invalid_offer.valid?).to be(false)
+    expect(invalid_offer.valid?).to be(false)
   end
 
   describe '#destroy' do
