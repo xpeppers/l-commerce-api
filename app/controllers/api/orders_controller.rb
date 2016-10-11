@@ -3,12 +3,10 @@ module Api
 
     def create
       order = Order.new(order_params)
-      puts "***order_params***", order_params.to_h
-      puts "***order***", order.to_s
-      order.validate!
-      puts "***order errors***", order.errors
       if order.save
         render json: order, status: :created, location: api_order_path(order)
+      else
+        render json: order.errors, status: :unprocessable_entity
       end
     end
 
