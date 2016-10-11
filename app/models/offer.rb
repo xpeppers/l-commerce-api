@@ -1,4 +1,4 @@
-class Offer < ActiveRecord::Base 
+class Offer < ActiveRecord::Base
   default_scope { where(active: true) }
 
   before_destroy :bought?
@@ -8,7 +8,7 @@ class Offer < ActiveRecord::Base
   has_many :images, through: :image_gallery
 
   validates_presence_of :merchant, :title, :description, :price, :reservation_price, :row_order
-  validate :price_must_be_less_than_original_price
+  # validate :price_must_be_less_than_original_price
 
   delegate :telephone, :email, :web_site, :facebook, :twitter, to: :merchant
 
@@ -16,11 +16,10 @@ class Offer < ActiveRecord::Base
     images.first.url if images.first.present?
   end
 
+  # price is current_price
   def price_must_be_less_than_original_price
     errors.add(:price, "must be less than original_price") if original_price.present? && price > original_price
   end
-
-
 
   private
 
