@@ -18,7 +18,7 @@ class Offer < ActiveRecord::Base
 
   # price is current_price
   def price_must_be_less_than_original_price
-    errors.add(:price, "must be less than original_price") if original_price.present? && price > original_price
+    errors.add(:price, "must be less than original_price") if original_price.present? && price >= original_price
   end
 
   private
