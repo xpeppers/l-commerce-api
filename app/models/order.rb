@@ -7,6 +7,11 @@ class Order < ActiveRecord::Base
   has_one :coupon
   has_one :payment
 
+
+  validate do |order|
+    get_errors_from_offers(order.offers)
+  end
+
   def pending?
     payment.nil?
   end
@@ -23,4 +28,16 @@ class Order < ActiveRecord::Base
     return 'pending' if pending?
     return 'captured' if captured?
   end
+
+  private
+
+  def get_errors_from_offers(offers)
+    offers.each do |offer|
+      next if offer.valid?
+      offer.errors.full_messages.each do |msg|
+        errors.add(:offers, "#{offer.id}: #{msg}")
+      end
+    end
+  end
+
 end
