@@ -2,8 +2,27 @@
 
 ## project setup
 
-## setup db for Mac Users
+## libv8 error
+```
+gem uninstall libv8
+gem install therubyracer -v '0.12.2'
+gem install libv8 -v '3.16.14.11' -- --with-system-v8
+```
 
+## vagrant ubuntu error
+The box 'ubuntu/trusty64' could not be found or
+could not be accessed in the remote catalog. If this is a private
+box on HashiCorp's Atlas, please verify you're logged in via
+`vagrant login`. Also, please double-check the name. The expanded
+URL and error message are shown below:
+
+URL: ["https://atlas.hashicorp.com/ubuntu/trusty64"]
+
+Remove curl file in /opt/vagrant/embedded/bin
+(see: https://github.com/Varying-Vagrant-Vagrants/VVV/issues/354#issuecomment-259220933)
+
+## setup db for Mac Users
+(postgreSQL must be running)
 ```
 createuser --pwprompt linking_commerce (password: linking_commerce)
 createdb -Olinking_commerce -Eutf8 linking_commerce
