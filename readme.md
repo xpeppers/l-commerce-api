@@ -60,6 +60,9 @@ rake db:seed_fu
 
 ## deploy development environment with vagrant
 
+NOTE: 
+- execute script vagrant.sh in the folder "script"
+- execute `berks vendor` in the main folder
 ```
 vagrant up dev
 cap dev deploy

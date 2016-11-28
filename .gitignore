@@ -31,3 +31,4 @@ public/uploads
 
 Berksfile.lock
 cookbooks/vagrant-*.json
+berks-cookbooks
