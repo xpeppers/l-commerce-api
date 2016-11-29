@@ -80,6 +80,7 @@ module NotificationHelper
               puts "=== sending notification"
               
               app.push_notifications
+              puts "== notification send, reloading..."
               notif.reload
               puts "=== notification SENT"
 
