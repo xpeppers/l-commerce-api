@@ -27,6 +27,7 @@ module Api
     end
 
     def generic_notify
+        puts "=== sending notification"
         json_data = package_notification(GCM_CONFIG["token_global"],  t(:general_notification_content), params[:platform], "generic")
         render json: NotificationHelper::notify(json_data)
     end

@@ -3,8 +3,9 @@ module NotificationHelper
     def self.notify(params)
         
         result = {}
-
+        
         if params[:ios]
+            puts "===> ios"
             ios_data = params[:ios]
             ios_result = sendToAPNS(ios_data[:destinations], ios_data[:content])
             result[:ios] = ios_result
@@ -68,22 +69,31 @@ module NotificationHelper
             else
                 aps_data["id"] = content["id"]
             end
-          notif = app.notifications.build(
-            destinations: destinations,
-            data: { aps:  aps_data }
-          )
+            puts "=== building notification"
+            notif = app.notifications.build(
+              destinations: destinations,
+              data: { aps:  aps_data }
+            )
+            puts " ==== saving Notification"
 
-          if notif.save
-            app.push_notifications
-            notif.reload
+            if notif.save
+              puts "=== sending notification"
+              
+              app.push_notifications
+              notif.reload
+              puts "=== notification SENT"
 
-            resp_code = "success"
-            resp_data = "Notification successfully pushed through!. Results #{notif.results.success} succeded, #{notif.results.failed} failed"
+              resp_code = "success"
+              resp_data = "Notification successfully pushed through!. Results #{notif.results.success} succeded, #{notif.results.failed} failed"
 
-          else
-            resp_data = notif.errors.full_messages
-          end
+            else
+              puts "notification error"
+              puts notif.errors.full_messages
+              resp_data = notif.errors.full_messages
+            end
         else
+            puts "APNS ERROR"
+            puts app.errors.full_messages
             resp_data = app.errors.full_messages
         end
 
