@@ -1,7 +1,7 @@
 module NotificationHelper
 
     def self.notify(params)
-
+        
         result = {}
 
         if params[:ios]
@@ -51,6 +51,9 @@ module NotificationHelper
 
     private
     def self.sendToAPNS(destinations, content)
+        if destinations.empty?
+            return {:status => "success", :message => "Notification sent successfully" }
+        end
         app = RailsPushNotifications::APNSApp.new
         app.apns_dev_cert = File.read(File.join(Rails.root, 'config', APNS_CONFIG["certificate"]))
         app.apns_prod_cert = File.read(File.join(Rails.root, 'config', APNS_CONFIG["certificate"]))

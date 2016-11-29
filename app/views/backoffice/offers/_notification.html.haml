@@ -35,15 +35,17 @@
     }
 
     function hide_ios_error(){
-        $("#android_error").hide();
+        $("#ios_error").hide();
     }
 
     function show_ios_error(){
-        $("#android_error").show();
+        $("#ios_error").show();
     }
 
     function hadle_error(result){
         var message = "";
+        result.android = result.android || {};
+        result.ios = result.ios || {}; 
         if(result.android.status === "error"){
             show_android_error();
             message = "La notifica in Android non e' andata a buon fine.\n"

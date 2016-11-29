@@ -52,7 +52,7 @@
     }
 
     function notifyAndroid(){
-        send_generic_notification("android", function(result){
+        send_generic_notification("#{api_generic_notify_path}","android", function(result){
             if(result.android.status === "success"){
                hide_android_error();
                alertSuccess();
@@ -63,7 +63,7 @@
     }
 
     function notifyIos(){
-        send_generic_notification("ios", function(result){
+        send_generic_notification("#{api_generic_notify_path}","ios", function(result){
              if(result.ios.status === "success"){
                 hide_ios_error();
                 alertSuccess();

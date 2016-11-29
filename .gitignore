@@ -18,6 +18,8 @@
 
 *.sublime-workspace
 
+.idea/
+
 .vagrant/
 
 .berks-cookbooks
