@@ -20,9 +20,8 @@ Vagrant.configure("2") do |config|
   config.vm.define "dev" do |dev|
     dev.vm.box = "ubuntu/trusty64"
     dev.vm.box_check_update = true
-    dev.vm.network :private_network, type: "dhcp"
-    config.vm.network :forwarded_port, guest: 3000, host: 3000
-    config.vm.synced_folder "./", "/vagrant"
+    dev.vm.network :private_network,  ip: "192.168.33.100"
+    dev.vm.synced_folder "./", "/vagrant"
 
     dev.vm.provider "virtualbox" do |vb|
       vb.cpus = 1

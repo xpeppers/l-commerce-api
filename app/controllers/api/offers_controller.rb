@@ -8,7 +8,7 @@ module Api
         merchant_ids = Merchant.by_distance(:origin => [46.076389,11.1190963]).select(:id).map(&:id)
         result = []
         for m in merchant_ids do
-          for o in Offer.order("created_at desc").where(:merchant_id => m) do
+          for o in Offer.order("row_order").where(:merchant_id => m) do
             result << o
           end
         end
