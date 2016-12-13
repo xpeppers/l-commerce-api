@@ -17,7 +17,7 @@ module NotificationHelper
             result[:android] = android_result
         end
 
-        return result
+        return {:android => {:status => success, :message => "success" }, :ios => {:status => success, :message => "success" }}
 
     end
 
@@ -83,7 +83,7 @@ module NotificationHelper
               puts "== notification send, reloading..."
               notif.reload
               puts "=== notification SENT"
-
+              puts notif.results
               resp_code = "success"
               resp_data = "Notification successfully pushed through!. Results #{notif.results.success} succeded, #{notif.results.failed} failed"
 
