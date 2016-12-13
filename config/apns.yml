@@ -1,11 +1,11 @@
 development:
-    certificate: "apns/TdvCertification_dev.pem"
+    certificate: "apns/development_com.xpeppers.TrentinoDaVivere.pem"
 
 test:
-    certificate: "apns/TdvCertification_dev.pem"
+    certificate: "apns/development_com.xpeppers.TrentinoDaVivere.pem"
 
 staging:
-    certificate: "apns/TdvCertification_dev.pem"
+    certificate: "apns/development_com.xpeppers.TrentinoDaVivere.pem"
 
 production:
     certificate: "apns/production_com.xpeppers.TrentinoDaVivere.pem"
