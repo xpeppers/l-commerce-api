@@ -109,7 +109,7 @@ heroku open
 Test API
 
 ```
-curl https//linkingcommerce.herokuapp.com/api
+curl https://linkingcommerce.herokuapp.com/api
 ```
 
 ## deploy production environment with vagrant
