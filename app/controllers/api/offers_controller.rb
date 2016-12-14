@@ -3,12 +3,13 @@ module Api
 
     def index
       if params[:lat].nil? && params[:lon].nil?
-        render json: Offer.order("created_at desc").all, each_serializer: OfferListSerializer
+          #row_order
+        render json: Offer.order("row_order").all, each_serializer: OfferListSerializer
       else 
         merchant_ids = Merchant.by_distance(:origin => [46.076389,11.1190963]).select(:id).map(&:id)
         result = []
         for m in merchant_ids do
-          for o in Offer.order("row_order").where(:merchant_id => m) do
+          for o in Offer.order("created_at desc").where(:merchant_id => m) do
             result << o
           end
         end

@@ -16,18 +16,6 @@ describe Api::OffersController, type: :controller do
       expected_json = %(
         [
           {
-            "id": #{@second_offer.id},
-            "description": "MyText",
-            "image_url": null,
-            "original_price": "10.99",
-            "price": "9.99",
-            "reservation_price": "2.00",
-            "title": "MyString",
-            "latitude": 46.0667,
-            "longitude": 11.1167,
-            "url": "http://127.0.0.1:3000/frontend/offers/#{@second_offer.id}"
-          },
-          {
             "id": #{@first_offer.id},
             "description": "MyText",
             "image_url": null,
@@ -38,6 +26,18 @@ describe Api::OffersController, type: :controller do
             "latitude": 46.0667,
             "longitude": 11.1167,
             "url": "http://127.0.0.1:3000/frontend/offers/#{@first_offer.id}"
+          },
+          {
+            "id": #{@second_offer.id},
+            "description": "MyText",
+            "image_url": null,
+            "original_price": "10.99",
+            "price": "9.99",
+            "reservation_price": "2.00",
+            "title": "MyString",
+            "latitude": 46.0667,
+            "longitude": 11.1167,
+            "url": "http://127.0.0.1:3000/frontend/offers/#{@second_offer.id}"
           }
         ]
       )
