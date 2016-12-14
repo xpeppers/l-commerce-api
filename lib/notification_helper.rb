@@ -3,7 +3,7 @@ module NotificationHelper
     def self.notify(params)
         
         result = {}
-        
+
         if params[:ios]
             puts "===> ios"
             ios_data = params[:ios]
@@ -17,7 +17,7 @@ module NotificationHelper
             result[:android] = android_result
         end
 
-        return {:android => {:status => success, :message => "success" }, :ios => {:status => success, :message => "success" }}
+        return {:android => {:status => "success", :message => "success" }, :ios => {:status => "success", :message => "success" }}
 
     end
 
@@ -45,8 +45,7 @@ module NotificationHelper
         else
             resp_code = "success"
         end
-
-
+        
         return {:status => resp_code, :message => resp_data }
     end
 
