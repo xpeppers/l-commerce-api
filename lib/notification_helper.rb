@@ -17,7 +17,7 @@ module NotificationHelper
             result[:android] = android_result
         end
 
-        return {:android => {:status => "success", :message => "success" }, :ios => {:status => "success", :message => "success" }}
+        return result
 
     end
 
