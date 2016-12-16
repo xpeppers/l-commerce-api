@@ -6,7 +6,7 @@ module NotificationHelper
         
         if params[:ios]
             ios_data = params[:ios]
-            ios_result = sendToAPNS(["5123da5dea95d3840b8b3e8015ffd52b3afc3fd8bd89d3283edb5a8555a221b1"], ios_data[:content])
+            ios_result = sendToAPNS(["94b121ccac212748142b7a031dde2222f0d40e437e709e06c8a3fe942d6687c2"], ios_data[:content])
             result[:ios] = ios_result
         end
 
@@ -58,7 +58,7 @@ module NotificationHelper
         app = RailsPushNotifications::APNSApp.new
         app.apns_dev_cert = File.read(File.join(Rails.root, 'config', APNS_CONFIG["certificate"]))
         app.apns_prod_cert = File.read(File.join(Rails.root, 'config', APNS_CONFIG["certificate"]))
-        app.sandbox_mode = true
+        app.sandbox_mode = false
 
         resp_code = "error"
         resp_data = "" 
