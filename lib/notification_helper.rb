@@ -5,7 +5,6 @@ module NotificationHelper
         result = {}
 
         if params[:ios]
-            puts "===> ios"
             ios_data = params[:ios]
             ios_result = sendToAPNS(ios_data[:destinations], ios_data[:content])
             result[:ios] = ios_result
@@ -51,6 +50,8 @@ module NotificationHelper
 
     private
     def self.sendToAPNS(destinations, content)
+        puts "================ sendToAPNS =======================" 
+        start = Time.now
         if destinations.empty?
             return {:status => "success", :message => "Notification sent successfully" }
         end
@@ -97,6 +98,8 @@ module NotificationHelper
             resp_data = app.errors.full_messages
         end
 
+        puts Time.now - start
+        puts "=======================================" 
         return {:status => resp_code, :message => resp_data }
     end
 
