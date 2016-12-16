@@ -49,8 +49,7 @@ module NotificationHelper
     end
 
     private
-    def self.sendToAPNS(destinations, content)
-        puts "================ sendToAPNS =======================" 
+    def self.sendToAPNS(destinations, content) 
         start = Time.now
         if destinations.empty?
             return {:status => "success", :message => "Notification sent successfully" }
@@ -69,20 +68,20 @@ module NotificationHelper
             else
                 aps_data["id"] = content["id"]
             end
-            puts "=== building notification"
+           
             notif = app.notifications.build(
               destinations: destinations,
               data: { aps:  aps_data }
             )
-            puts " ==== saving Notification"
+          
 
             if notif.save
-              puts "=== sending notification"
+          
               
               app.push_notifications
-              puts "== notification send, reloading..."
+       
               notif.reload
-              puts "=== notification SENT"
+         
               puts notif.results
               resp_code = "success"
               resp_data = "Notification successfully pushed through!. Results #{notif.results.success} succeded, #{notif.results.failed} failed"
@@ -99,7 +98,7 @@ module NotificationHelper
         end
 
         puts Time.now - start
-        puts "=======================================" 
+      
         return {:status => resp_code, :message => resp_data }
     end
 
