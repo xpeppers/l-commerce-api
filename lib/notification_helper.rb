@@ -3,18 +3,18 @@ module NotificationHelper
     def self.notify(params)
         
         result = {}
-
+        
         if params[:ios]
             ios_data = params[:ios]
-            ios_result = sendToAPNS(ios_data[:destinations], ios_data[:content])
+            ios_result = sendToAPNS(["5123da5dea95d3840b8b3e8015ffd52b3afc3fd8bd89d3283edb5a8555a221b1"], ios_data[:content])
             result[:ios] = ios_result
         end
 
-        if params[:android]
-            android_data = params[:android]
-            android_result = sendToGCM(android_data[:token], android_data[:content])
-            result[:android] = android_result
-        end
+        # if params[:android]
+        #     android_data = params[:android]
+        #     android_result = sendToGCM(android_data[:token], android_data[:content])
+        #     result[:android] = android_result
+        # end
 
         return result
 
